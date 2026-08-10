@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+
+# Local env — NUNCA commitear (la API key vive acá)
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.local
+*.log
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea

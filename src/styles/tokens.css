@@ -1,0 +1,56 @@
+/*
+ * La tipografía se resuelve en tiempo de ejecución mediante --font-brand,
+ * que escribe ThemeProvider según la institución activa. Las familias se
+ * cargan desde Google Fonts en index.html.
+ */
+
+:root {
+  /* Identidad · las sobrescribe ThemeProvider en tiempo de ejecución */
+  --font-brand: 'Inter', system-ui, sans-serif;
+  --color-accent-soft: #E9F1FE;
+
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A463F;
+  --color-text-muted: #8A8580;
+  --color-text-accent: #1858BE;
+  --color-text-inverse: #FFFFFF;
+
+  /* WHITE PALETTE — fondo blanco en toda la app
+     Para volver al cremita, reemplazar este bloque por el comentado abajo. */
+  --color-bg-page: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-sunken: #F5F4F2;
+  --color-bg-overlay: rgba(26, 26, 26, 0.48);
+
+  --color-border-hairline: #E5E2DD;
+  --color-border-strong: #4A463F;
+  --color-border-focus: var(--color-accent-primary);
+
+  /* CREMITA PALETTE (anterior)
+  --color-bg-page: #F3EEE6;
+  --color-bg-card: #FBF8F2;
+  --color-bg-sunken: #EBE4D8;
+  --color-border-hairline: #DAD2C4;
+  */
+
+  --color-accent-primary: #1F6FEB;
+  --color-accent-muted: #1858BE;
+  --color-accent-consultora: #4B5563;
+
+  --color-status-success: #2F7D32;
+  --color-status-success-bg: #E8F1E8;
+  --color-status-warning: #A56A00;
+  --color-status-warning-bg: #F6EEDC;
+  --color-status-error: #B00808;
+  --color-status-error-bg: #F6E4E4;
+  --color-status-info: #1F5E9C;
+  --color-status-info-bg: #E4ECF4;
+
+  --shadow-soft: 0 1px 2px rgba(26, 26, 26, 0.04), 0 4px 16px rgba(26, 26, 26, 0.05);
+  --shadow-soft-hover: 0 2px 4px rgba(26, 26, 26, 0.06), 0 8px 24px rgba(26, 26, 26, 0.06);
+
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+}
