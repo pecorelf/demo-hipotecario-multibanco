@@ -24,7 +24,7 @@ const POLICIES = `Políticas y umbrales vigentes:
 - Observación de IA: gatilla recomendación al ejecutivo, no es decisión vinculante.`;
 
 const CASE_CONTEXT = `Caso #HIP-2026-0042
-Titular: Andrés Fuenzalida (dependiente Nuestra consultora Consultoría Limitada, renta líquida declarada $2.450.000)
+Titular: ${BRAND.buyerName} (dependiente Servicios Andinos Limitada, renta líquida declarada $2.450.000)
 Co-titular: María José Contreras (independiente, consultora · honorarios variables, promedio $3.400.000)
 Propiedad: casa Av. Vitacura 2950, valor declarado UF 6.800, vendedor Inmobiliaria Los Almendros
 Operación: monto solicitado UF 4.760, pie UF 2.040 (30%), plazo 25 años, tasa 4.65% anual

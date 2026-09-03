@@ -206,7 +206,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     name: 'Liquidaciones de sueldo (3 períodos)',
     category: 'proceso',
     subCategory: 'Carpeta Comercial',
-    author: 'Andrés Fuenzalida',
+    author: BRAND.buyerName,
     date: '2026-05-18',
     vigencia: 'historico',
     vigenciaLabel: 'Histórico',
@@ -380,7 +380,7 @@ export default function HubInmueble() {
           <Share2 size={18} className="text-accent flex-shrink-0 mt-0.5" />
           <div>
             <div className="text-body-sm font-semibold text-text-primary">
-              Vista compartida por Andrés Fuenzalida
+              Vista compartida por {BRAND.buyerName}
             </div>
             <div className="text-caption text-text-secondary mt-0.5">
               Modo solo lectura · El link caduca el 25 de junio de 2026.
@@ -413,7 +413,7 @@ export default function HubInmueble() {
       <section className="border-y border-border-hairline py-8 lg:py-10">
         <Kicker>
           {isEjecutivo
-            ? `Bóveda de Andrés Fuenzalida · ${INMUEBLE.caseRef}`
+            ? `Bóveda de ${BRAND.buyerName} · ${INMUEBLE.caseRef}`
             : 'Tu inmueble bajo custodia digital'}
         </Kicker>
         <PageTitle className="mt-3">{INMUEBLE.direccion}</PageTitle>

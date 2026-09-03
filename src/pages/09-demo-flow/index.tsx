@@ -193,7 +193,7 @@ const SCENES: Scene[] = [
     whatToSay:
       `Ahora cambiemos a la vista del ejecutivo de ${BRAND.shortName}. Camila Reinoso abre su cockpit y ve su bandeja del día. El caso de Francisco tiene una alerta. A la derecha, su copiloto IA ya analizó el caso y le susurra al oído: hay una inconsistencia entre la liquidación y Previred. Le da la causa probable, le sugiere el próximo paso, le da contexto humano. Y si Camila decide que el caso necesita criterio del back office, lo deriva con una nota que el sistema redacta solo.`,
     whatToClick: [
-      'Click en Andrés Fuenzalida en el inbox de la izquierda (ya seleccionado por defecto)',
+      `Click en ${BRAND.buyerName} en el inbox de la izquierda (ya seleccionado por defecto)`,
       'Muestra el copiloto a la derecha: ALERTA + PRÓXIMO PASO + CONTEXTO ÚTIL',
       'En el centro, scrollea hasta "Atención" en el tab Resumen',
       'Click "Derivar a back office con esta nota"',

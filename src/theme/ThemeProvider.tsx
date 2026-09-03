@@ -13,6 +13,7 @@
 import { createContext, Fragment, useContext, useEffect, useState, type ReactNode } from 'react';
 import { resolveTheme, readSlugFromUrl, type BankTheme } from './banks';
 import { applyBrandOverride } from '@/lib/brand';
+import { usePostApprovalStore } from '@/store/postApprovalStore';
 import { leerOverride } from './storage';
 
 interface ThemeContextValue {
@@ -54,7 +55,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       // BRAND es una constante de módulo que consumen las páginas para armar
       // sus textos. Se actualiza en sitio para que la personalización guardada
       // desde /admin alcance también a los nombres, y no solo a los colores.
-      if (applyBrandOverride(override)) setBrandVersion((v) => v + 1);
+      if (applyBrandOverride(override)) {
+        usePostApprovalStore.getState().syncFromBrand();
+        setBrandVersion((v) => v + 1);
+      }
       setTheme(combinado);
       applyTheme(combinado);
     })();
@@ -63,7 +67,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [slug]);
 
   const previewTheme = (t: BankTheme) => {
-    if (applyBrandOverride(t)) setBrandVersion((v) => v + 1);
+    if (applyBrandOverride(t)) {
+      usePostApprovalStore.getState().syncFromBrand();
+      setBrandVersion((v) => v + 1);
+    }
     setTheme(t);
     applyTheme(t);
   };

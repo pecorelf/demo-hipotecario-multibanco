@@ -58,7 +58,7 @@ const RETRIEVED: RetrievedItem[] = [
   {
     id: 'r1',
     label: 'Identidad y dirección',
-    value: 'Andrés Fuenzalida · RUT 16.482.930-7',
+    value: `${BRAND.buyerName} · RUT 16.482.930-7`,
     source: 'Registro Civil',
     detail:
       'Cédula vigente hasta 14 mar 2031. Match biométrico 97% contra base del Registro Civil. Domicilio declarado: Av. Los Leones 1240, depto 1203, Providencia (validado en cartola Previred).',

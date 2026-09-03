@@ -68,7 +68,7 @@ REGLAS IMPORTANTES:
 // ─────────────────────────────────────────────────────────────
 
 const CASE_CONTEXT_DOCS = `Caso #HIP-2026-0042
-Cliente: Andrés Fuenzalida (RUT 16.482.930-7, dependiente Nuestra consultora Consultoría Limitada desde nov 2021)
+Cliente: ${BRAND.buyerName} (RUT 16.482.930-7, dependiente Servicios Andinos Limitada desde nov 2021)
 Co-titular: María José Contreras Salinas (RUT 18.456.123-9, independiente · diseñadora de servicios, ingresos variables mes a mes)
 Propiedad: casa en Av. Vitacura 2950, valor declarado UF 6.800, vendedor Inmobiliaria Los Almendros
 Operación: monto solicitado UF 4.760 · pie UF 2.040 (30%) · 25 años · tasa 4.65% anual
@@ -95,7 +95,7 @@ ${CASE_CONTEXT_DOCS}
 
 Para esta demo, asume que el documento contiene exactamente lo que su nombre sugiere. Inventa valores COHERENTES con el caso. Ejemplos:
 - "tasacion.pdf" / "tasacion_vitacura.pdf" → tasación oficial. Valor tasado ~UF 7.200, m² razonables, observaciones plausibles.
-- "liquidacion.pdf" → liquidación de sueldo del cliente. ~$2.450.000 líquido, empleador Nuestra consultora Consultoría Limitada.
+- "liquidacion.pdf" → liquidación de sueldo del cliente. ~$2.450.000 líquido, empleador Servicios Andinos Limitada.
 - "promesa.pdf" / "promesa_compraventa.pdf" → promesa de compraventa. Fechas, partes, monto coincidente con el caso.
 - "certificado_matrimonio.pdf" → certificado del Registro Civil. Régimen sociedad conyugal con María José Contreras.
 - Otros nombres → infiere lo más coherente.

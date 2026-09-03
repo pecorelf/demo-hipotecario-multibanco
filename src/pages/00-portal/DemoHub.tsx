@@ -79,7 +79,7 @@ export default function DemoHub() {
   return (
     <div className="max-w-shell mx-auto px-6 md:px-10 lg:px-16 py-12 lg:py-20">
       <div className="max-w-3xl">
-        <Kicker>POC Hipotecario · Nuestra consultora</Kicker>
+        <Kicker>POC Hipotecario · {BRAND.shortName}</Kicker>
         <PageTitle className="mt-3">
           Recorrido del rediseño del proceso hipotecario.
         </PageTitle>

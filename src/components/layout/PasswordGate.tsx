@@ -163,7 +163,7 @@ function LoginScreen({ onSuccess }: { onSuccess: () => void }) {
         </form>
 
         <p className="mt-10 text-xs text-[#888] leading-relaxed">
-          Si no recuerdas la contraseña, contacta a Andrés Fuenzalida
+          Si no recuerdas la contraseña, contacta al equipo de la demostración
           en Nuestra consultora.
         </p>
       </div>

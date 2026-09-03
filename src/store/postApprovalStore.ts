@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import { create } from 'zustand';
 
 /**
@@ -95,6 +96,7 @@ interface PostApprovalState {
   sellerName: string;          // si usada
   inmobiliariaName: string;    // si nueva
   ejecutivoName: string;
+  syncFromBrand: () => void;
 
   // ── Pago de gastos operacionales ────────────────────────────
   gastosOperacionalesUF: number;
@@ -396,7 +398,7 @@ export const SCRIPTED_OUTCOMES: Record<string, ScriptedOutcome> = {
     extractedFields: {
       'Tipo identificado': 'Liquidaciones de sueldo',
       'Períodos': 'Marzo, Abril, Mayo 2026',
-      'Empleador': 'Nuestra consultora SpA',
+      'Empleador': 'Servicios Andinos Limitada',
       'Calidad de imagen': 'baja',
     },
   },
@@ -476,15 +478,15 @@ const INITIAL_PROPERTY_TYPE: PropertyType = 'usada';
 
 const INITIAL_STATE = {
   propertyType: INITIAL_PROPERTY_TYPE,
-  caseRef: 'HIP-2026-0042',
+  caseRef: BRAND.caseRef,
   approvedAt: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
-  propertyAddress: 'Av. Los Leones 1240, depto 1203, Providencia',
+  propertyAddress: `${BRAND.propertyAddress}, ${BRAND.propertyComuna}`,
   propertyValueUF: 6_800,
   loanAmountUF: 4_760,
-  buyerName: 'Andrés Fuenzalida',
-  sellerName: 'Patricia Soto Mendez',
-  inmobiliariaName: 'Inmobiliaria Los Almendros',
-  ejecutivoName: 'Camila Reinoso',
+  buyerName: BRAND.buyerName,
+  sellerName: BRAND.sellerName,
+  inmobiliariaName: BRAND.inmobiliariaName,
+  ejecutivoName: BRAND.ejecutivoName,
   gastosOperacionalesUF: 8,
   gastosOperacionalesPaid: false,
   docs: buildInitialDocs(INITIAL_PROPERTY_TYPE),
@@ -493,6 +495,23 @@ const INITIAL_STATE = {
 
 export const usePostApprovalStore = create<PostApprovalState>((set, get) => ({
   ...INITIAL_STATE,
+
+  /**
+   * Vuelve a tomar de BRAND los nombres del caso.
+   *
+   * La personalizacion guardada en /admin llega despues del arranque, cuando
+   * este estado ya se creo con los valores del preset. Sin esta sincronizacion
+   * la vista del cliente seguiria mostrando el nombre anterior.
+   */
+  syncFromBrand: () =>
+    set({
+      caseRef: BRAND.caseRef,
+      propertyAddress: `${BRAND.propertyAddress}, ${BRAND.propertyComuna}`,
+      buyerName: BRAND.buyerName,
+      sellerName: BRAND.sellerName,
+      inmobiliariaName: BRAND.inmobiliariaName,
+      ejecutivoName: BRAND.ejecutivoName,
+    }),
 
   setPropertyType: (t) =>
     set((s) => {

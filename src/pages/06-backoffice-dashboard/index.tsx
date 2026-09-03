@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import { useEffect, useMemo, useState } from 'react';
 import {
   AlertTriangle,
@@ -134,7 +135,7 @@ function buildQueue(zustandDerivations: Record<string, { derivedAt: string; note
   const francisco: QueueItem = franciscoDerivation
     ? {
         caseId: 'HIP-2026-0042',
-        customerName: 'Andrés Fuenzalida',
+        customerName: BRAND.buyerName,
         derivedAt: franciscoDerivation.derivedAt,
         byExecutive: 'Camila Reinoso',
         note: franciscoDerivation.note,
@@ -143,7 +144,7 @@ function buildQueue(zustandDerivations: Record<string, { derivedAt: string; note
       }
     : {
         caseId: 'HIP-2026-0042',
-        customerName: 'Andrés Fuenzalida',
+        customerName: BRAND.buyerName,
         derivedAt: '2026-05-19T11:32:00-04:00',
         byExecutive: 'Camila Reinoso',
         note: FRANCISCO_FALLBACK_NOTE,
