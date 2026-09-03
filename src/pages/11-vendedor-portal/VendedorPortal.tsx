@@ -68,13 +68,13 @@ export default function VendedorPortal() {
           <p className="text-body-lg text-text-secondary mt-4 leading-relaxed">
             Esta operación es una propiedad nueva, por lo que los documentos del
             inmueble los gestiona la inmobiliaria. Cambia el tipo de propiedad
-            a <strong>Usada</strong> en la vista del cliente para ver este flujo.
+            a <strong>Usada</strong> desde /admin para ver este flujo.
           </p>
           <button
-            onClick={() => navigate('/cliente/seguimiento')}
+            onClick={() => navigate('/admin')}
             className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-text-primary text-text-inverse text-body font-medium hover:bg-accent transition-colors"
           >
-            Ir a vista del cliente
+            Ir a configuración de la demo
           </button>
         </div>
       </div>

@@ -64,7 +64,6 @@ export default function ClienteSeguimiento() {
     notifications,
     gastosOperacionalesUF,
     gastosOperacionalesPaid,
-    setPropertyType,
     payGastos,
     uploadDoc,
     resolveRepair,
@@ -135,32 +134,6 @@ export default function ClienteSeguimiento() {
           icon={propertyType === 'usada' ? <FileText size={14} /> : <Building2 size={14} />}
         />
         <ContextField label="Tu ejecutiva" value={ejecutivoName} />
-      </section>
-
-      {/* SELECTOR TIPO DE PROPIEDAD — re-encuadrado como metadata de la demo */}
-      <section className="mt-10 max-w-4xl">
-        <div className="border-l-2 border-border-hairline pl-4 py-1">
-          <div className="text-caption uppercase tracking-[0.1em] text-text-muted">
-            Vista demo · Esta operación es para una propiedad
-          </div>
-          <div className="mt-2 inline-flex border border-border-hairline bg-bg-card">
-            <PropertyTypeButton
-              active={propertyType === 'usada'}
-              onClick={() => setPropertyType('usada')}
-              label="Usada"
-              sub="Vendedor particular"
-            />
-            <PropertyTypeButton
-              active={propertyType === 'nueva'}
-              onClick={() => setPropertyType('nueva')}
-              label="Nueva"
-              sub="Inmobiliaria"
-            />
-          </div>
-          <div className="text-caption text-text-muted mt-2 italic">
-            Cambia los documentos requeridos del Estudio de Títulos y a quién se notifican los reparos.
-          </div>
-        </div>
       </section>
 
       {/* REPAROS ACTIVOS — banner protagonista si los hay */}
@@ -435,36 +408,6 @@ function ContextField({
         <div className="text-caption text-text-secondary mt-0.5">{sub}</div>
       )}
     </div>
-  );
-}
-
-function PropertyTypeButton({
-  active,
-  onClick,
-  label,
-  sub,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-  sub: string;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        'px-5 py-3 text-left transition-all',
-        active
-          ? 'bg-accent text-text-inverse'
-          : 'bg-bg-card text-text-primary hover:bg-bg-sunken',
-      )}
-    >
-      <div className="text-body font-semibold">{label}</div>
-      <div className={cn(
-        'text-caption mt-0.5',
-        active ? 'text-text-inverse/80' : 'text-text-muted',
-      )}>{sub}</div>
-    </button>
   );
 }
 

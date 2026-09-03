@@ -10,6 +10,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { usePostApprovalStore } from '@/store/postApprovalStore';
 import {
   BANK_THEMES, BANK_SLUGS, NEUTRAL_THEME, resolveTheme, applyTheme,
   leerOverride, guardarOverride, borrarOverride, type BankTheme,
@@ -54,6 +55,8 @@ export default function Admin() {
   const [draft, setDraft] = useState<BankTheme>(NEUTRAL_THEME);
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState<string | null>(null);
+  const propertyType = usePostApprovalStore((st) => st.propertyType);
+  const setPropertyType = usePostApprovalStore((st) => st.setPropertyType);
 
   useEffect(() => {
     if (!autorizado) return;
@@ -283,6 +286,41 @@ export default function Admin() {
           <span className="text-body-sm" style={{ fontFamily: draft.fontFamily }}>
             {draft.name} · {draft.assistantName}
           </span>
+        </div>
+      </div>
+
+      <div className="mt-6 border border-border-hairline bg-bg-card p-5">
+        <h2 className="text-h3 font-semibold text-text-primary">Parámetros de la demostración</h2>
+        <p className="text-body-sm text-text-secondary mt-2 max-w-measure">
+          El cliente ya eligió su propiedad antes de entrar al portal, así que este
+          dato no se pregunta en su vista. Se define aquí y determina qué documentos
+          exige el Estudio de Títulos y a quién se le notifican los reparos.
+        </p>
+        <div className="mt-4">
+          <span className="text-caption uppercase tracking-[0.1em] text-text-muted">
+            Tipo de propiedad de la operación
+          </span>
+          <div className="mt-2 inline-flex border border-border-hairline bg-bg-page">
+            {(['usada', 'nueva'] as const).map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setPropertyType(t)}
+                className={`px-4 py-2.5 text-left transition-colors ${
+                  propertyType === t
+                    ? 'bg-accent text-white'
+                    : 'text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                <span className="block text-body-sm font-medium">
+                  {t === 'usada' ? 'Usada' : 'Nueva'}
+                </span>
+                <span className="block text-caption opacity-80">
+                  {t === 'usada' ? 'Vendedor particular' : 'Inmobiliaria'}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
