@@ -203,6 +203,16 @@ export default function EjecutivoCockpit() {
         </header>
 
         <LiveClientCaptureBanner />
+
+        <StagePipeline
+          cases={myCases}
+          selectedId={selectedCase.id}
+          onSelect={(id) => {
+            setSelectedCaseId(id);
+            setActiveTab('resumen');
+          }}
+        />
+
         <RepairControlPanel />
 
         <div className="grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)_300px] gap-6">
@@ -248,6 +258,114 @@ export default function EjecutivoCockpit() {
         />
       )}
     </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Pipeline por etapa
+//
+// Es lo primero que ve el ejecutivo: dónde están sus casos dentro del
+// proceso. Las acciones documentales aparecen como señal dentro de cada
+// etapa, no como una bandeja separada que descoloca la lectura.
+// ─────────────────────────────────────────────────────────────
+
+interface StagePipelineProps {
+  cases: Case[];
+  selectedId: string;
+  onSelect: (id: string) => void;
+}
+
+function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
+  const porEtapa = STAGE_ORDER.map((stage) => ({
+    stage,
+    casos: cases.filter((c) => c.stage === stage),
+  }));
+
+  const conCasos = porEtapa.filter((e) => e.casos.length > 0);
+  if (conCasos.length === 0) return null;
+
+  return (
+    <section className="mb-8">
+      <div className="flex items-baseline justify-between mb-4">
+        <Kicker tone="muted">Tus casos por etapa</Kicker>
+        <span className="text-body-sm text-text-tertiary">
+          {cases.length} en curso
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-px bg-border-hairline border border-border-hairline">
+        {porEtapa.map(({ stage, casos }) => {
+          const conAlerta = casos.filter(caseHasAlert).length;
+          const docsPendientes = casos.reduce(
+            (n, c) => n + c.documents.filter((d) => d.status === 'pendiente').length,
+            0,
+          );
+          const vacia = casos.length === 0;
+
+          return (
+            <div
+              key={stage}
+              className={`bg-surface-primary px-4 py-4 flex flex-col min-h-[136px] ${
+                vacia ? 'opacity-45' : ''
+              }`}
+            >
+              <span className="text-label text-text-tertiary uppercase tracking-wider leading-tight">
+                {STAGE_LABEL_SHORT[stage]}
+              </span>
+
+              <span
+                className={`mt-3 text-3xl font-semibold leading-none ${
+                  conAlerta > 0 ? 'text-accent-primary' : 'text-text-primary'
+                }`}
+              >
+                {casos.length}
+              </span>
+
+              <div className="mt-auto pt-3 space-y-1">
+                {conAlerta > 0 && (
+                  <span className="block text-body-sm text-accent-primary">
+                    {conAlerta} requiere{conAlerta === 1 ? '' : 'n'} atención
+                  </span>
+                )}
+                {docsPendientes > 0 && (
+                  <span className="block text-body-sm text-text-secondary">
+                    {docsPendientes} documento{docsPendientes === 1 ? '' : 's'} por subir
+                  </span>
+                )}
+                {!vacia && conAlerta === 0 && docsPendientes === 0 && (
+                  <span className="block text-body-sm text-text-tertiary">Al día</span>
+                )}
+              </div>
+
+              {!vacia && (
+                <ul className="mt-3 space-y-1 border-t border-border-hairline pt-2">
+                  {casos.slice(0, 3).map((c) => (
+                    <li key={c.id}>
+                      <button
+                        type="button"
+                        onClick={() => onSelect(c.id)}
+                        className={`text-left text-body-sm truncate w-full transition-colors ${
+                          c.id === selectedId
+                            ? 'text-accent-primary font-medium'
+                            : 'text-text-secondary hover:text-text-primary'
+                        }`}
+                      >
+                        {c.id}
+                      </button>
+                    </li>
+                  ))}
+                  {casos.length > 3 && (
+                    <li className="text-body-sm text-text-tertiary">
+                      +{casos.length - 3} más
+                    </li>
+                  )}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 

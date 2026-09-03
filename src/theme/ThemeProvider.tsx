@@ -10,8 +10,9 @@
  * la identidad de otra institucion.
  */
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, Fragment, useContext, useEffect, useState, type ReactNode } from 'react';
 import { resolveTheme, readSlugFromUrl, type BankTheme } from './banks';
+import { applyBrandOverride } from '@/lib/brand';
 import { leerOverride } from './storage';
 
 interface ThemeContextValue {
@@ -36,6 +37,9 @@ export function applyTheme(t: BankTheme) {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const slug = readSlugFromUrl();
   const [theme, setTheme] = useState<BankTheme>(() => resolveTheme(slug));
+  // Cambia cuando la personalizacion modifica algun texto de BRAND. Se usa como
+  // key del arbol para que las paginas que leen BRAND vuelvan a renderizarse.
+  const [brandVersion, setBrandVersion] = useState(0);
 
   useEffect(() => {
     let cancelado = false;
@@ -47,6 +51,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       const override = await leerOverride(slug);
       if (cancelado || !override) return;
       const combinado = { ...preset, ...override };
+      // BRAND es una constante de módulo que consumen las páginas para armar
+      // sus textos. Se actualiza en sitio para que la personalización guardada
+      // desde /admin alcance también a los nombres, y no solo a los colores.
+      if (applyBrandOverride(override)) setBrandVersion((v) => v + 1);
       setTheme(combinado);
       applyTheme(combinado);
     })();
@@ -54,11 +62,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => { cancelado = true; };
   }, [slug]);
 
-  const previewTheme = (t: BankTheme) => { setTheme(t); applyTheme(t); };
+  const previewTheme = (t: BankTheme) => {
+    if (applyBrandOverride(t)) setBrandVersion((v) => v + 1);
+    setTheme(t);
+    applyTheme(t);
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, previewTheme }}>
-      {children}
+      <Fragment key={brandVersion}>{children}</Fragment>
     </ThemeContext.Provider>
   );
 }
