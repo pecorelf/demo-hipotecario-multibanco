@@ -157,7 +157,7 @@ function ModeA({ onCaseCreated }: ModeAProps) {
     stream.start({
       messages: [{ role: 'user', content: trimmed }],
       system: ASSISTANT_SYSTEM,
-      maxTokens: 1200,
+      maxTokens: 700,
       temperature: 0.6,
       cacheKey: 'eugenia_onboarding_pareja_casa',
     });
@@ -708,7 +708,7 @@ function ConversationCard({ oc, onComplete }: ConversationCardProps) {
         },
       ],
       system: ASSISTANT_FOLLOWUP_SYSTEM,
-      maxTokens: 800,
+      maxTokens: 500,
       temperature: 0.5,
       cacheKey: extraTurns.length === 0 ? 'eugenia_followup_first_question' : undefined,
     });

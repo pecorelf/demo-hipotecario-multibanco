@@ -1,32 +1,72 @@
 {
   "eugenia_followup_first_question": {
     "description": "Primera pregunta de seguimiento de Eugenia después del onboarding inicial",
-    "matchHints": ["pendientes por preguntar", "esta es tu primera pregunta", "datos pendientes"],
-    "text": "Vamos por partes entonces. Lo primero que me hace falta confirmar para no tener sorpresas más adelante es el régimen patrimonial de tu matrimonio.\n\n¿Están casados bajo sociedad conyugal, separación de bienes, o participación en gananciales?\n\n<followup>\n{\n  \"capturedData\": [],\n  \"pendingDataKeys\": [\"regimen_patrimonial\", \"propiedad\", \"pie\", \"plazo\"],\n  \"nextQuestion\": \"¿Están casados bajo sociedad conyugal, separación de bienes, o participación en gananciales?\",\n  \"isComplete\": false\n}\n</followup>"
+    "matchHints": [
+      "pendientes por preguntar",
+      "esta es tu primera pregunta",
+      "datos pendientes"
+    ],
+    "text": "Partamos por el régimen patrimonial, que define todo lo que viene.\n\n¿Están casados bajo sociedad conyugal, separación de bienes o participación en gananciales?\n\n<followup>\n{\n  \"capturedData\": [],\n  \"pendingDataKeys\": [\"regimen_patrimonial\", \"propiedad\", \"pie\", \"plazo\"],\n  \"nextQuestion\": \"¿Están casados bajo sociedad conyugal, separación de bienes, o participación en gananciales?\",\n  \"isComplete\": false\n}\n</followup>"
   },
   "eugenia_onboarding_pareja_casa": {
     "description": "Eugenia respondiendo al onboarding de Francisco buscando casa con María José",
-    "matchHints": ["pareja", "casa", "cónyuge", "esposo", "esposa", "marido", "compañera", "compañero", "comprar"],
-    "text": "Hola Francisco. Qué bueno tenerte por acá.\n\nEntiendo que están buscando comprar su primera casa con tu pareja. Para esto vamos a armar un crédito hipotecario con co-titular, así pueden sumar ingresos y mejorar las condiciones.\n\nLo bueno es que ya conozco mucho sobre ti: tu identidad está verificada con el ingreso que acabas de hacer, tienes cuenta corriente con nosotros desde hace varios años, y veo tus últimas cotizaciones AFP al día con Deloitte Consultoría Limitada. Eso nos ahorra varios pasos. Voy a aprovechar y rescatar también tu carpeta tributaria desde el SII y tu reporte de deuda en CMF — todo eso te lo dejo precargado.\n\nLo que sí necesito que confirmes conmigo: el régimen patrimonial de tu matrimonio (sociedad conyugal, separación de bienes o participación en gananciales), los datos de la propiedad que tienen en mente (dirección, valor, vendedor), cuánto pueden aportar como pie, y el plazo que quisieran para el crédito. Sobre tu pareja, necesitamos que ella se autentique también para incorporarla como co-titular y rescatar sus datos.\n\n<case_setup>\n{\n  \"journey\": \"familia_primera_vivienda\",\n  \"regime\": \"sociedad_conyugal\",\n  \"hasCoTitular\": true,\n  \"keyFacts\": [\n    \"Cliente y pareja buscan su primera vivienda juntos\",\n    \"Co-titular: cónyuge — requiere autenticación independiente\",\n    \"Identidad del titular verificada por login\"\n  ],\n  \"dataToFetch\": [\n    \"Cotizaciones AFP titular (Previred)\",\n    \"Última carpeta tributaria SII\",\n    \"Reporte de deuda CMF\",\n    \"Liquidaciones de sueldo últimos 3 meses\"\n  ],\n  \"dataToAsk\": [\n    \"Régimen patrimonial del matrimonio\",\n    \"Datos de la propiedad (dirección, valor, vendedor)\",\n    \"Capacidad de pie disponible\",\n    \"Plazo deseado\",\n    \"Autenticación de la co-titular\"\n  ],\n  \"nextStep\": \"Confirmar régimen patrimonial y solicitar autenticación del co-titular\"\n}\n</case_setup>"
+    "matchHints": [
+      "pareja",
+      "casa",
+      "cónyuge",
+      "esposo",
+      "esposa",
+      "marido",
+      "compañera",
+      "compañero",
+      "comprar"
+    ],
+    "text": "Hola Francisco.\n\nVan por su primera vivienda juntos, así que armamos el crédito con co-titular y suman ingresos.\n\nYa tengo tu identidad verificada, tu cuenta corriente y tus cotizaciones AFP al día. Rescato yo mismo tu carpeta tributaria del SII y tu deuda en CMF.\n\nNecesito cuatro cosas de ti: el régimen patrimonial de tu matrimonio, los datos de la propiedad, cuánto pueden poner de pie y a qué plazo. Y que tu pareja se autentique para incorporarla.\n\n<case_setup>\n{\n  \"journey\": \"familia_primera_vivienda\",\n  \"regime\": \"sociedad_conyugal\",\n  \"hasCoTitular\": true,\n  \"keyFacts\": [\n    \"Cliente y pareja buscan su primera vivienda juntos\",\n    \"Co-titular: cónyuge — requiere autenticación independiente\",\n    \"Identidad del titular verificada por login\"\n  ],\n  \"dataToFetch\": [\n    \"Cotizaciones AFP titular (Previred)\",\n    \"Última carpeta tributaria SII\",\n    \"Reporte de deuda CMF\",\n    \"Liquidaciones de sueldo últimos 3 meses\"\n  ],\n  \"dataToAsk\": [\n    \"Régimen patrimonial del matrimonio\",\n    \"Datos de la propiedad (dirección, valor, vendedor)\",\n    \"Capacidad de pie disponible\",\n    \"Plazo deseado\",\n    \"Autenticación de la co-titular\"\n  ],\n  \"nextStep\": \"Confirmar régimen patrimonial y solicitar autenticación del co-titular\"\n}\n</case_setup>"
   },
   "auditor_cruce_cmf": {
     "description": "Auditor explicando el cruce con CMF y bureau interno (evento 8 del time travel)",
-    "matchHints": ["CMF", "bureau", "cruce", "deuda", "obligaciones", "vigentes"],
+    "matchHints": [
+      "CMF",
+      "bureau",
+      "cruce",
+      "deuda",
+      "obligaciones",
+      "vigentes"
+    ],
     "text": "El cruce se activó automáticamente al completarse la validación de ingreso del titular, según la política vigente que exige consultar la Comisión para el Mercado Financiero (CMF) y el bureau interno antes de avanzar a la etapa de evaluación. La regla aplicada es la verificación obligatoria de obligaciones financieras vigentes definida en el Manual de Crédito Hipotecario, anterior a cualquier decisión de comité.\n\nLos datos determinantes fueron las deudas mensuales declaradas en CMF por $340.000, compuestas por una tarjeta de crédito y un crédito de consumo, ambos sin moras superiores a 30 días. Cruzados con la renta líquida validada de $2.450.000, resultan en un DTI (debt-to-income, carga financiera sobre ingreso) proyectado del 13,9%, muy por debajo del umbral del 32% para aprobación automática.\n\nLa decisión es defendible porque cumple con la política de verificación obligatoria, los umbrales aplicados son los vigentes para el tramo de monto solicitado, y todos los datos fueron capturados de fuentes oficiales con sello temporal trazable. La operación queda registrada en el timeline del caso para auditoría posterior.\n\nLa decisión se revisaría si surgieran nuevas obligaciones reportadas en CMF antes del cierre, si el ingreso validado bajara por cambios en la situación laboral del titular, o si la futura cuota hipotecaria llevara el DTI proyectado total sobre el umbral del 32%."
   },
   "copilot_francisco_inconsistencia": {
     "description": "Copiloto del cockpit detectando inconsistencia liquidación vs Previred en Francisco",
-    "matchHints": ["francisco", "previred", "liquidación", "inconsistencia", "$2.450", "$2.080"],
+    "matchHints": [
+      "francisco",
+      "previred",
+      "liquidación",
+      "inconsistencia",
+      "$2.450",
+      "$2.080"
+    ],
     "text": "ALERTA\nRenta declarada en liquidaciones ($2.450.000) excede en 17,8% al promedio cotizado en Previred últimos 12 meses ($2.080.000). Causas más probables: bono no habitual, renta variable o transcripción incorrecta.\n\nPRÓXIMO PASO\nSolicita a Francisco las últimas 3 liquidaciones completas y el contrato laboral para descartar bono no habitual antes de avanzar al comité.\n\nCONTEXTO ÚTIL\nFrancisco lleva 4 años y medio en Deloitte Consultoría Limitada; una promoción reciente o bono de desempeño podrían explicar la brecha. María José también requiere atención por variabilidad de honorarios — coordina ambos temas en la misma llamada."
   },
   "audio_extraction_antonia": {
     "description": "Extracción del audio de Antonia y Joaquín buscando departamento en Ñuñoa",
-    "matchHints": ["antonia", "vergara", "joaquín", "ñuñoa", "irarrázaval", "transcripción"],
+    "matchHints": [
+      "antonia",
+      "vergara",
+      "joaquín",
+      "ñuñoa",
+      "irarrázaval",
+      "transcripción"
+    ],
     "text": "<extraction>\n<clientName>Antonia Vergara Mendoza</clientName>\n<clientRut>17.890.456-3</clientRut>\n<intent>Compra de primera vivienda con cónyuge co-titular, bajo presión de plazo de la inmobiliaria y un viaje pendiente del cónyuge a mediados de junio.</intent>\n<budgetAmount>4200</budgetAmount>\n<budgetUnit>UF</budgetUnit>\n<propertyInfo>Departamento en Av. Irarrázaval 3450, depto 502, Ñuñoa. Valor UF 5.400. La inmobiliaria dio plazo hasta fin de mes para confirmar.</propertyInfo>\n<maritalContext>Casada con Joaquín hace tres años bajo régimen de sociedad conyugal. Ambos quieren figurar como co-titulares del crédito.</maritalContext>\n<documentsClientHas>\n<item>Últimas 6 liquidaciones de Joaquín (ingeniero en Codelco, contrato indefinido)</item>\n<item>F22 de los últimos 2 años (declaración de renta de Antonia, consultora independiente)</item>\n<item>Cartola Previred</item>\n</documentsClientHas>\n<documentsClientLacks>\n<item>Promesa de compraventa (se firma la próxima semana)</item>\n<item>Tasación independiente del departamento</item>\n</documentsClientLacks>\n<nextStepsImplied>\n<item>Confirmar pre-aprobación dentro de 24 horas</item>\n<item>Gestionar tasación independiente en paralelo</item>\n<item>Cerrar firma antes del 15 de junio (viaje de Joaquín a Australia)</item>\n</nextStepsImplied>\n<clientConcerns>\n<item>Plazo de la inmobiliaria hasta fin de mes</item>\n<item>Viaje de Joaquín a Australia el 15 de junio, una semana</item>\n<item>Demora habitual de la tasación</item>\n</clientConcerns>\n</extraction>"
   },
   "comparador_santander_gana": {
     "description": "Comparador honesto donde Santander resulta ganador overall",
-    "matchHints": ["comparador", "comparison", "competidor", "honesto"],
+    "matchHints": [
+      "comparador",
+      "comparison",
+      "competidor",
+      "honesto"
+    ],
     "text": "{\n  \"offers\": [\n    {\n      \"id\": \"santander\",\n      \"bank\": \"Santander Chile\",\n      \"amountUF\": 4760,\n      \"nominalRate\": 4.65,\n      \"caeRate\": 5.18,\n      \"termYears\": 25,\n      \"monthlyPaymentCLP\": 1055000,\n      \"insurances\": \"Incendio + sismo incluidos. Desgravamen del titular incluido.\",\n      \"prepaymentCost\": \"Sin costo de prepago a partir del mes 24.\",\n      \"openingFee\": \"UF 12\",\n      \"flexibilityNote\": \"Portabilidad simplificada con otros bancos y rebaja automática de tasa si baja la TPM 50bps.\"\n    },\n    {\n      \"id\": \"competitor1\",\n      \"bank\": \"Banco de Chile\",\n      \"amountUF\": 4760,\n      \"nominalRate\": 4.78,\n      \"caeRate\": 5.42,\n      \"termYears\": 25,\n      \"monthlyPaymentCLP\": 1072000,\n      \"insurances\": \"Incendio incluido, sismo opcional con recargo de UF 0,8 anual.\",\n      \"prepaymentCost\": \"1 mes de cuota como penalidad en los primeros 36 meses.\",\n      \"openingFee\": \"UF 14\",\n      \"flexibilityNote\": \"Portabilidad estándar, requiere trámite presencial.\"\n    }\n  ],\n  \"winners\": {\n    \"nominalRate\": \"santander\",\n    \"effectiveRate\": \"santander\",\n    \"flexibility\": \"santander\",\n    \"overall\": \"santander\"\n  },\n  \"conclusion\": \"La oferta de Santander es objetivamente la mejor para tu caso. Te da una CAE 0,24 puntos más baja, lo que sobre 25 años representa cerca de UF 95 de ahorro en intereses totales. Suma a eso el prepago sin costo desde el mes 24, los seguros completos incluidos y la rebaja automática de tasa si la TPM baja, y la diferencia se vuelve clara. Banco de Chile compite cerca en cuota mensual pero pierde en costos accesorios y flexibilidad de largo plazo.\"\n}"
   }
 }

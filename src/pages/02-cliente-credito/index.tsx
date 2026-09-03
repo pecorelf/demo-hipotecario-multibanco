@@ -429,7 +429,7 @@ function TimeTravelSection({
         },
       ],
       system: AUDITOR_SYSTEM,
-      maxTokens: 700,
+      maxTokens: 450,
       temperature: 0.4,
       cacheKey: event.id === 'EV-0042-08' ? 'auditor_cruce_cmf' : undefined,
     });

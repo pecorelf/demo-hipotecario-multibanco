@@ -82,10 +82,24 @@ export const NEUTRAL_THEME: BankTheme = {
 export const BANK_SLUGS = Object.keys(BANK_THEMES);
 
 /** Lee el identificador de la URL. Admite ?t=slug y ?tenant=slug. */
+const CLAVE_SESION = 'tenant';
+
+/**
+ * Identificador de institucion activo.
+ *
+ * Se lee de la URL y se recuerda durante la sesion. Asi una navegacion interna
+ * que pierda el parametro no devuelve la demostracion al tema neutro en medio
+ * de una presentacion.
+ */
 export function readSlugFromUrl(): string | null {
   if (typeof window === 'undefined') return null;
   const p = new URLSearchParams(window.location.search);
-  return p.get('t') ?? p.get('tenant');
+  const enUrl = p.get('t') ?? p.get('tenant');
+  if (enUrl) {
+    try { window.sessionStorage.setItem(CLAVE_SESION, enUrl); } catch { /* sin almacenamiento */ }
+    return enUrl;
+  }
+  try { return window.sessionStorage.getItem(CLAVE_SESION); } catch { return null; }
 }
 
 /**
