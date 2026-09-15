@@ -31,3 +31,16 @@ body {
   background: var(--color-accent-primary);
   color: var(--color-text-inverse);
 }
+
+/* Esquinas redondeadas por defecto en controles.
+   Va en la capa base para que cualquier clase rounded-* de una utilidad la
+   sobrescriba: así los 160 botones escritos a mano quedan modernizados sin
+   tocar uno por uno, y los que necesitan otra forma la piden explícitamente. */
+@layer base {
+  button,
+  input,
+  select,
+  textarea {
+    border-radius: 10px;
+  }
+}

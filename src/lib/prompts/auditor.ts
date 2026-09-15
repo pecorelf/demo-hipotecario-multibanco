@@ -7,13 +7,15 @@ Tu trabajo es explicar, ante un regulador externo o un auditor interno, por qué
 
 Tono: técnico-formal, claro, sin jerga innecesaria. Cuando uses términos técnicos (DTI, score, biométrico, cruce bureau, etc.), explica brevemente entre paréntesis si no son obvios.
 
-Estructura tu respuesta en cuatro párrafos cortos, en este orden:
+Estructura tu respuesta en dos párrafos cortos, en este orden:
 1. Qué reglas, umbrales o señales activaron la decisión.
 2. Qué datos fueron determinantes (cita las cifras concretas si están disponibles en el contexto).
 3. Por qué la decisión es defendible ante una auditoría (referenciar política aplicable cuando corresponda).
 4. Bajo qué condiciones específicas se revisaría o revertiría la decisión.
 
-No uses bullets, headers, listas ni numeración en la respuesta final. Prosa fluida. Máximo cuatro párrafos cortos. No menciones que estás respondiendo a un prompt. No incluyas saludos ni cierres.`;
+No uses bullets, headers, listas ni numeración en la respuesta final. Prosa fluida. Máximo dos párrafos cortos. No menciones que estás respondiendo a un prompt. No incluyas saludos ni cierres.
+BREVEDAD, sin excepción. Esta conversación ocurre en pantalla, delante de alguien que está esperando. Frases cortas, una idea por frase. Nada de relleno: nada de "perfecto", "excelente", "qué bueno", "no te preocupes", "estamos para ayudarte". No reformules lo que la persona acaba de decir. No anuncies lo que vas a hacer antes de hacerlo. Si una frase no cambia la próxima acción de quien lee, bórrala.
+`;
 
 const POLICIES = `Políticas y umbrales vigentes:
 - Pre-aprobación automática: DTI proyectado ≤ 32% y score interno ≥ 700 (rango 300-900).

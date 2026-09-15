@@ -360,7 +360,7 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
           </div>
         </div>
 
-        <div className="border border-border-hairline bg-bg-card p-5">
+        <div className="rounded-xl border border-border-hairline bg-bg-card p-5">
           <div className="space-y-1">
             {porEtapa.map(({ stage, casos }, i) => {
               const conAlerta = casos.filter(caseHasAlert).length;
@@ -485,7 +485,7 @@ function DocumentosDelCaso({
 
   return (
     <Reveal className="mb-8">
-      <section className="border border-border-hairline bg-bg-card">
+      <section className="rounded-xl border border-border-hairline bg-bg-card overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-5 border-b border-border-hairline">
           <div>
             <Kicker tone="muted">Documentos del caso</Kicker>
@@ -898,7 +898,7 @@ function TabResumen({
                   onClick={onOpenDerivation}
                   className={cn(
                     'inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium',
-                    'border border-border-hairline bg-bg-card',
+                    'rounded-xl border border-border-hairline bg-bg-card',
                     'hover:border-text-primary hover:bg-bg-page',
                     'transition-all duration-base ease-out-soft',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card',
@@ -1260,7 +1260,7 @@ function DerivationModal({ c, onClose, onConfirm, customerLookup }: DerivationMo
         aria-label="Derivar al back office"
         className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none animate-fade-in"
       >
-        <div className="bg-bg-card border border-border-hairline shadow-soft w-full max-w-2xl max-h-[90vh] overflow-y-auto pointer-events-auto">
+        <div className="rounded-xl bg-bg-card border border-border-hairline shadow-soft w-full max-w-2xl max-h-[90vh] overflow-y-auto pointer-events-auto">
           <header className="px-8 py-6 border-b border-border-hairline flex items-start justify-between gap-4">
             <div>
               <Kicker>Acción · Derivación</Kicker>
@@ -1315,7 +1315,7 @@ function DerivationModal({ c, onClose, onConfirm, customerLookup }: DerivationMo
               onClick={onClose}
               className={cn(
                 'inline-flex items-center px-5 py-2.5 text-body font-medium',
-                'border border-border-hairline bg-bg-card text-text-primary',
+                'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
                 'hover:border-text-primary hover:bg-bg-page',
                 'transition-all duration-base ease-out-soft',
               )}
@@ -1621,7 +1621,7 @@ function RepairControlPanel({ caseId }: { caseId: string }) {
   const viewerDoc = viewerDocId ? docs.find((d) => d.id === viewerDocId) : null;
 
   return (
-    <div className="mb-6 border border-border-hairline bg-bg-card p-5">
+    <div className="mb-6 rounded-xl border border-border-hairline bg-bg-card p-5">
       <div className="flex items-center gap-2 mb-4">
         <AlertCircle size={16} className="text-accent" />
         <span className="text-kicker uppercase tracking-[0.14em] font-medium text-accent">
@@ -1683,7 +1683,7 @@ function RepairControlPanel({ caseId }: { caseId: string }) {
                             key={i}
                             type="button"
                             onClick={() => setRepairReason(reason)}
-                            className="text-left text-caption px-2.5 py-1.5 border border-border-hairline bg-bg-card hover:border-accent hover:bg-bg-page transition-colors max-w-md"
+                            className="text-left text-caption px-2.5 py-1.5 rounded-xl border border-border-hairline bg-bg-card hover:border-accent hover:bg-bg-page transition-colors max-w-md"
                           >
                             {reason}
                           </button>
@@ -1712,7 +1712,7 @@ function RepairControlPanel({ caseId }: { caseId: string }) {
                       value={repairReason}
                       onChange={(e) => setRepairReason(e.target.value)}
                       placeholder="Selecciona una sugerencia o escribe el motivo del reparo..."
-                      className="w-full p-2 text-body-sm border border-border-hairline bg-bg-card focus:outline-none focus:border-accent resize-none"
+                      className="w-full p-2 text-body-sm rounded-xl border border-border-hairline bg-bg-card focus:outline-none focus:border-accent resize-none"
                       rows={3}
                     />
                     <div className="flex gap-2 mt-2 flex-wrap">
@@ -1841,7 +1841,7 @@ function DocumentViewerModal({ doc, onClose }: { doc: OperationDoc; onClose: () 
     <>
       <div className="fixed inset-0 bg-text-primary/40 z-50" onClick={onClose} />
       <div className="fixed inset-0 z-50 flex items-center justify-center px-6 pointer-events-none">
-        <div className="bg-bg-card border border-border-hairline shadow-lifted max-w-3xl w-full pointer-events-auto max-h-[85vh] overflow-y-auto">
+        <div className="rounded-xl bg-bg-card border border-border-hairline shadow-lifted max-w-3xl w-full pointer-events-auto max-h-[85vh] overflow-y-auto">
           <div className="px-6 py-4 border-b border-border-hairline flex items-center justify-between sticky top-0 bg-bg-card">
             <div>
               <div className="text-caption uppercase tracking-[0.1em] text-text-muted">Visor de documento</div>

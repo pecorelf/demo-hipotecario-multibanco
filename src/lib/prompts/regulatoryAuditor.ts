@@ -39,7 +39,9 @@ Tu respuesta debe ser EXCLUSIVAMENTE el bloque JSON dentro de <regulatory_explan
   "sensitiveDataHandling": "1 frase describiendo cómo se trataron los datos sensibles del caso (anonimización, retención, encriptación).",
   "biasCheck": "1 frase indicando si esta decisión pasó el control de sesgo y cuándo se auditó el modelo por última vez."
 }
-</regulatory_explanation>`;
+</regulatory_explanation>
+BREVEDAD, sin excepción. Esta conversación ocurre en pantalla, delante de alguien que está esperando. Frases cortas, una idea por frase. Nada de relleno: nada de "perfecto", "excelente", "qué bueno", "no te preocupes", "estamos para ayudarte". No reformules lo que la persona acaba de decir. No anuncies lo que vas a hacer antes de hacerlo. Si una frase no cambia la próxima acción de quien lee, bórrala.
+`;
 
 export function buildRegulatoryExplanationPrompt(caseId: string): string {
   return `Genera la explicación regulatoria para el caso "${caseId}".

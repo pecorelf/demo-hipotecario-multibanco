@@ -52,7 +52,7 @@ export function PostLoginChoice({
           onClick={onChooseConversational}
           className={cn(
             'group relative text-left p-8',
-            'border border-border-hairline bg-bg-card',
+            'rounded-xl border border-border-hairline bg-bg-card',
             'hover:border-accent hover:shadow-soft',
             'transition-all duration-base ease-out-soft',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',
@@ -115,7 +115,7 @@ export function PostLoginChoice({
           onClick={onChooseForm}
           className={cn(
             'group relative text-left p-8',
-            'border border-border-hairline bg-bg-card',
+            'rounded-xl border border-border-hairline bg-bg-card',
             'hover:border-text-primary hover:shadow-soft',
             'transition-all duration-base ease-out-soft',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',

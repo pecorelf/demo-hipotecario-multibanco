@@ -75,7 +75,7 @@ export default function TestPage() {
               onChange={(e) => setSystem(e.target.value)}
               rows={3}
               className={cn(
-                'w-full bg-bg-card border border-border-hairline',
+                'w-full rounded-xl bg-bg-card border border-border-hairline',
                 'px-4 py-3 text-body-sm text-text-primary placeholder:text-text-muted',
                 'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15',
                 'transition-all duration-base ease-out-soft resize-none',
@@ -102,7 +102,7 @@ export default function TestPage() {
                 }
               }}
               className={cn(
-                'w-full bg-bg-card border border-border-hairline',
+                'w-full rounded-xl bg-bg-card border border-border-hairline',
                 'px-4 py-3 text-body text-text-primary placeholder:text-text-muted',
                 'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15',
                 'transition-all duration-base ease-out-soft resize-none',

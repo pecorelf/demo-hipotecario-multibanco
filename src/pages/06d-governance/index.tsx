@@ -694,7 +694,7 @@ function ExplainabilityOnDemand() {
               }}
               placeholder="ID del caso (ej. HIP-2026-0042)"
               className={cn(
-                'w-full bg-bg-card border border-border-hairline',
+                'w-full rounded-xl bg-bg-card border border-border-hairline',
                 'pl-9 pr-3 py-2.5 text-body-sm text-text-primary',
                 'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15',
               )}

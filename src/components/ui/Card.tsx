@@ -31,7 +31,7 @@ export function Card({
   return (
     <Tag
       className={cn(
-        'bg-bg-card border border-border-hairline',
+        'rounded-xl bg-bg-card border border-border-hairline',
         paddingClass[padding],
         elevated && 'shadow-soft',
         interactive &&

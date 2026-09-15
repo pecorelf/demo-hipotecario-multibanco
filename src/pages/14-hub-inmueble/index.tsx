@@ -478,7 +478,7 @@ export default function HubInmueble() {
         <h2 className="text-h3 font-semibold text-text-primary mb-4">
           Línea de tiempo del inmueble
         </h2>
-        <div className="border border-border-hairline bg-bg-card p-5">
+        <div className="rounded-xl border border-border-hairline bg-bg-card p-5">
           <ul className="space-y-4">
             {TIMELINE.map((ev, i) => (
               <li key={i} className="flex items-start gap-4">
@@ -729,7 +729,7 @@ function KpiCard({
 function DocumentRow({ doc, viewer }: { doc: CustodiaDoc; viewer: ViewerMode }) {
   const isShared = viewer === 'shared';
   return (
-    <li className="border border-border-hairline bg-bg-card p-4">
+    <li className="rounded-xl border border-border-hairline bg-bg-card p-4">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="flex items-start gap-3 flex-1 min-w-0">
           <FileText size={16} className="text-text-muted flex-shrink-0 mt-0.5" />
@@ -792,7 +792,7 @@ function ActionCard({
   return (
     <button
       onClick={onClick}
-      className="text-left border border-border-hairline bg-bg-card p-5 hover:border-accent hover:shadow-soft transition-all group"
+      className="text-left rounded-xl border border-border-hairline bg-bg-card p-5 hover:border-accent hover:shadow-soft transition-all group"
     >
       <div className="w-10 h-10 inline-flex items-center justify-center bg-bg-page text-text-primary group-hover:bg-accent group-hover:text-text-inverse transition-colors">
         {icon}
@@ -827,7 +827,7 @@ function ModalShell({
       <div className="fixed inset-0 bg-text-primary/40 z-50" onClick={onClose} />
       <div className="fixed inset-0 z-50 flex items-center justify-center px-6 pointer-events-none">
         <div className={cn(
-          'bg-bg-card border border-border-hairline shadow-lifted w-full pointer-events-auto max-h-[85vh] overflow-y-auto',
+          'rounded-xl bg-bg-card border border-border-hairline shadow-lifted w-full pointer-events-auto max-h-[85vh] overflow-y-auto',
           maxWidth,
         )}>
           <div className="px-6 py-4 border-b border-border-hairline flex items-start justify-between gap-3 sticky top-0 bg-bg-card">
@@ -1039,7 +1039,7 @@ function CompartirAccesoModal({ onClose }: { onClose: () => void }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="abogado@ejemplo.cl"
-                className="w-full p-2 text-body-sm border border-border-hairline bg-bg-card focus:outline-none focus:border-accent"
+                className="w-full p-2 text-body-sm rounded-xl border border-border-hairline bg-bg-card focus:outline-none focus:border-accent"
               />
             </div>
             <div>

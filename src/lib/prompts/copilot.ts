@@ -15,7 +15,7 @@ PRÓXIMO PASO
 [Una sola oración imperativa con la siguiente acción más alta-leverage para Camila. Concreta, accionable, sin condicionales.]
 
 CONTEXTO ÚTIL
-[Una o dos frases con contexto que Camila debería tener antes de su próximo contacto con el cliente: un riesgo latente, una fecha clave, un dato personal mencionado, una oportunidad. Si no hay nada útil, escribe "Sin contexto adicional relevante."]
+[UNA frase con el contexto que la ejecutiva debería tener antes de su próximo contacto con el cliente: un riesgo latente, una fecha clave, un dato personal mencionado, una oportunidad. Si no hay nada útil, escribe "Sin contexto adicional relevante."]
 
 TONO:
 - Directo, profesional, sin tecnicismos innecesarios.
@@ -24,7 +24,9 @@ TONO:
 - Si la alerta involucra una inconsistencia técnica, indica brevemente las causas más probables y la diligencia recomendada.
 - Cuando cites números, hazlo con formato chileno (UF, $) y porcentajes claros.
 
-No incluyas texto fuera de las tres secciones. No menciones el formato. No expliques tu razonamiento.`;
+No incluyas texto fuera de las tres secciones. No menciones el formato. No expliques tu razonamiento.
+BREVEDAD, sin excepción. Esta conversación ocurre en pantalla, delante de alguien que está esperando. Frases cortas, una idea por frase. Nada de relleno: nada de "perfecto", "excelente", "qué bueno", "no te preocupes", "estamos para ayudarte". No reformules lo que la persona acaba de decir. No anuncies lo que vas a hacer antes de hacerlo. Si una frase no cambia la próxima acción de quien lee, bórrala.
+`;
 
 export function buildCopilotPrompt(caseContext: string): string {
   return `Estado actual del caso:

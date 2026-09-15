@@ -202,7 +202,7 @@ export async function streamClaude(
   onChunk: StreamChunkHandler,
   options: ClaudeOptions = {},
 ): Promise<string> {
-  const { maxTokens = 1024, temperature = 0.7, model = CLAUDE_MODEL, signal } = options;
+  const { maxTokens = 700, temperature = 0.7, model = CLAUDE_MODEL, signal } = options;
 
   return withRetry(async () => {
     if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
@@ -311,7 +311,7 @@ export async function claudeCompletion(
   system?: string,
   options: ClaudeOptions = {},
 ): Promise<string> {
-  const { maxTokens = 1024, temperature = 0.7, model = CLAUDE_MODEL, signal } = options;
+  const { maxTokens = 700, temperature = 0.7, model = CLAUDE_MODEL, signal } = options;
 
   return withRetry(async () => {
     if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');

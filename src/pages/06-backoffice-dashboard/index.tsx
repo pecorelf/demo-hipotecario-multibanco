@@ -781,7 +781,7 @@ function ActionButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'text-left w-full p-5 border border-border-hairline bg-bg-card',
+        'text-left w-full p-5 rounded-xl border border-border-hairline bg-bg-card',
         'hover:border-text-primary hover:bg-bg-sunken transition-all duration-base ease-out-soft',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card',
         'disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border-hairline disabled:hover:bg-bg-card',

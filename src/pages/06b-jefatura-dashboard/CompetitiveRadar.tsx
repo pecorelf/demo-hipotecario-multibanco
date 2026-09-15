@@ -512,7 +512,7 @@ function PodcastCard() {
                   onClick={stop}
                   className={cn(
                     'px-3 py-2.5 text-caption',
-                    'border border-border-hairline bg-bg-card text-text-secondary',
+                    'rounded-xl border border-border-hairline bg-bg-card text-text-secondary',
                     'hover:border-text-primary',
                     'transition-all duration-base',
                   )}
@@ -625,7 +625,7 @@ function IntelCard({ item }: { item: MarketIntelItem }) {
             onClick={() => setActionsOpen(true)}
             className={cn(
               'inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium',
-              'border border-border-hairline bg-bg-card text-text-primary',
+              'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
               'hover:border-accent hover:text-accent',
               'transition-all duration-base',
             )}

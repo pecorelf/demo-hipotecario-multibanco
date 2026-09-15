@@ -586,7 +586,7 @@ function ResultView({
           onClick={onReset}
           className={cn(
             'inline-flex items-center justify-center gap-2 px-5 py-2.5 text-body-sm',
-            'border border-border-hairline bg-bg-card text-text-secondary',
+            'rounded-xl border border-border-hairline bg-bg-card text-text-secondary',
             'hover:border-text-primary hover:text-text-primary',
             'transition-all duration-base ease-out-soft',
           )}
@@ -741,7 +741,7 @@ function EmailModal({
         aria-label="Email pre-redactado"
         className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none animate-fade-in"
       >
-        <div className="bg-bg-card border border-border-hairline shadow-soft w-full max-w-2xl max-h-[90vh] overflow-y-auto pointer-events-auto">
+        <div className="rounded-xl bg-bg-card border border-border-hairline shadow-soft w-full max-w-2xl max-h-[90vh] overflow-y-auto pointer-events-auto">
           <header className="px-8 py-6 border-b border-border-hairline flex items-start justify-between gap-4 sticky top-0 bg-bg-card z-10">
             <div>
               <Kicker>Email pre-redactado</Kicker>
@@ -800,7 +800,7 @@ function EmailModal({
               disabled={stream.isStreaming || !stream.text}
               className={cn(
                 'inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium',
-                'border border-border-hairline bg-bg-card text-text-primary',
+                'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
                 'hover:border-text-primary hover:bg-bg-page',
                 'transition-all duration-base ease-out-soft',
                 'disabled:opacity-40 disabled:cursor-not-allowed',

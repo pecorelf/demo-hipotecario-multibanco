@@ -76,7 +76,7 @@ export function RoleSwitcher() {
         onClick={() => setOpen((o) => !o)}
         className={cn(
           'inline-flex items-center gap-2 px-4 py-2 text-body-sm text-text-primary',
-          'border border-border-hairline bg-bg-card',
+          'rounded-xl border border-border-hairline bg-bg-card',
           'hover:border-text-primary transition-colors duration-base ease-out-soft',
           'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-page',
         )}
@@ -96,7 +96,7 @@ export function RoleSwitcher() {
 
       {open && (
         <div
-          className="absolute right-0 top-full mt-2 min-w-[280px] bg-bg-card border border-border-hairline shadow-soft z-50 animate-fade-in"
+          className="absolute right-0 top-full mt-2 min-w-[280px] rounded-xl bg-bg-card border border-border-hairline shadow-soft z-50 animate-fade-in"
         >
           {/* Sección Roles */}
           <div className="px-4 pt-3 pb-1.5">

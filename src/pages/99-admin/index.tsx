@@ -115,7 +115,7 @@ export default function Admin() {
   if (!autorizado) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
-        <div className="w-full max-w-sm border border-border-hairline bg-bg-card p-8">
+        <div className="w-full max-w-sm rounded-xl border border-border-hairline bg-bg-card p-8">
           <div className="text-caption uppercase tracking-[0.14em] text-text-muted">
             Administración
           </div>
@@ -170,7 +170,7 @@ export default function Admin() {
         </a>
       </div>
 
-      <div className="mt-8 border border-border-hairline bg-bg-card p-5">
+      <div className="mt-8 rounded-xl border border-border-hairline bg-bg-card p-5">
         <div className="text-caption uppercase tracking-[0.12em] text-text-muted mb-3">
           Institución
         </div>
@@ -229,7 +229,7 @@ export default function Admin() {
       </div>
 
       <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="border border-border-hairline bg-bg-card p-5">
+        <div className="rounded-xl border border-border-hairline bg-bg-card p-5">
           <h2 className="text-h3 font-semibold text-text-primary">Identidad visual</h2>
           <p className="text-caption text-text-muted mt-1">
             Verificar contra el manual de marca antes de presentar.
@@ -293,7 +293,7 @@ export default function Admin() {
           </div>
         </div>
 
-        <div className="border border-border-hairline bg-bg-card p-5">
+        <div className="rounded-xl border border-border-hairline bg-bg-card p-5">
           <h2 className="text-h3 font-semibold text-text-primary">Nombres del caso</h2>
           <p className="text-caption text-text-muted mt-1">
             Personas y datos del expediente que se muestra.
@@ -314,7 +314,7 @@ export default function Admin() {
         </div>
       </div>
 
-      <div className="mt-6 border border-border-hairline bg-bg-card p-5">
+      <div className="mt-6 rounded-xl border border-border-hairline bg-bg-card p-5">
         <h2 className="text-h3 font-semibold text-text-primary">Vista previa</h2>
         <div className="mt-4 flex items-center gap-3 flex-wrap">
           <button className="px-4 py-2 bg-accent text-white text-body-sm font-medium">
@@ -333,7 +333,7 @@ export default function Admin() {
         </div>
       </div>
 
-      <div className="mt-6 border border-border-hairline bg-bg-card p-5">
+      <div className="mt-6 rounded-xl border border-border-hairline bg-bg-card p-5">
         <h2 className="text-h3 font-semibold text-text-primary">Parámetros de la demostración</h2>
         <p className="text-body-sm text-text-secondary mt-2 max-w-measure">
           El cliente ya eligió su propiedad antes de entrar al portal, así que este

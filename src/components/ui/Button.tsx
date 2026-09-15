@@ -41,7 +41,7 @@ export function Button({
       type={type}
       disabled={disabled}
       className={cn(
-        'inline-flex items-center justify-center gap-2 font-medium',
+        'inline-flex items-center justify-center gap-2 font-medium rounded-md',
         'transition-all duration-base ease-out-soft',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-page',
         'disabled:opacity-40 disabled:cursor-not-allowed',

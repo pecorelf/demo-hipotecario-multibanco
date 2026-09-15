@@ -59,7 +59,14 @@ export default {
         'soft-hover': 'var(--shadow-soft-hover)',
       },
       borderRadius: {
-        'sm': '2px',
+        // Escala propia. La demostración nació con esquinas rectas y se
+        // modernizó a esquinas redondeadas: cambiar estos valores aquí mueve
+        // toda la aplicación de una vez.
+        'sm': '6px',
+        'md': '10px',
+        'lg': '14px',
+        'xl': '18px',
+        '2xl': '24px',
       },
       transitionTimingFunction: {
         'out-soft': 'cubic-bezier(0.22, 0.61, 0.36, 1)',

@@ -130,7 +130,7 @@ function HubCardComponent({ card, onClick }: { card: HubCard; onClick: () => voi
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',
         card.featured
           ? 'bg-bg-card border-2 border-accent hover:shadow-lifted'
-          : 'bg-bg-card border border-border-hairline hover:border-text-primary hover:shadow-soft',
+          : 'rounded-xl bg-bg-card border border-border-hairline hover:border-text-primary hover:shadow-soft',
       )}
     >
       <div className="flex items-start gap-4">

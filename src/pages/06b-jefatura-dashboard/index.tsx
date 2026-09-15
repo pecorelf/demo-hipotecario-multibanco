@@ -232,7 +232,7 @@ function Header({
           onClick={onOpenChat}
           className={cn(
             'inline-flex items-center gap-2 px-5 py-2.5 text-body-sm font-medium',
-            'border border-border-hairline bg-bg-card text-text-primary',
+            'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
             'hover:border-accent hover:text-accent',
             'transition-all duration-base ease-out-soft shrink-0',
           )}
@@ -818,7 +818,7 @@ function ExecDrawer({ exec, onClose }: { exec: ExecMember; onClose: () => void }
             type="button"
             className={cn(
               'w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-body-sm',
-              'border border-border-hairline bg-bg-card text-text-primary',
+              'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
               'hover:border-text-primary',
               'transition-all duration-base ease-out-soft',
             )}
@@ -1056,7 +1056,7 @@ function ChatPanel({
             rows={2}
             disabled={isStreaming}
             className={cn(
-              'flex-1 bg-bg-card border border-border-hairline',
+              'flex-1 rounded-xl bg-bg-card border border-border-hairline',
               'px-3 py-2 text-body-sm text-text-primary',
               'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15',
               'resize-none disabled:opacity-50',
@@ -1113,7 +1113,7 @@ function EmptyState({
               onClick={() => onPickSuggestion(q)}
               className={cn(
                 'w-full text-left px-3 py-2.5 text-body-sm',
-                'border border-border-hairline bg-bg-card text-text-primary',
+                'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
                 'hover:border-accent hover:bg-bg-page',
                 'transition-all duration-base ease-out-soft',
               )}

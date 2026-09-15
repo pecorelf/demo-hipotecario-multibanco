@@ -107,7 +107,7 @@ export default function ClienteSeguimiento() {
         {/* Campana */}
         <button
           onClick={() => setNotifOpen(true)}
-          className="relative flex-shrink-0 w-11 h-11 inline-flex items-center justify-center border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
+          className="relative flex-shrink-0 w-11 h-11 inline-flex items-center justify-center rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
         >
           <Bell size={18} className="text-text-primary" />
           {myUnread > 0 && (
@@ -171,7 +171,7 @@ export default function ClienteSeguimiento() {
       {!gastosOperacionalesPaid && (
         <section className="mt-10 max-w-4xl">
           <div className={cn(
-            'border border-border-hairline bg-bg-card p-6',
+            'rounded-xl border border-border-hairline bg-bg-card p-6',
             'flex items-start gap-5',
           )}>
             <div className="flex-shrink-0 w-11 h-11 inline-flex items-center justify-center bg-accent text-text-inverse">
@@ -290,7 +290,7 @@ export default function ClienteSeguimiento() {
           {/* CARD 1 — Cliente: vistas complementarias */}
           <button
             onClick={() => navigate('/cliente/credito')}
-            className="group text-left p-5 border border-border-hairline bg-bg-card hover:border-text-primary hover:shadow-soft transition-all"
+            className="group text-left p-5 rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary hover:shadow-soft transition-all"
           >
             <div className="w-10 h-10 flex items-center justify-center bg-text-primary text-text-inverse mb-3 group-hover:scale-105 transition-transform">
               <FileText size={16} />
@@ -310,7 +310,7 @@ export default function ClienteSeguimiento() {
           {/* CARD 2 — Banco: vistas internas */}
           <button
             onClick={() => navigate('/ejecutivo')}
-            className="group text-left p-5 border border-border-hairline bg-bg-card hover:border-text-primary hover:shadow-soft transition-all"
+            className="group text-left p-5 rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary hover:shadow-soft transition-all"
           >
             <div className="w-10 h-10 flex items-center justify-center bg-text-primary text-text-inverse mb-3 group-hover:scale-105 transition-transform">
               <Building2 size={16} />
@@ -331,7 +331,7 @@ export default function ClienteSeguimiento() {
           {/* CARD 3 — Catálogo completo */}
           <button
             onClick={() => navigate('/portal')}
-            className="group text-left p-5 border border-border-hairline bg-bg-card hover:border-text-primary hover:shadow-soft transition-all"
+            className="group text-left p-5 rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary hover:shadow-soft transition-all"
           >
             <div className="w-10 h-10 flex items-center justify-center bg-accent text-text-inverse mb-3 group-hover:scale-105 transition-transform">
               <Compass size={16} />
@@ -436,7 +436,7 @@ function TrackCard({
   allowCrossUpload?: boolean;
 }) {
   return (
-    <div className="border border-border-hairline bg-bg-card p-6">
+    <div className="rounded-xl border border-border-hairline bg-bg-card p-6">
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <h3 className="text-h3 font-semibold text-text-primary">{title}</h3>
@@ -722,7 +722,7 @@ function AIReviewModal({ doc, onComplete }: AIReviewModalProps) {
     <>
       <div className="fixed inset-0 bg-text-primary/40 z-50" onClick={() => onComplete('cancel')} />
       <div className="fixed inset-0 z-50 flex items-center justify-center px-6 pointer-events-none">
-        <div className="bg-bg-card border border-border-hairline shadow-lifted max-w-lg w-full pointer-events-auto">
+        <div className="rounded-xl bg-bg-card border border-border-hairline shadow-lifted max-w-lg w-full pointer-events-auto">
           <div className="px-6 py-4 border-b border-border-hairline flex items-center justify-between">
             <div>
               <div className="text-caption uppercase tracking-[0.1em] text-text-muted">

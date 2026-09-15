@@ -51,7 +51,7 @@ Devuelve EXCLUSIVAMENTE un objeto JSON válido. Sin texto antes ni después, sin
     "flexibility": "banco" | "competitor1" | "competitor2" | "tie",
     "overall": "banco" | "competitor1" | "competitor2" | "tie"
   },
-  "conclusion": "<3 a 5 frases en prosa fluida, español neutro chileno, dirigidas al cliente final con tratamiento de 'tú'. Tono: analista honesto explicando por qué la opción ganadora gana. Si gana ${BRAND.shortName}, explicalo sin marketing-speak. Si gana un competidor, decilo claramente y mencioná en qué ${BRAND.shortName} queda corto.>"
+  "conclusion": "<2 o 3 frases en prosa fluida, español neutro chileno, dirigidas al cliente final con tratamiento de 'tú'. Tono: analista honesto explicando por qué la opción ganadora gana. Si gana ${BRAND.shortName}, explicalo sin marketing-speak. Si gana un competidor, decilo claramente y mencioná en qué ${BRAND.shortName} queda corto.>"
 }
 
 Sin saludos. Sin cierres. Sin recomendaciones de marketing. Sin emojis. Sin sugerir agendar reuniones (eso lo gestiona el front, no la respuesta).`;

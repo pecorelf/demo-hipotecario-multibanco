@@ -218,7 +218,7 @@ export default function DemoPortal() {
         </div>
         <button
           onClick={() => navigate('/cliente/seguimiento')}
-          className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium text-text-primary border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
+          className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium text-text-primary rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
         >
           <X size={14} />
           Volver a vista principal

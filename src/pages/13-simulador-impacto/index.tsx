@@ -379,7 +379,7 @@ function FunnelStage({
   const improvement = projectedVol - baselineVol;
 
   return (
-    <div className="border border-border-hairline bg-bg-card p-4">
+    <div className="rounded-xl border border-border-hairline bg-bg-card p-4">
       <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
         <div className="text-body-sm font-medium text-text-primary">{stage}</div>
         {!isFirst && improvement > 0 && (
@@ -499,7 +499,7 @@ function KpiCard({
 
 function BeforeAfter({ label, before, after }: { label: string; before: string; after: string }) {
   return (
-    <div className="border border-border-hairline bg-bg-card p-4">
+    <div className="rounded-xl border border-border-hairline bg-bg-card p-4">
       <div className="text-caption uppercase tracking-[0.1em] text-text-muted">{label}</div>
       <div className="mt-3 space-y-2">
         <div>

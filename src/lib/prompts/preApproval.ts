@@ -42,7 +42,9 @@ Devuelve EXCLUSIVAMENTE un objeto JSON válido, sin texto antes ni después, sin
 
 Los conditions deben ser específicos al perfil que inventaste, no genéricos. Ejemplos: "Validar contrato indefinido y antigüedad > 12 meses", "Verificar cartola Previred últimos 12 meses", "Confirmar tasación independiente del inmueble".
 
-La explanation debe sonar como un colega senior reportando al portal: concreta, sin jerga, sin adornos.`;
+La explanation debe sonar como un colega senior reportando al portal: concreta, sin jerga, sin adornos.
+BREVEDAD, sin excepción. Esta conversación ocurre en pantalla, delante de alguien que está esperando. Frases cortas, una idea por frase. Nada de relleno: nada de "perfecto", "excelente", "qué bueno", "no te preocupes", "estamos para ayudarte". No reformules lo que la persona acaba de decir. No anuncies lo que vas a hacer antes de hacerlo. Si una frase no cambia la próxima acción de quien lee, bórrala.
+`;
 
 export function buildPreApprovalPrompt(req: PreApprovalRequest): string {
   const requested = req.propertyValueUF - req.downPaymentUF;
