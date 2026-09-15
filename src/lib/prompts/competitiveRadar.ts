@@ -115,53 +115,53 @@ export interface MarketIntelItem {
 export const MARKET_INTEL: MarketIntelItem[] = [
   {
     id: 'intel-1',
-    bank: 'Banco Competidor C',
-    headline: 'Competidor C baja tasa fija a 3,39% y consolida 100% digital end-to-end',
-    body: 'Competidor C mantiene el liderazgo en tasa por séptimo mes consecutivo, con una propuesta totalmente digital que reduce el tiempo de aprobación a 7 días en promedio según mediciones de la propia entidad. Su volumen de hipotecarios creció 18% YoY al cierre del trimestre.',
-    date: '2026-05-12',
-    source: 'Diario Financiero · scraping de portales bancarios',
-    severity: 'amenaza',
-    category: 'Tasa y digital',
+    bank: 'Estado · Ministerio de Hacienda',
+    headline: 'FOGAES ampliado: 80 mil cupos y viviendas de hasta UF 6.000',
+    body: 'La Ley 21.748 amplía la garantía estatal y el subsidio a la tasa: los cupos suben de 50 mil a 80 mil, el tope de la vivienda pasa de UF 4.000 a UF 6.000 y la vigencia se extiende hasta el 31 de mayo de 2028. Según Hacienda, el 88% del stock nacional de viviendas nuevas queda dentro del tope. El subsidio rebaja hasta 60 puntos base la tasa del crédito.',
+    date: '2026-08-26',
+    source: 'Promulgación Ley 21.748 · Ministerio de Hacienda',
+    severity: 'oportunidad',
+    category: 'Subsidios y regulación',
   },
   {
     id: 'intel-2',
-    bank: 'Competidor A',
-    headline: 'Competidor A lanza FOGAES Plus con UF 5.000 de tope',
-    body: 'Competidor A extendió su programa FOGAES a propiedades de hasta UF 5.000 (vs UF 4.000 del piso estatal), absorbiendo el diferencial vía subsidio interno. Estiman captar 1.200 operaciones adicionales en H2 2026.',
-    date: '2026-05-08',
-    source: 'Refinitiv · comunicado oficial banco',
-    severity: 'amenaza',
+    bank: 'Estado · MINVU',
+    headline: 'Nuevo Subsidio Tramo 4.000 abre su primer llamado en noviembre',
+    body: 'Cinco mil cupos iniciales para viviendas nuevas o usadas de hasta UF 4.000, con aporte estatal de UF 400 y ahorro mínimo exigido de UF 200. Es complementable con FOGAES y con el subsidio a la tasa. Abre una ventana de captación en el segmento medio-bajo durante el último trimestre.',
+    date: '2026-11-01',
+    source: 'MINVU · llamado especial anunciado',
+    severity: 'oportunidad',
     category: 'Subsidios y campañas',
   },
   {
     id: 'intel-3',
-    bank: 'BCI',
-    headline: 'BCI integra IA generativa para asesoría hipotecaria en su app',
-    body: 'BCI piloteó un asistente conversacional dentro de su app para guiar al cliente durante la simulación. Reportan caída del 23% en tasa de abandono del simulador y aumento del 14% en pre-aprobaciones generadas. Sigue siendo piloto en 4 sucursales.',
-    date: '2026-05-04',
-    source: 'Bloomberg LatAm · análisis técnico interno',
+    bank: 'Competidor líder en tasa',
+    headline: 'El competidor más agresivo sostiene 3,39% fijo en UF y encabeza el ranking',
+    body: 'Mantiene la tasa más baja del mercado con criterios estrictos: renta comprobable, sin morosidades, antigüedad laboral mínima y pie sobre 20%. Con FOGAES, dos actores están ofreciendo bajo 3,3%. La diferencia frente a un crédito al 4% sobre UF 3.000 a 20 años ronda los 14 millones de pesos en intereses.',
+    date: '2026-09-08',
+    source: 'Comparadores públicos de tasas · portales bancarios',
     severity: 'amenaza',
-    category: 'IA y experiencia',
+    category: 'Tasa y pricing',
   },
   {
     id: 'intel-4',
-    bank: 'Competidor D',
-    headline: 'Competidor D pierde 9% de cuota en hipotecario residencial',
-    body: 'Competidor D reportó caída en colocaciones hipotecarias del 9% trimestral, asociada a foco en segmento alto ingreso. Oportunidad para captar clientes desencantados con su servicio: enfoque en segmento medio (UF 3.000-5.000) y velocidad de respuesta.',
-    date: '2026-04-29',
-    source: 'CMF · análisis interno · Refinitiv',
-    severity: 'oportunidad',
-    category: 'Movimientos de cuota',
+    bank: 'Banco Central',
+    headline: 'TPM estable en 4,5% y tasa hipotecaria promedio en torno a 4,1%',
+    body: 'El Banco Central sostuvo la tasa de referencia, señalando un balance de riesgos equilibrado para la inflación. El mercado hipotecario se mueve en un rango amplio, desde cerca de 3,3% hasta 6% según banco y perfil. Una TPM estable reduce la volatilidad al fijar condiciones y favorece campañas de tasa a plazo.',
+    date: '2026-09-02',
+    source: 'Banco Central de Chile · cuadro T5224',
+    severity: 'neutral',
+    category: 'Macro y tasas',
   },
   {
     id: 'intel-5',
-    bank: 'Competidor E',
-    headline: 'Competidor E anuncia subsidio Ecovivienda extendido',
-    body: 'Competidor E mantendrá tasa de 4,19% para propiedades con certificación de eficiencia energética hasta diciembre 2026. Esto canibaliza el segmento ABC1 que prioriza criterios ESG.',
-    date: '2026-04-25',
-    source: 'Comunicado Competidor E · scraping sitios bancarios',
-    severity: 'neutral',
-    category: 'Sostenibilidad y nicho',
+    bank: 'Cámara Chilena de la Construcción',
+    headline: 'Stock de 99.600 viviendas nuevas disponibles a nivel nacional',
+    body: 'Al 30 de junio el stock en oferta alcanzaba las 99.600 unidades, de las cuales el 88% queda bajo el nuevo tope de UF 6.000. El volumen disponible presiona a las inmobiliarias a cerrar rápido, y favorece al banco que resuelva la operación en menos días.',
+    date: '2026-08-20',
+    source: 'Cámara Chilena de la Construcción',
+    severity: 'oportunidad',
+    category: 'Oferta inmobiliaria',
   },
 ];
 
@@ -169,7 +169,7 @@ export const MARKET_INTEL: MarketIntelItem[] = [
 // Prompt para acciones sugeridas con IA (por noticia)
 // ─────────────────────────────────────────────────────────────
 
-export const COMPETITIVE_ACTIONS_SYSTEM = `Eres Aurora, estratega comercial para Macarena Ibáñez, dueña del proceso hipotecario de ${BRAND.name}.
+export const COMPETITIVE_ACTIONS_SYSTEM = `Eres Aurora, estratega comercial para Constanza Vera, dueña del proceso hipotecario de ${BRAND.name}.
 
 Recibes una noticia de inteligencia competitiva del mercado hipotecario chileno. Tu tarea: generar EXACTAMENTE 3 acciones comerciales concretas que ${BRAND.shortName} podría tomar como respuesta.
 
@@ -177,7 +177,7 @@ Reglas para cada acción:
 - Específica, no genérica. Nombra montos, plazos, segmentos cuando aplique.
 - Accionable en máximo 30 días, no proyectos de un año.
 - Cuantifica el impacto esperado cuando sea posible (% conversión, # operaciones, días, $).
-- Asigna un dueño plausible: Felipe Contreras (Gerente Operaciones), Eugenio Millar (Reingeniería), Priscilla Von Dessauer (Transformación), José Molina (Tecnología), Paola López (Coord. Hipotecaria), Carolina (directo), o "Comercial regional".
+- Asigna un dueño plausible: Ignacio Bravo (Gerente de Operaciones), Andrés Lagos (Reingeniería), Valentina Ossa (Transformación), Rodrigo Tapia (Tecnología), Javiera Núñez (Coordinación Hipotecaria), o "Comercial regional".
 - Tono: directo, ejecutiva senior, español neutro chileno. Sin emojis, sin adornos.
 
 FORMATO DE RESPUESTA (estricto JSON):

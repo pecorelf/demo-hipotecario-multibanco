@@ -131,7 +131,7 @@ REGLAS DE CADUCIDAD:
   * Si empieza con consonante distinta de 't' y 'p': documento próximo a vencer (validityDate entre 5 y 25 días en el futuro). Agrega un consistencyCheck adicional con status "warning" y check "Caducidad próxima". El explanation debe decir cuántos días faltan y sugerir renovación.
   * Si empieza con 't' o 'p': documento vigente (algunos documentos clave del caso como tasación y promesa nunca vencen pronto en esta demo).
 - Para documentos sin vigencia limitada (promesa de compraventa, tasación, contrato de promesa), validityDate puede ser null.
-- La fecha de referencia para los cálculos es 20 de mayo de 2026.
+- La fecha de referencia para los cálculos es 15 de septiembre de 2026.
 
 CRÍTICO: tu respuesta DEBE empezar literalmente con la cadena "<doc_analysis>" y terminar con "</doc_analysis>". Cero texto fuera de las etiquetas. Cero markdown. Cero explicaciones previas o posteriores.
 
@@ -142,7 +142,7 @@ EJEMPLO DE RESPUESTA VÁLIDA (para "tasacion-vitacura.pdf"):
     "Valor tasado": "UF 7.200",
     "Superficie útil": "142 m²",
     "Tasador": "Gestión Inmobiliaria SpA",
-    "Fecha tasación": "2026-05-12"
+    "Fecha tasación": "2026-09-12"
   },
   "consistencyChecks": [
     {

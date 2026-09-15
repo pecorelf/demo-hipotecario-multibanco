@@ -14,7 +14,7 @@
  * Ruta cliente:    /cliente/mi-inmueble
  * Ruta ejecutivo:  /ejecutivo/inmueble
  *
- * Pedido formal de Macarena Ibáñez en la sesión del 11/06/2026:
+ * Pedido formal de Constanza Vera en la sesión del 11/06/2026:
  * "Sería bueno agregar la custodia digital del documento, ya que se
  *  vendió la casa pero el orquestador queda como repositorio de
  *  todos los papeles del proceso."
@@ -118,13 +118,13 @@ const TIMELINE: TimelineEvent[] = [
     type: 'cierre',
   },
   {
-    date: '2026-05-28',
+    date: '2026-09-14',
     title: 'Aprobación crediticia',
     description: 'Crédito por UF 4.760 a 25 años.',
     type: 'aprobacion',
   },
   {
-    date: '2026-05-22',
+    date: '2026-09-14',
     title: 'Tasación inicial',
     description: 'Valor tasado: UF 6.850. Tasaciones Andes Ltda.',
     type: 'tasacion',
@@ -139,7 +139,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Estudio de Títulos',
     author: 'Patricia Soto Miranda',
-    date: '2026-05-15',
+    date: '2026-09-14',
     vigencia: 'vencido',
     vigenciaLabel: 'Vencido · expiró 14/06/2026',
     size: '245 KB',
@@ -150,7 +150,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Estudio de Títulos',
     author: 'Patricia Soto Miranda',
-    date: '2026-05-12',
+    date: '2026-09-12',
     vigencia: 'vencido',
     vigenciaLabel: 'Vencido · expiró 11/06/2026',
     size: '198 KB',
@@ -161,7 +161,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Estudio de Títulos',
     author: 'Patricia Soto Miranda',
-    date: '2026-05-10',
+    date: '2026-09-10',
     vigencia: 'vencido',
     vigenciaLabel: 'Vencido · expiró 09/06/2026',
     size: '156 KB',
@@ -184,7 +184,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Tasación',
     author: 'Tasaciones Andes Ltda.',
-    date: '2026-05-22',
+    date: '2026-09-14',
     vigencia: 'vigente',
     vigenciaLabel: 'Vigente 7 meses más',
     size: '1,2 MB',
@@ -195,7 +195,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Tasación',
     author: `Camila Reinoso · ${BRAND.shortName}`,
-    date: '2026-05-24',
+    date: '2026-09-14',
     vigencia: 'permanente',
     vigenciaLabel: 'Permanente',
     size: '89 KB',
@@ -207,7 +207,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Carpeta Comercial',
     author: BRAND.buyerName,
-    date: '2026-05-18',
+    date: '2026-09-14',
     vigencia: 'historico',
     vigenciaLabel: 'Histórico',
     size: '780 KB',
@@ -218,7 +218,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Carpeta Comercial',
     author: 'AFP Habitat',
-    date: '2026-05-18',
+    date: '2026-09-14',
     vigencia: 'historico',
     vigenciaLabel: 'Histórico',
     size: '187 KB',
@@ -229,7 +229,7 @@ const DOCUMENTOS: CustodiaDoc[] = [
     category: 'proceso',
     subCategory: 'Carpeta Comercial',
     author: 'SII.cl',
-    date: '2026-05-19',
+    date: '2026-09-14',
     vigencia: 'historico',
     vigenciaLabel: 'Histórico',
     size: '356 KB',

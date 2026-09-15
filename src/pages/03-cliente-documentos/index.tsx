@@ -663,7 +663,7 @@ function ValidityBadge({ isoDate }: { isoDate: string }) {
   const target = new Date(isoDate);
   if (Number.isNaN(target.getTime())) return null;
 
-  const today = new Date('2026-05-20T12:00:00-04:00');
+  const today = new Date('2026-09-15T12:00:00-04:00');
   const daysLeft = Math.floor(
     (target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
   );

@@ -45,7 +45,7 @@ export function CompetitiveRadarSection() {
       <div className="flex items-baseline justify-between flex-wrap gap-3">
         <SectionTitle rule={false}>Radar competitivo</SectionTitle>
         <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
-          Actualizado · 20 may 2026
+          Actualizado · 15 sep 2026
         </span>
       </div>
       <p className="text-body text-text-secondary mt-3 max-w-measure">

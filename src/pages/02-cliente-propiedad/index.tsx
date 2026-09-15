@@ -422,7 +422,7 @@ export function PropertyInputScreen() {
             </div>
 
             <p className="text-caption text-text-muted pt-4 border-t border-border-hairline leading-relaxed">
-              UF al 20 de mayo de 2026:{' '}
+              UF al 15 de septiembre de 2026:{' '}
               <span className="tabular-nums text-text-primary">
                 ${UF_CLP_RATE.toLocaleString('es-CL', { maximumFractionDigits: 2 })}
               </span>

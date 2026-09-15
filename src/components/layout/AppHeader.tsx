@@ -20,11 +20,11 @@ export function AppHeader() {
       : role === 'ejecutivo' || role === 'backoffice'
         ? currentExecutive.fullName
         : role === 'jefatura'
-          ? 'Macarena Ibáñez'
+          ? 'Constanza Vera'
           : role === 'operaciones'
-            ? 'Felipe Contreras'
+            ? 'Ignacio Bravo'
             : role === 'gobierno'
-              ? 'José Molina · Priscilla Von Dessauer'
+              ? 'Tecnología · Transformación'
               : 'Los Almendros Propiedades';
 
   return (

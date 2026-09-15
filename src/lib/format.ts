@@ -21,10 +21,10 @@ export function formatUF(value: number): string {
 }
 
 /**
- * Valor de la UF al 20 de mayo de 2026 (referencial para esta demo).
+ * Valor de la UF al 15 de septiembre de 2026 (referencial para esta demo).
  * Actualizar manualmente si la demo se hace en una fecha distinta.
  */
-export const UF_CLP_RATE = 40_424.99;
+export const UF_CLP_RATE = 40_883.00;
 
 /**
  * Convierte UF a pesos chilenos usando la tasa actual.

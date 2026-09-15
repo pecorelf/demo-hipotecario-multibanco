@@ -30,7 +30,7 @@ interface TeamMember {
 
 const OPS_TEAM: TeamMember[] = [
   {
-    name: 'Felipe Contreras Fajardo',
+    name: 'Ignacio Bravo Reyes',
     role: 'Gerente de Operaciones',
     initials: 'FC',
     metric1: { label: 'Equipo a cargo', value: '24 personas' },
@@ -52,7 +52,7 @@ const OPS_TEAM: TeamMember[] = [
       'Punto único de contacto para reclamos hipotecarios. Coordina con compliance y legal cuando aplica.',
   },
   {
-    name: 'Paola López Cárdenas',
+    name: 'Javiera Núñez Soto',
     role: 'Coordinadora Hipotecaria',
     initials: 'PL',
     metric1: { label: 'Casos coordinados', value: '312' },
@@ -146,7 +146,7 @@ export default function Operaciones() {
   return (
     <div className="max-w-shell mx-auto px-6 md:px-10 lg:px-16 py-12 lg:py-16">
       <header className="max-w-3xl">
-        <Kicker>Operaciones · Felipe Contreras y equipo</Kicker>
+        <Kicker>Operaciones · Ignacio Bravo y equipo</Kicker>
         <PageTitle className="mt-3">Operaciones internas del proceso hipotecario</PageTitle>
         <p className="text-body-lg text-text-secondary mt-3 max-w-measure">
           Reclamos, coordinación con notarías y tasadores, cumplimiento de SLA
@@ -495,7 +495,7 @@ function CoordinationSection() {
           <SectionTitle rule={false}>Coordinación hipotecaria</SectionTitle>
           <p className="text-body text-text-secondary mt-3 max-w-measure">
             Estado de la coordinación con tasadores, notarías y Conservador de
-            Bienes Raíces. Liderado por Paola López Cárdenas.
+            Bienes Raíces. Liderado por Javiera Núñez Soto.
           </p>
         </div>
         <span className="inline-flex items-center gap-2 text-caption text-text-muted">

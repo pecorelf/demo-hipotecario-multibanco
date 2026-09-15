@@ -1,3 +1,4 @@
+import { Reveal, Contador } from '@/components/motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   AlertTriangle,
@@ -216,7 +217,7 @@ function Header({
   return (
     <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
       <div className="max-w-2xl">
-        <Kicker>Vista Ejecutiva de Producto · Macarena Ibáñez y Rodrigo Valdés</Kicker>
+        <Kicker>Vista Ejecutiva de Producto · Constanza Vera y Matías Herrera</Kicker>
         <PageTitle className="mt-3">Salud del proceso hipotecario</PageTitle>
         <p className="text-body-lg text-text-secondary mt-3 max-w-measure">
           Vista consolidada del trimestre. KPIs ejecutivos arriba, equipo en el
@@ -257,7 +258,8 @@ function KpisBand() {
           Q2 2026 vs Q1 2026
         </span>
       </div>
-      <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-10">
+      <Reveal className="mt-8">
+       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-10">
         <KpiCell
           label="Volumen"
           value={KPIS.quarterlyVolume.toLocaleString('es-CL')}
@@ -306,6 +308,7 @@ function KpisBand() {
           hint="meta: 80%"
         />
       </div>
+      </Reveal>
     </section>
   );
 }
@@ -540,58 +543,120 @@ function MiniStat({
 // ─────────────────────────────────────────────────────────────
 
 function ProcessHealthSection() {
+  const maxCasos = Math.max(...BOTTLENECKS.map((b) => b.cases));
+  const maxDias = Math.max(...BOTTLENECKS.map((b) => Math.max(b.avgDays, b.targetDays)));
+  const totalRechazos = REJECTIONS.reduce((n, r) => n + r.count, 0);
+
   return (
     <section>
       <SectionTitle rule={false}>Salud del proceso</SectionTitle>
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card padding="lg">
-          <Kicker tone="muted" className="block mb-4">
-            Cuellos de botella
-          </Kicker>
-          <ul className="divide-y divide-border-hairline">
-            {BOTTLENECKS.map((b) => {
-              const overTarget = b.avgDays > b.targetDays;
+          <div className="flex items-baseline justify-between mb-5">
+            <Kicker tone="muted">Cuellos de botella</Kicker>
+            <span className="text-caption text-text-muted">días reales contra meta</span>
+          </div>
+
+          <div className="space-y-5">
+            {BOTTLENECKS.map((b, i) => {
+              const sobreMeta = b.avgDays > b.targetDays;
               return (
-                <li key={b.phase} className="py-4 first:pt-0 last:pb-0">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <span className="text-body text-text-primary">{b.phase}</span>
-                    <span
-                      className={cn(
-                        'text-body-sm tabular-nums',
-                        overTarget ? 'text-status-warning' : 'text-status-success',
-                      )}
-                    >
-                      {b.avgDays}d / meta {b.targetDays}d
-                    </span>
+                <Reveal key={b.phase} delay={i * 70}>
+                  <div>
+                    <div className="flex items-baseline justify-between gap-3 mb-2">
+                      <span className="text-body text-text-primary">{b.phase}</span>
+                      <span
+                        className={cn(
+                          'text-body-sm tabular-nums font-medium',
+                          sobreMeta ? 'text-status-warning' : 'text-status-success',
+                        )}
+                      >
+                        {b.avgDays}d · meta {b.targetDays}d
+                      </span>
+                    </div>
+
+                    {/* La barra compara el tiempo real contra la meta. La marca
+                        vertical es la meta: si la barra la cruza, el cuello se
+                        ve antes de leer el número. */}
+                    <div className="h-8 bg-bg-sunken relative overflow-hidden">
+                      <div
+                        className={cn('h-full', sobreMeta ? 'bg-status-warning' : 'bg-status-success')}
+                        style={{
+                          width: `${(b.avgDays / maxDias) * 100}%`,
+                          transition: 'width .9s cubic-bezier(.2,.7,.3,1)',
+                          transitionDelay: `${i * 70}ms`,
+                        }}
+                      />
+                      <div
+                        className="absolute top-0 bottom-0 w-0.5 bg-text-primary"
+                        style={{ left: `${(b.targetDays / maxDias) * 100}%` }}
+                        title={`Meta: ${b.targetDays} días`}
+                      />
+                      <div className="absolute inset-0 flex items-center px-3">
+                        <span className="text-caption text-text-inverse font-medium">
+                          {b.cases} casos
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="h-1 bg-bg-sunken mt-1.5">
+                      <div
+                        className="h-full bg-border-strong"
+                        style={{
+                          width: `${(b.cases / maxCasos) * 100}%`,
+                          transition: 'width .9s cubic-bezier(.2,.7,.3,1)',
+                          transitionDelay: `${i * 70 + 150}ms`,
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="text-caption text-text-muted mt-1 tabular-nums">
-                    {b.cases} casos en esta fase
-                  </div>
-                </li>
+                </Reveal>
               );
             })}
-          </ul>
+          </div>
         </Card>
 
         <Card padding="lg">
-          <Kicker tone="muted" className="block mb-4">
-            Top razones de rechazo · este mes
-          </Kicker>
-          <ol className="space-y-3">
-            {REJECTIONS.map((r, i) => (
-              <li key={r.reason} className="flex items-baseline gap-3">
-                <span className="text-kicker text-text-muted shrink-0 w-6 tabular-nums">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className="text-body-sm text-text-primary flex-1">
-                  {r.reason}
-                </span>
-                <span className="text-body-sm text-text-secondary tabular-nums shrink-0">
-                  {r.count}
-                </span>
-              </li>
-            ))}
-          </ol>
+          <div className="flex items-baseline justify-between mb-5">
+            <Kicker tone="muted">Top razones de rechazo · este mes</Kicker>
+            <span className="text-body-sm text-text-secondary tabular-nums">
+              <Contador valor={totalRechazos} /> casos
+            </span>
+          </div>
+
+          <div className="space-y-4">
+            {REJECTIONS.map((r, i) => {
+              const pct = (r.count / totalRechazos) * 100;
+              return (
+                <Reveal key={r.reason} delay={i * 70}>
+                  <div>
+                    <div className="flex items-baseline gap-3 mb-1.5">
+                      <span className="text-body-sm text-text-primary flex-1">{r.reason}</span>
+                      <span className="text-body-sm text-text-secondary tabular-nums shrink-0">
+                        {r.count} · {Math.round(pct)}%
+                      </span>
+                    </div>
+                    <div className="h-2.5 bg-bg-sunken">
+                      <div
+                        className="h-full bg-accent"
+                        style={{
+                          width: `${pct}%`,
+                          transition: 'width .9s cubic-bezier(.2,.7,.3,1)',
+                          transitionDelay: `${i * 70}ms`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <p className="text-caption text-text-muted mt-6 pt-4 border-t border-border-hairline">
+            Las dos primeras causas concentran{' '}
+            {Math.round(((REJECTIONS[0].count + REJECTIONS[1].count) / totalRechazos) * 100)}% de
+            los rechazos. Son las que conviene atacar primero.
+          </p>
         </Card>
       </div>
     </section>
@@ -1084,7 +1149,7 @@ const INITIATIVES: Initiative[] = [
     title: 'Automatización del Estudio de Títulos',
     description:
       'Rediseño completo de la fase más demorada del proceso. Combina OCR para extracción de inscripciones del CBR con un modelo que detecta inconsistencias y gravámenes complejos.',
-    leads: 'Eugenio Millar Moreira · Reingeniería de Procesos',
+    leads: 'Gerencia de Reingeniería de Procesos',
     status: 'diseno',
     impact: '-40% en tiempo de fase (de 14 a 8 días)',
     horizon: 'Q3 2026',
@@ -1093,7 +1158,7 @@ const INITIATIVES: Initiative[] = [
     title: 'Migración a Gravity 2.0',
     description:
       'Adopción del core bancario evolucionado del grupo. Mejor soporte para IA, build-once-deploy-everywhere, base para nuevas integraciones agénticas.',
-    leads: 'José López Molina · Tecnología + Priscilla Von Dessauer · Transformación',
+    leads: 'Gerencia de Tecnología + Gerencia de Transformación',
     status: 'piloto',
     impact: '-25% en costo unitario por caso',
     horizon: 'H1 2027',
@@ -1102,7 +1167,7 @@ const INITIATIVES: Initiative[] = [
     title: 'Modelo de scoring con IA generativa',
     description:
       'Pre-evaluación inteligente al momento de la simulación. Aumenta la calidad del lead y reduce abandono en documentación al ofrecer pre-aprobación tentativa más temprano.',
-    leads: 'Priscilla Von Dessauer Valverde · Transformación',
+    leads: 'Gerencia de Transformación',
     status: 'discovery',
     impact: '+8 pts en conversión de simulación a solicitud',
     horizon: 'Q4 2026',

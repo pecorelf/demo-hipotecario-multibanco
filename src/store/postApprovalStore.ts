@@ -289,7 +289,7 @@ export const SCRIPTED_OUTCOMES: Record<string, ScriptedOutcome> = {
     extractedFields: {
       'Tipo identificado': 'Certificado de Dominio Vigente',
       'CBR': 'Santiago',
-      'Emitido': '15 de mayo de 2026',
+      'Emitido': '14 de septiembre de 2026',
       'Vigencia': '30 días',
       'Propietario': 'Patricia Soto Miranda',
       'Rol': '1247-8',
@@ -300,7 +300,7 @@ export const SCRIPTED_OUTCOMES: Record<string, ScriptedOutcome> = {
     extractedFields: {
       'Tipo identificado': 'Certificado de Hipotecas y Gravámenes',
       'CBR': 'Santiago',
-      'Emitido': '12 de mayo de 2026',
+      'Emitido': '12 de septiembre de 2026',
       'Resultado': 'Sin hipotecas ni gravámenes vigentes',
     },
   },
@@ -309,7 +309,7 @@ export const SCRIPTED_OUTCOMES: Record<string, ScriptedOutcome> = {
     extractedFields: {
       'Tipo identificado': 'Certificado de No Expropiación',
       'Municipalidad': 'Providencia',
-      'Emitido': '10 de mayo de 2026',
+      'Emitido': '10 de septiembre de 2026',
     },
   },
   't-4': {

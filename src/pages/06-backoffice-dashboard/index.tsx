@@ -103,7 +103,7 @@ const SEED_QUEUE: Omit<QueueItem, 'isReal'>[] = [
   {
     caseId: 'HIP-2026-0058',
     customerName: 'María Cifuentes Núñez',
-    derivedAt: '2026-05-19T08:14:00-04:00',
+    derivedAt: '2026-09-14T08:14:00-04:00',
     byExecutive: 'Patricio Ríos',
     note: 'Tasación independiente arrojó valor 12% inferior al valor declarado en la promesa. Cliente solicita revisión con segundo tasador. Operación en pausa hasta resolución.',
     priority: 'alta',
@@ -111,7 +111,7 @@ const SEED_QUEUE: Omit<QueueItem, 'isReal'>[] = [
   {
     caseId: 'HIP-2026-0074',
     customerName: 'Cristian Vega Almonte',
-    derivedAt: '2026-05-18T16:42:00-04:00',
+    derivedAt: '2026-09-14T16:42:00-04:00',
     byExecutive: 'Camila Sandoval',
     note: 'Cliente independiente con declaración de renta 2024 con observación en SII. Carpeta tributaria 2025 todavía no disponible. Comité solicita criterio para avanzar con info parcial.',
     priority: 'media',
@@ -119,7 +119,7 @@ const SEED_QUEUE: Omit<QueueItem, 'isReal'>[] = [
   {
     caseId: 'HIP-2026-0061',
     customerName: 'Patricia Soto Larraín',
-    derivedAt: '2026-05-17T10:08:00-04:00',
+    derivedAt: '2026-09-14T10:08:00-04:00',
     byExecutive: 'Diego Norambuena',
     note: 'Co-titular vive en el extranjero hace 11 meses. Documentación apostillada en orden pero régimen patrimonial requiere validación con abogado bancario antes de cierre.',
     priority: 'media',
@@ -145,7 +145,7 @@ function buildQueue(zustandDerivations: Record<string, { derivedAt: string; note
     : {
         caseId: 'HIP-2026-0042',
         customerName: BRAND.buyerName,
-        derivedAt: '2026-05-19T11:32:00-04:00',
+        derivedAt: '2026-09-14T11:32:00-04:00',
         byExecutive: 'Camila Reinoso',
         note: FRANCISCO_FALLBACK_NOTE,
         priority: 'alta',
