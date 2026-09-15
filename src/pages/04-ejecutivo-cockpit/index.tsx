@@ -1,4 +1,5 @@
 import { Reveal, Contador } from '@/components/motion';
+import { Anillo } from '@/components/charts';
 import { useEffect, useMemo, useState } from 'react';
 import {
   AlertCircle,
@@ -45,6 +46,7 @@ import type {
   CaseStage,
   Communication,
   Document as CaseDocument,
+  DocumentStatus,
   TimelineEvent,
 } from '@/types';
 import { BRAND } from '@/lib/brand';
@@ -140,6 +142,10 @@ export default function EjecutivoCockpit() {
   }, [audioCustomer, audioCoTitular]);
 
   const [selectedCaseId, setSelectedCaseId] = useState<string>(myCases[0]?.id ?? '');
+  // Subidas hechas por el ejecutivo en nombre del cliente. Viven en la vista
+  // porque los casos de apoyo son datos de demostración sin store propio; la
+  // operación destacada sí tiene su propio flujo en postApprovalStore.
+  const [docsSubidos, setDocsSubidos] = useState<Record<string, DocumentStatus>>({});
 
   // If audioCase appears, auto-select it
   useEffect(() => {
@@ -190,6 +196,8 @@ export default function EjecutivoCockpit() {
     [selectedCase.id],
   );
   const derivation = derivedCases[selectedCase.id] ?? null;
+  const refOperacion = usePostApprovalStore((st) => st.caseRef);
+  const esOperacionDestacada = selectedCase.id === refOperacion;
 
   return (
     <>
@@ -214,7 +222,18 @@ export default function EjecutivoCockpit() {
           }}
         />
 
-        <RepairControlPanel />
+        {esOperacionDestacada ? (
+          <RepairControlPanel caseId={selectedCase.id} />
+        ) : (
+          <DocumentosDelCaso
+            c={selectedCase}
+            subidos={docsSubidos}
+            onSubir={(docId) =>
+              setDocsSubidos((prev) => ({ ...prev, [docId]: 'recibido' }))
+            }
+            customerLookup={customerLookup}
+          />
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)_300px] gap-6">
           <Inbox
@@ -297,7 +316,7 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
           <div>
             <Kicker tone="muted">Tus casos por etapa</Kicker>
             <p className="text-body-sm text-text-secondary mt-1.5">
-              Dónde está cada operación dentro del proceso. Haz clic en una etapa para ver sus casos.
+              Dónde está cada operación dentro del proceso. Haz clic en un caso para trabajarlo.
             </p>
           </div>
           <div className="flex items-stretch gap-6">
@@ -332,7 +351,7 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
               return (
                 <div
                   key={stage}
-                  className={`grid grid-cols-[168px_1fr_auto] gap-4 items-center px-3 py-2.5 transition-colors ${
+                  className={`grid grid-cols-[150px_minmax(0,1fr)_auto] gap-4 items-center px-3 py-3 transition-colors ${
                     activa ? 'bg-accent-soft' : 'hover:bg-bg-page'
                   } ${vacia ? 'opacity-40' : ''}`}
                 >
@@ -340,45 +359,52 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
                     {STAGE_LABEL_SHORT[stage]}
                   </span>
 
-                  <div className="h-7 bg-bg-sunken relative overflow-hidden">
-                    <div
-                      className="h-full bg-accent"
-                      style={{
-                        width: `${(casos.length / maximo) * 100}%`,
-                        transition: 'width .8s cubic-bezier(.2,.7,.3,1)',
-                        transitionDelay: `${i * 70}ms`,
-                      }}
-                    />
-                    {conAlerta > 0 && (
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="h-2.5 bg-bg-sunken relative overflow-hidden flex-1 min-w-[80px]">
                       <div
-                        className="h-full bg-status-error absolute top-0 left-0"
+                        className="h-full bg-accent"
                         style={{
-                          width: `${(conAlerta / maximo) * 100}%`,
+                          width: `${(casos.length / maximo) * 100}%`,
                           transition: 'width .8s cubic-bezier(.2,.7,.3,1)',
-                          transitionDelay: `${i * 70 + 180}ms`,
+                          transitionDelay: `${i * 70}ms`,
                         }}
                       />
-                    )}
-                    <div className="absolute inset-0 flex items-center gap-1.5 px-2.5">
-                      {casos.slice(0, 6).map((c) => (
-                        <button
-                          key={c.id}
-                          type="button"
-                          onClick={() => onSelect(c.id)}
-                          title={c.id}
-                          className={`text-caption px-1.5 py-0.5 transition-colors ${
-                            c.id === selectedId
-                              ? 'bg-bg-card text-accent font-medium'
-                              : 'text-text-inverse/90 hover:bg-bg-card hover:text-text-primary'
-                          }`}
-                        >
-                          {c.id}
-                        </button>
-                      ))}
-                      {casos.length > 6 && (
-                        <span className="text-caption text-text-inverse/80">
-                          +{casos.length - 6}
-                        </span>
+                      {conAlerta > 0 && (
+                        <div
+                          className="h-full bg-status-error absolute top-0 left-0"
+                          style={{
+                            width: `${(conAlerta / maximo) * 100}%`,
+                            transition: 'width .8s cubic-bezier(.2,.7,.3,1)',
+                            transitionDelay: `${i * 70 + 180}ms`,
+                          }}
+                        />
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-1.5 flex-none">
+                      {casos.slice(0, 5).map((c) => {
+                        const alerta = caseHasAlert(c);
+                        const activo = c.id === selectedId;
+                        return (
+                          <button
+                            key={c.id}
+                            type="button"
+                            onClick={() => onSelect(c.id)}
+                            title={`Ver ${c.id}`}
+                            className={`text-caption px-2 py-1 border transition-colors ${
+                              activo
+                                ? 'border-accent bg-accent text-white font-medium'
+                                : alerta
+                                  ? 'border-status-error text-status-error hover:bg-status-error-bg'
+                                  : 'border-border-hairline text-text-secondary hover:border-accent hover:text-accent'
+                            }`}
+                          >
+                            {c.id.replace(/^HIP-\d{4}-/, '')}
+                          </button>
+                        );
+                      })}
+                      {casos.length > 5 && (
+                        <span className="text-caption text-text-muted">+{casos.length - 5}</span>
                       )}
                     </div>
                   </div>
@@ -396,6 +422,114 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
             })}
           </div>
         </div>
+      </section>
+    </Reveal>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Documentos del caso seleccionado
+//
+// Los casos de apoyo no tienen el flujo completo de reparos de la operación
+// destacada, pero el ejecutivo igual necesita ver qué falta y poder subir un
+// documento en nombre del cliente. Esto es lo que hace que seleccionar un caso
+// cambie algo abajo y no solo en la ficha del medio.
+// ─────────────────────────────────────────────────────────────
+
+const ESTADO_DOC: Record<DocumentStatus, { texto: string; variante: 'success' | 'info' | 'warning' | 'error' }> = {
+  validado:  { texto: 'Validado',    variante: 'success' },
+  recibido:  { texto: 'En revisión', variante: 'info' },
+  pendiente: { texto: 'Pendiente',   variante: 'warning' },
+  rechazado: { texto: 'Con reparo',  variante: 'error' },
+};
+
+function DocumentosDelCaso({
+  c,
+  subidos,
+  onSubir,
+  customerLookup,
+}: {
+  c: Case;
+  subidos: Record<string, DocumentStatus>;
+  onSubir: (docId: string) => void;
+  customerLookup: (id: string) => ReturnType<typeof getCustomer>;
+}) {
+  const docs = c.documents.map((d) => ({ ...d, status: subidos[d.id] ?? d.status }));
+  const cliente = customerLookup(c.customerId);
+
+  if (docs.length === 0) return null;
+
+  const validados = docs.filter((d) => d.status === 'validado').length;
+  const enRevision = docs.filter((d) => d.status === 'recibido').length;
+  const pendientes = docs.filter((d) => d.status === 'pendiente');
+  const conReparo = docs.filter((d) => d.status === 'rechazado').length;
+  const avance = Math.round((validados / docs.length) * 100);
+
+  return (
+    <Reveal className="mb-8">
+      <section className="border border-border-hairline bg-bg-card">
+        <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-5 border-b border-border-hairline">
+          <div>
+            <Kicker tone="muted">Documentos del caso</Kicker>
+            <h2 className="text-h3 font-semibold text-text-primary mt-1.5">
+              {c.id} — {cliente?.fullName ?? 'Cliente'}
+            </h2>
+            <p className="text-body-sm text-text-secondary mt-1">
+              {validados} de {docs.length} validados
+              {enRevision > 0 && ` · ${enRevision} en revisión`}
+              {pendientes.length > 0 && ` · ${pendientes.length} por subir`}
+              {conReparo > 0 && ` · ${conReparo} con reparo`}
+            </p>
+          </div>
+          <Anillo porcentaje={avance} tamano={72} grosor={7} etiqueta="avance documental" />
+        </div>
+
+        <div className="divide-y divide-border-hairline">
+          {docs.map((d) => {
+            const estado = ESTADO_DOC[d.status];
+            return (
+              <div
+                key={d.id}
+                className="flex flex-wrap items-center justify-between gap-3 px-6 py-3.5 hover:bg-bg-page transition-colors"
+              >
+                <div className="min-w-0">
+                  <div className="text-body-sm font-medium text-text-primary">{d.label}</div>
+                  {d.uploadedAt && (
+                    <div className="text-caption text-text-muted mt-0.5">
+                      Recibido el {formatDateCL(d.uploadedAt)}
+                      {d.uploadedBy ? ` · lo subió ${d.uploadedBy}` : ''}
+                    </div>
+                  )}
+                  {d.notes && (
+                    <div className="text-caption text-status-error mt-0.5">{d.notes}</div>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-3 flex-none">
+                  <Pill variant={estado.variante}>{estado.texto}</Pill>
+                  {d.status === 'pendiente' && (
+                    <button
+                      type="button"
+                      onClick={() => onSubir(d.id)}
+                      className="text-body-sm text-accent hover:underline"
+                    >
+                      Subir en nombre del cliente
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {pendientes.length > 0 && (
+          <div className="px-6 py-4 border-t border-border-hairline bg-bg-page">
+            <p className="text-body-sm text-text-secondary">
+              Faltan {pendientes.length} documento{pendientes.length === 1 ? '' : 's'}:{' '}
+              {pendientes.map((d) => d.label).join(', ')}.
+            </p>
+          </div>
+        )}
       </section>
     </Reveal>
   );
@@ -1332,7 +1466,7 @@ function DataPoint({
 //  - Ver reparos resueltos y aprobar/rechazar
 // ─────────────────────────────────────────────────────────────
 
-function RepairControlPanel() {
+function RepairControlPanel({ caseId }: { caseId: string }) {
   const docs = usePostApprovalStore((s) => s.docs);
   const propertyType = usePostApprovalStore((s) => s.propertyType);
   const buyerName = usePostApprovalStore((s) => s.buyerName);
@@ -1473,7 +1607,7 @@ function RepairControlPanel() {
       <div className="flex items-center gap-2 mb-4">
         <AlertCircle size={16} className="text-accent" />
         <span className="text-kicker uppercase tracking-[0.14em] font-medium text-accent">
-          Control de documentos — Operación {buyerName}
+          Control de documentos · {caseId} — {buyerName}
         </span>
       </div>
 
