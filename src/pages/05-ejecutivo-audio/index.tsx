@@ -559,7 +559,7 @@ function ReadyView({ filename, extraction, onCreate, onReset }: ReadyViewProps) 
             </header>
             <p className="text-body-sm text-text-secondary">
               Vamos a abrir el caso en estado Evaluación y asignarlo a tu pipeline.
-              Podrás corregir cualquier dato directamente desde el cockpit.
+              Podrás corregir cualquier dato directamente desde su panel.
             </p>
             <div className="space-y-3">
               <button

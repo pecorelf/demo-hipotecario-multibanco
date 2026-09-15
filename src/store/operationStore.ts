@@ -4,7 +4,7 @@ import { BRAND } from '@/lib/brand';
 /**
  * Single source of truth for what the client has decided during their
  * mortgage simulation journey. All views — client conversational,
- * client form, simulation, executive cockpit, executive audio — read
+ * client form, simulation, panel del ejecutivo, executive audio — read
  * and write here. This ensures consistency: what the client says,
  * everyone sees.
  */

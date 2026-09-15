@@ -114,12 +114,12 @@ const BLOCKS: ViewBlock[] = [
   {
     id: 'ejecutivo',
     title: `Ejecutivo · ${BRAND.shortName}`,
-    subtitle: 'Camila Reinoso. Cockpit con control de documentos y reparos.',
+    subtitle: 'Camila Reinoso. Panel con control de documentos y reparos.',
     icon: <FileText size={16} />,
     views: [
       {
         route: '/ejecutivo',
-        title: 'Cockpit del ejecutivo',
+        title: 'Panel del ejecutivo',
         description: 'Pipeline de casos. Captura en vivo del cliente. Panel para aprobar o lanzar reparos.',
         isNew: true,
       },

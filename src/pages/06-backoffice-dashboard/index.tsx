@@ -720,7 +720,7 @@ function DerivationDetailDrawer({ item, onClose }: DrawerProps) {
               <ActionButton
                 icon={<ArrowDownLeft size={16} />}
                 label={ACTION_LABEL.devolver}
-                hint="Volverá al cockpit de quien lo derivó con tu nota de respuesta."
+                hint="Volverá al panel de quien lo derivó con tu nota de respuesta."
                 onClick={() => setResolved('devolver')}
                 disabled={Boolean(resolved)}
               />

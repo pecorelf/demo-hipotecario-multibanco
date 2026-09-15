@@ -75,7 +75,7 @@ const SCENES: Scene[] = [
       'Mostrar el selector arriba: cambiar entre Usada y Nueva, ver cómo cambian los docs del estudio de títulos',
       'Click en "Pagar UF 8 ahora" — el track de Estudio de Títulos se desbloquea',
       'Click en "Subir documento" en algún doc de Carpeta Comercial — pasa a "En validación"',
-      'Después de subir, ir al cockpit del ejecutivo (escena siguiente) para ver el ciclo completo',
+      'Después de subir, ir al panel del ejecutivo (escena siguiente) para ver el ciclo completo',
       'Click en la campana arriba a la derecha para ver el feed de notificaciones',
     ],
   },
@@ -171,7 +171,7 @@ const SCENES: Scene[] = [
     index: 5,
     route: '/ejecutivo',
     role: 'ejecutivo',
-    title: 'Cockpit del ejecutivo con copiloto',
+    title: 'Panel del ejecutivo con copiloto',
     targetMinutes: 3,
     useCases: [
       {
@@ -191,7 +191,7 @@ const SCENES: Scene[] = [
       },
     ],
     whatToSay:
-      `Ahora cambiemos a la vista del ejecutivo de ${BRAND.shortName}. Camila Reinoso abre su cockpit y ve su bandeja del día. El caso de Francisco tiene una alerta. A la derecha, su copiloto IA ya analizó el caso y le susurra al oído: hay una inconsistencia entre la liquidación y Previred. Le da la causa probable, le sugiere el próximo paso, le da contexto humano. Y si Camila decide que el caso necesita criterio del back office, lo deriva con una nota que el sistema redacta solo.`,
+      `Ahora cambiemos a la vista del ejecutivo de ${BRAND.shortName}. Camila Reinoso abre su panel y ve su bandeja del día. El caso de Francisco tiene una alerta. A la derecha, su copiloto IA ya analizó el caso y le susurra al oído: hay una inconsistencia entre la liquidación y Previred. Le da la causa probable, le sugiere el próximo paso, le da contexto humano. Y si Camila decide que el caso necesita criterio del back office, lo deriva con una nota que el sistema redacta solo.`,
     whatToClick: [
       `Click en ${BRAND.buyerName} en el inbox de la izquierda (ya seleccionado por defecto)`,
       'Muestra el copiloto a la derecha: ALERTA + PRÓXIMO PASO + CONTEXTO ÚTIL',
@@ -245,7 +245,7 @@ const SCENES: Scene[] = [
       'Observa los 3 pasos avanzar y la transcripción reveladora (~5s)',
       'A la derecha, los campos del caso aparecen progresivamente: nombre, RUT, intención, monto, propiedad, documentos, próximos pasos, preocupaciones',
       'Cuando termina, click "Crear caso con estos datos"',
-      'Te lleva al cockpit — Antonia Soto aparece arriba con pill "Nuevo · audio"',
+      'Te lleva al panel — Antonia Soto aparece arriba con pill "Nuevo · audio"',
     ],
   },
   {
@@ -881,11 +881,11 @@ const VIEW_CATALOG: ViewGroup[] = [
   {
     title: `Ejecutivo del Banco · ${BRAND.shortName}`,
     description:
-      'Vistas para la ejecutiva Camila Reinoso. Cockpit con control de documentos, lanzamiento de reparos y sesión en vivo con cliente.',
+      'Vistas para la ejecutiva Camila Reinoso. Panel con control de documentos, lanzamiento de reparos y sesión en vivo con cliente.',
     views: [
       {
         route: '/ejecutivo',
-        title: 'Cockpit del ejecutivo',
+        title: 'Panel del ejecutivo',
         description:
           'Pipeline de casos en curso. Banner de captura en vivo del cliente. Panel de control de documentos: aprobar o lanzar reparos sobre lo subido.',
         role: 'ejecutivo',

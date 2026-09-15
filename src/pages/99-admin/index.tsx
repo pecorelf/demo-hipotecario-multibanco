@@ -100,10 +100,17 @@ export default function Admin() {
     setMensaje('Se restableció el preset original.');
   }
 
-  const url = useMemo(
-    () => `${typeof window !== 'undefined' ? window.location.origin : ''}/?t=${slug}`,
-    [slug],
-  );
+  const origen = typeof window !== 'undefined' ? window.location.origin : '';
+  const url = useMemo(() => `${origen}/?t=${slug}`, [origen, slug]);
+  const [copiado, setCopiado] = useState<string | null>(null);
+
+  /** Copia el enlace y confirma en el propio botón, sin alertas. */
+  const copiar = (enlace: string, id: string) => {
+    navigator.clipboard?.writeText(enlace).then(
+      () => { setCopiado(id); setTimeout(() => setCopiado(null), 1600); },
+      () => { /* sin portapapeles disponible: el enlace igual se puede abrir */ },
+    );
+  };
 
   if (!autorizado) {
     return (
@@ -179,8 +186,45 @@ export default function Admin() {
             </button>
           ))}
         </div>
-        <div className="mt-4 text-caption text-text-muted">
-          Enlace: <span className="text-text-primary font-medium">{url}</span>
+
+        <div className="mt-5 border-t border-border-hairline pt-4">
+          <div className="text-caption uppercase tracking-[0.12em] text-text-muted mb-3">
+            Enlaces de la demostración
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            {BANK_SLUGS.map((s) => {
+              const enlace = `${origen}/?t=${s}`;
+              return (
+                <div
+                  key={s}
+                  className="flex items-center justify-between gap-2 border border-border-hairline px-3 py-2 hover:bg-bg-page transition-colors"
+                >
+                  <a
+                    href={enlace}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-body-sm text-accent hover:underline truncate"
+                    title={enlace}
+                  >
+                    {BANK_THEMES[s].shortName}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => copiar(enlace, s)}
+                    className="text-caption text-text-muted hover:text-text-primary transition-colors flex-none"
+                    title="Copiar enlace"
+                  >
+                    {copiado === s ? 'Copiado' : 'Copiar'}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-3 text-caption text-text-muted">
+            Enlace de la institución seleccionada:{' '}
+            <a href={url} target="_blank" rel="noopener noreferrer"
+               className="text-accent font-medium hover:underline">{url}</a>
+          </div>
         </div>
       </div>
 

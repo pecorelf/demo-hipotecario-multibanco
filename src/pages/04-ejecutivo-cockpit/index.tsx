@@ -1,3 +1,4 @@
+import { Reveal, Contador } from '@/components/motion';
 import { useEffect, useMemo, useState } from 'react';
 import {
   AlertCircle,
@@ -280,92 +281,123 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
     stage,
     casos: cases.filter((c) => c.stage === stage),
   }));
+  if (porEtapa.every((e) => e.casos.length === 0)) return null;
 
-  const conCasos = porEtapa.filter((e) => e.casos.length > 0);
-  if (conCasos.length === 0) return null;
+  const maximo = Math.max(1, ...porEtapa.map((e) => e.casos.length));
+  const totalAlertas = cases.filter(caseHasAlert).length;
+  const totalDocs = cases.reduce(
+    (n, c) => n + c.documents.filter((d) => d.status === 'pendiente').length,
+    0,
+  );
 
   return (
-    <section className="mb-8">
-      <div className="flex items-baseline justify-between mb-4">
-        <Kicker tone="muted">Tus casos por etapa</Kicker>
-        <span className="text-body-sm text-text-tertiary">
-          {cases.length} en curso
-        </span>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-px bg-border-hairline border border-border-hairline">
-        {porEtapa.map(({ stage, casos }) => {
-          const conAlerta = casos.filter(caseHasAlert).length;
-          const docsPendientes = casos.reduce(
-            (n, c) => n + c.documents.filter((d) => d.status === 'pendiente').length,
-            0,
-          );
-          const vacia = casos.length === 0;
-
-          return (
-            <div
-              key={stage}
-              className={`bg-surface-primary px-4 py-4 flex flex-col min-h-[136px] ${
-                vacia ? 'opacity-45' : ''
-              }`}
-            >
-              <span className="text-label text-text-tertiary uppercase tracking-wider leading-tight">
-                {STAGE_LABEL_SHORT[stage]}
-              </span>
-
-              <span
-                className={`mt-3 text-3xl font-semibold leading-none ${
-                  conAlerta > 0 ? 'text-accent-primary' : 'text-text-primary'
-                }`}
-              >
-                {casos.length}
-              </span>
-
-              <div className="mt-auto pt-3 space-y-1">
-                {conAlerta > 0 && (
-                  <span className="block text-body-sm text-accent-primary">
-                    {conAlerta} requiere{conAlerta === 1 ? '' : 'n'} atención
-                  </span>
-                )}
-                {docsPendientes > 0 && (
-                  <span className="block text-body-sm text-text-secondary">
-                    {docsPendientes} documento{docsPendientes === 1 ? '' : 's'} por subir
-                  </span>
-                )}
-                {!vacia && conAlerta === 0 && docsPendientes === 0 && (
-                  <span className="block text-body-sm text-text-tertiary">Al día</span>
-                )}
-              </div>
-
-              {!vacia && (
-                <ul className="mt-3 space-y-1 border-t border-border-hairline pt-2">
-                  {casos.slice(0, 3).map((c) => (
-                    <li key={c.id}>
-                      <button
-                        type="button"
-                        onClick={() => onSelect(c.id)}
-                        className={`text-left text-body-sm truncate w-full transition-colors ${
-                          c.id === selectedId
-                            ? 'text-accent-primary font-medium'
-                            : 'text-text-secondary hover:text-text-primary'
-                        }`}
-                      >
-                        {c.id}
-                      </button>
-                    </li>
-                  ))}
-                  {casos.length > 3 && (
-                    <li className="text-body-sm text-text-tertiary">
-                      +{casos.length - 3} más
-                    </li>
-                  )}
-                </ul>
-              )}
+    <Reveal className="mb-8">
+      <section>
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-5">
+          <div>
+            <Kicker tone="muted">Tus casos por etapa</Kicker>
+            <p className="text-body-sm text-text-secondary mt-1.5">
+              Dónde está cada operación dentro del proceso. Haz clic en una etapa para ver sus casos.
+            </p>
+          </div>
+          <div className="flex items-stretch gap-6">
+            <div className="text-right">
+              <Contador valor={cases.length} className="block text-3xl font-semibold text-text-primary leading-none" />
+              <span className="text-caption text-text-muted">en curso</span>
             </div>
-          );
-        })}
-      </div>
-    </section>
+            <div className="w-px bg-border-hairline" />
+            <div className="text-right">
+              <Contador
+                valor={totalAlertas}
+                className={`block text-3xl font-semibold leading-none ${
+                  totalAlertas > 0 ? 'text-accent' : 'text-text-primary'
+                }`}
+              />
+              <span className="text-caption text-text-muted">requieren atención</span>
+            </div>
+            <div className="w-px bg-border-hairline" />
+            <div className="text-right">
+              <Contador valor={totalDocs} className="block text-3xl font-semibold text-text-primary leading-none" />
+              <span className="text-caption text-text-muted">documentos por subir</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="border border-border-hairline bg-bg-card p-5">
+          <div className="space-y-1">
+            {porEtapa.map(({ stage, casos }, i) => {
+              const conAlerta = casos.filter(caseHasAlert).length;
+              const activa = casos.some((c) => c.id === selectedId);
+              const vacia = casos.length === 0;
+              return (
+                <div
+                  key={stage}
+                  className={`grid grid-cols-[168px_1fr_auto] gap-4 items-center px-3 py-2.5 transition-colors ${
+                    activa ? 'bg-accent-soft' : 'hover:bg-bg-page'
+                  } ${vacia ? 'opacity-40' : ''}`}
+                >
+                  <span className="text-body-sm font-medium text-text-primary truncate">
+                    {STAGE_LABEL_SHORT[stage]}
+                  </span>
+
+                  <div className="h-7 bg-bg-sunken relative overflow-hidden">
+                    <div
+                      className="h-full bg-accent"
+                      style={{
+                        width: `${(casos.length / maximo) * 100}%`,
+                        transition: 'width .8s cubic-bezier(.2,.7,.3,1)',
+                        transitionDelay: `${i * 70}ms`,
+                      }}
+                    />
+                    {conAlerta > 0 && (
+                      <div
+                        className="h-full bg-status-error absolute top-0 left-0"
+                        style={{
+                          width: `${(conAlerta / maximo) * 100}%`,
+                          transition: 'width .8s cubic-bezier(.2,.7,.3,1)',
+                          transitionDelay: `${i * 70 + 180}ms`,
+                        }}
+                      />
+                    )}
+                    <div className="absolute inset-0 flex items-center gap-1.5 px-2.5">
+                      {casos.slice(0, 6).map((c) => (
+                        <button
+                          key={c.id}
+                          type="button"
+                          onClick={() => onSelect(c.id)}
+                          title={c.id}
+                          className={`text-caption px-1.5 py-0.5 transition-colors ${
+                            c.id === selectedId
+                              ? 'bg-bg-card text-accent font-medium'
+                              : 'text-text-inverse/90 hover:bg-bg-card hover:text-text-primary'
+                          }`}
+                        >
+                          {c.id}
+                        </button>
+                      ))}
+                      {casos.length > 6 && (
+                        <span className="text-caption text-text-inverse/80">
+                          +{casos.length - 6}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex items-baseline gap-2 min-w-[92px] justify-end">
+                    <span className="text-body font-semibold text-text-primary tabular-nums">
+                      {casos.length}
+                    </span>
+                    {conAlerta > 0 && (
+                      <span className="text-caption text-status-error">{conAlerta} con alerta</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </Reveal>
   );
 }
 

@@ -319,7 +319,7 @@ export default function ClienteSeguimiento() {
               Banco · Vistas internas
             </div>
             <div className="text-body font-semibold text-text-primary">
-              Cockpit del ejecutivo
+              Panel del ejecutivo
             </div>
             <div className="text-body-sm text-text-secondary mt-1.5 leading-relaxed">
               Lo que ve la ejecutiva del banco. Panel para aprobar

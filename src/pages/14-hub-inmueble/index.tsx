@@ -396,7 +396,7 @@ export default function HubInmueble() {
           className="inline-flex items-center gap-1.5 text-body-sm text-text-secondary hover:text-text-primary"
         >
           <ChevronLeft size={14} />
-          {isEjecutivo ? 'Volver al cockpit' : 'Volver al inicio'}
+          {isEjecutivo ? 'Volver al panel' : 'Volver al inicio'}
         </button>
         {!isShared && (
           <button
