@@ -3,6 +3,8 @@ import type {
   Communication,
   Customer,
   Document,
+  DocumentKind,
+  DocumentStatus,
   Executive,
   TimelineEvent,
 } from '@/types';
@@ -362,20 +364,20 @@ const FRANCISCO_CASE: Case = {
   annualRate: 4.65,
   monthlyPaymentUF: 26.8,
   property: {
-    address: 'Av. Vitacura 2950',
-    commune: 'Vitacura',
+    address: BRAND.propertyAddress,
+    commune: BRAND.propertyComuna,
     type: 'casa',
     valueUF: 6_800,
     bedrooms: 3,
     bathrooms: 2,
     surfaceM2: 220,
-    developer: 'Inmobiliaria Los Almendros',
+    developer: BRAND.inmobiliariaName,
     realEstate: 'Los Almendros Propiedades',
   },
   promesa: {
     signedAt: '2026-04-15T14:30:00-04:00',
     amountUF: 340,
-    notary: 'Notaría Sergio Cortés',
+    notary: BRAND.notariaName,
     reference: 'Repertorio 2026-04788',
   },
   createdAt: '2026-04-18T09:20:00-04:00',
@@ -383,6 +385,52 @@ const FRANCISCO_CASE: Case = {
   documents: FRANCISCO_DOCS,
   timeline: FRANCISCO_TIMELINE,
 };
+
+// ─────────────────────────────────────────────────────────────
+// Documentos de los casos de apoyo
+//
+// Los cuatro casos que acompañan a la operación destacada venían sin
+// documentos, y eso dejaba al ejecutivo sin nada que revisar ni que subir
+// cuando los seleccionaba. Se generan con estados distintos para que cada caso
+// muestre una situación reconocible.
+// ─────────────────────────────────────────────────────────────
+
+const PLANTILLA_DOCS: Array<{ kind: DocumentKind; label: string }> = [
+  { kind: 'cedula', label: 'Cédula de identidad' },
+  { kind: 'liquidacion', label: 'Liquidaciones de sueldo' },
+  { kind: 'certificado_afp', label: 'Certificado de cotizaciones AFP' },
+  { kind: 'previred', label: 'Certificado Previred' },
+  { kind: 'contrato_promesa', label: 'Promesa de compraventa' },
+  { kind: 'tasacion', label: 'Informe de tasación' },
+];
+
+/** Reparte estados de forma estable para que cada caso se vea distinto. */
+function docsDeApoyo(caseId: string, semilla: number): Document[] {
+  const ciclos: DocumentStatus[][] = [
+    ['validado', 'validado', 'recibido', 'pendiente', 'pendiente', 'pendiente'],
+    ['validado', 'validado', 'validado', 'validado', 'recibido', 'pendiente'],
+    ['validado', 'rechazado', 'recibido', 'validado', 'pendiente', 'pendiente'],
+    ['validado', 'validado', 'validado', 'recibido', 'recibido', 'validado'],
+  ];
+  const estados = ciclos[semilla % ciclos.length];
+  return PLANTILLA_DOCS.map((d, i) => {
+    const status = estados[i];
+    const subido = status !== 'pendiente';
+    return {
+      id: `${caseId}-DOC-${i + 1}`,
+      caseId,
+      kind: d.kind,
+      label: d.label,
+      status,
+      uploadedAt: subido ? `2026-05-${String(6 + i + semilla).padStart(2, '0')}T10:20:00-04:00` : undefined,
+      validatedAt: status === 'validado' ? `2026-05-${String(8 + i + semilla).padStart(2, '0')}T11:05:00-04:00` : undefined,
+      uploadedBy: subido ? ('cliente' as const) : undefined,
+      notes: status === 'rechazado'
+        ? 'El documento está vencido: tiene más de 30 días desde su emisión.'
+        : undefined,
+    };
+  });
+}
 
 // ─────────────────────────────────────────────────────────────
 // Otros 4 casos en bandeja de Camila
@@ -407,7 +455,7 @@ const OTHER_CASES: Case[] = [
     },
     createdAt: '2026-05-15T11:20:00-04:00',
     updatedAt: '2026-05-18T09:10:00-04:00',
-    documents: [],
+    documents: docsDeApoyo('HIP-2026-0058', 0),
     timeline: [],
   },
   {
@@ -428,7 +476,7 @@ const OTHER_CASES: Case[] = [
     },
     createdAt: '2026-03-15T11:00:00-03:00',
     updatedAt: '2026-05-17T17:45:00-04:00',
-    documents: [],
+    documents: docsDeApoyo('HIP-2026-0061', 1),
     timeline: [],
   },
   {
@@ -449,7 +497,7 @@ const OTHER_CASES: Case[] = [
     },
     createdAt: '2026-04-28T14:10:00-04:00',
     updatedAt: '2026-05-16T11:22:00-04:00',
-    documents: [],
+    documents: docsDeApoyo('HIP-2026-0073', 2),
     timeline: [],
   },
   {
@@ -470,7 +518,7 @@ const OTHER_CASES: Case[] = [
     },
     createdAt: '2026-05-02T10:30:00-04:00',
     updatedAt: '2026-05-19T08:45:00-04:00',
-    documents: [],
+    documents: docsDeApoyo('HIP-2026-0080', 3),
     timeline: [],
   },
 ];
@@ -541,11 +589,26 @@ export function communicationsByCase(caseId: string): Communication[] {
 // ─────────────────────────────────────────────────────────────
 
 export const currentCustomer = customers[0];
+/** Igual que currentCustomer pero con la marca vigente aplicada. */
+export const titularVigente = () => getCustomer(TITULAR_ID)!;
 export const currentCase = cases[0];
 export const currentExecutive = executives[0];
 
+/** Identificador del titular de la operación destacada de la demostración. */
+export const TITULAR_ID = 'CUS-001';
+
+/**
+ * Devuelve el cliente con los datos de marca vigentes.
+ *
+ * El arreglo `customers` se construye al importar el módulo, antes de que
+ * ThemeProvider aplique la personalización guardada en /admin. Resolver el
+ * nombre del titular aquí, en cada consulta, evita que la bandeja muestre el
+ * nombre del preset mientras el resto de la aplicación muestra el configurado.
+ */
 export function getCustomer(id: string): Customer | undefined {
-  return customers.find((c) => c.id === id);
+  const c = customers.find((x) => x.id === id);
+  if (!c) return undefined;
+  return id === TITULAR_ID ? { ...c, fullName: BRAND.buyerName } : c;
 }
 
 export function getCase(id: string): Case | undefined {

@@ -126,7 +126,7 @@ export default function EjecutivoCockpit() {
   const audioCustomer = useAppStore((s) => s.audioCustomer);
   const audioCoTitular = useAppStore((s) => s.audioCoTitular);
 
-  const myCases = useMemo(() => {
+  const myCasesBase = useMemo(() => {
     const real = cases.filter((c) => c.executiveId === currentExecutive.id);
     return audioCase ? [audioCase, ...real] : real;
   }, [audioCase]);
@@ -140,6 +140,29 @@ export default function EjecutivoCockpit() {
       return undefined;
     };
   }, [audioCustomer, audioCoTitular]);
+
+  const opProperty = useOperationStore((s) => s.property);
+  const opConversation = useOperationStore((s) => s.conversation);
+  const opScenarios = useOperationStore((s) => s.scenarios);
+  const opSelectedPlazo = useOperationStore((s) => s.selectedPlazo);
+  const opPlazoSolicitado = useOperationStore((s) => s.plazoSolicitado);
+
+  // La bandeja completa refleja lo que el cliente ingresó en el flujo
+  // conversacional. Antes solo lo hacía la ficha del centro, de modo que la
+  // lista y la ficha podían mostrar cifras distintas del mismo caso.
+  const myCases = useMemo(
+    () =>
+      myCasesBase.map((c) =>
+        enrichCaseWithSimulation(c, {
+          property: opProperty,
+          conversation: opConversation,
+          scenarios: opScenarios,
+          selectedPlazo: opSelectedPlazo,
+          plazoSolicitado: opPlazoSolicitado,
+        }),
+      ),
+    [myCasesBase, opProperty, opConversation, opScenarios, opSelectedPlazo, opPlazoSolicitado],
+  );
 
   const [selectedCaseId, setSelectedCaseId] = useState<string>(myCases[0]?.id ?? '');
   // Subidas hechas por el ejecutivo en nombre del cliente. Viven en la vista
@@ -159,11 +182,6 @@ export default function EjecutivoCockpit() {
   const deriveCase = useAppStore((s) => s.deriveCase);
 
   // Pull live client decisions from the shared operationStore
-  const opProperty = useOperationStore((s) => s.property);
-  const opConversation = useOperationStore((s) => s.conversation);
-  const opScenarios = useOperationStore((s) => s.scenarios);
-  const opSelectedPlazo = useOperationStore((s) => s.selectedPlazo);
-  const opPlazoSolicitado = useOperationStore((s) => s.plazoSolicitado);
 
   const rawSelectedCase = useMemo(
     () => myCases.find((c) => c.id === selectedCaseId) ?? myCases[0],

@@ -1,12 +1,14 @@
+import { BRAND } from '@/lib/brand';
 import type { Case } from '@/types';
 import type { PropertyData, ScenarioData, ConversationCapture } from '@/store/operationStore';
 
 /**
- * The case ID for the "current client" we use in demos.
- * If the user has done a simulation in the conversational flow,
- * this case will reflect those choices instead of the mock defaults.
+ * Caso de la operación destacada de la demostración.
+ *
+ * Se lee de la marca activa y no de una constante, porque la referencia del
+ * caso es configurable desde /admin y cambia de institución a institución.
  */
-export const DEMO_CLIENT_CASE_ID = 'HIP-2026-0042';
+export const DEMO_CLIENT_CASE_ID = BRAND.caseRef;
 
 interface EnrichInput {
   property: PropertyData;
@@ -32,7 +34,7 @@ export function enrichCaseWithSimulation(
   input: EnrichInput,
 ): Case {
   // Only apply enrichment to the demo client case
-  if (baseCase.id !== DEMO_CLIENT_CASE_ID) return baseCase;
+  if (baseCase.id !== BRAND.caseRef) return baseCase;
 
   const { property, conversation, scenarios, selectedPlazo } = input;
 
