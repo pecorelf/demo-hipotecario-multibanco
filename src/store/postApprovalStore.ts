@@ -1,5 +1,6 @@
 import { BRAND } from '@/lib/brand';
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 /**
  * Post-approval operation store.
@@ -493,7 +494,16 @@ const INITIAL_STATE = {
   notifications: buildWelcomeNotifications(),
 };
 
-export const usePostApprovalStore = create<PostApprovalState>((set, get) => ({
+/**
+ * Operación posterior a la aprobación, guardada en el navegador.
+ *
+ * Los documentos subidos, los reparos resueltos y el pago del gate dejan de
+ * perderse al recargar, que era lo que obligaba a rehacer la demostración
+ * desde cero cuando alguien refrescaba la página.
+ */
+export const usePostApprovalStore = create<PostApprovalState>()(
+  persist(
+    (set, get) => ({
   ...INITIAL_STATE,
 
   /**
@@ -674,7 +684,14 @@ export const usePostApprovalStore = create<PostApprovalState>((set, get) => ({
     })),
 
   resetOperation: () => set({ ...INITIAL_STATE }),
-}));
+    }),
+    {
+      name: 'operacion-post-aprobacion',
+      version: 1,
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
 
 // ─── Selectors helpers ─────────────────────────────────────────
 

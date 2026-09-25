@@ -1,3 +1,4 @@
+import { useOperationStore } from '@/store/operationStore';
 import { RelojCompromiso } from '@/components/hipotecario';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -51,12 +52,16 @@ import { BRAND } from '@/lib/brand';
  */
 export default function ClienteSeguimiento() {
   const navigate = useNavigate();
+  // Lo que el cliente declaró en el viaje manda sobre los datos de ejemplo:
+  // si escribió su dirección y el valor de su propiedad, eso es lo que debe
+  // ver aquí, y no la operación de muestra.
+  const opProperty = useOperationStore((s) => s.property);
   const {
     propertyType,
     caseRef,
-    propertyAddress,
-    propertyValueUF,
-    loanAmountUF,
+    propertyAddress: propertyAddressBase,
+    propertyValueUF: propertyValueUFBase,
+    loanAmountUF: loanAmountUFBase,
     buyerName,
     sellerName,
     inmobiliariaName,
@@ -76,6 +81,14 @@ export default function ClienteSeguimiento() {
   const [aiReviewDocId, setAiReviewDocId] = useState<string | null>(null);
 
   // First name of buyer for greeting
+  const propertyAddress = opProperty.direccion
+    ? `${opProperty.direccion}${opProperty.comuna ? `, ${opProperty.comuna}` : ''}`
+    : propertyAddressBase;
+  const propertyValueUF = opProperty.valorUF ?? propertyValueUFBase;
+  const loanAmountUF = opProperty.valorUF
+    ? Math.round(opProperty.valorUF * (1 - (opProperty.piePorcentaje ?? 30) / 100))
+    : loanAmountUFBase;
+
   const firstName = buyerName.split(' ')[0];
 
   // Progresos por track

@@ -19,7 +19,10 @@ export async function leerOverride(slug: string): Promise<Partial<BankTheme> | n
   } catch { /* se intenta el navegador */ }
   try {
     const local = localStorage.getItem(PREFIJO + slug);
-    return local ? (JSON.parse(local) as Partial<BankTheme>) : null;
+    const logo = localStorage.getItem(`${PREFIJO}logo:${slug}`);
+    if (!local && !logo) return null;
+    const base = local ? (JSON.parse(local) as Partial<BankTheme>) : {};
+    return logo ? { ...base, logoUrl: logo } : base;
   } catch {
     return null;
   }
@@ -27,21 +30,40 @@ export async function leerOverride(slug: string): Promise<Partial<BankTheme> | n
 
 export async function guardarOverride(
   slug: string, theme: BankTheme, token: string,
-): Promise<{ ok: boolean; destino: 'servidor' | 'navegador' }> {
+): Promise<{ ok: boolean; destino: 'servidor' | 'navegador'; aviso?: string }> {
+  let servidor = false;
   try {
     const r = await fetch('/api/theme', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Token': token },
       body: JSON.stringify({ slug, theme }),
     });
-    if (r.ok) return { ok: true, destino: 'servidor' };
+    servidor = r.ok;
   } catch { /* se intenta el navegador */ }
+
+  // El navegador se escribe siempre, incluso cuando el servidor respondió
+  // bien: así la identidad sobrevive a una caída del almacenamiento remoto
+  // y la demostración nunca aparece sin logotipo.
+  //
+  // El logotipo se guarda aparte porque es, de lejos, el valor más pesado.
+  // Si el resto del tema no cabe junto a él, al menos uno de los dos
+  // sobrevive en vez de perderse ambos por una sola cuota excedida.
+  const { logoUrl, ...resto } = theme;
+  let aviso: string | undefined;
   try {
-    localStorage.setItem(PREFIJO + slug, JSON.stringify(theme));
-    return { ok: true, destino: 'navegador' };
+    localStorage.setItem(PREFIJO + slug, JSON.stringify(resto));
   } catch {
-    return { ok: false, destino: 'navegador' };
+    aviso = 'No se pudo guardar la identidad en este navegador.';
   }
+  try {
+    if (logoUrl) localStorage.setItem(`${PREFIJO}logo:${slug}`, logoUrl);
+    else localStorage.removeItem(`${PREFIJO}logo:${slug}`);
+  } catch {
+    aviso = 'El logotipo es demasiado pesado para guardarse en este navegador. Sube uno más liviano.';
+  }
+
+  if (servidor) return { ok: true, destino: 'servidor', aviso };
+  return { ok: !aviso, destino: 'navegador', aviso };
 }
 
 export async function borrarOverride(slug: string, token: string): Promise<void> {
@@ -50,5 +72,8 @@ export async function borrarOverride(slug: string, token: string): Promise<void>
       method: 'DELETE', headers: { 'X-Admin-Token': token },
     });
   } catch { /* continua */ }
-  try { localStorage.removeItem(PREFIJO + slug); } catch { /* sin accion */ }
+  try {
+    localStorage.removeItem(PREFIJO + slug);
+    localStorage.removeItem(`${PREFIJO}logo:${slug}`);
+  } catch { /* sin accion */ }
 }

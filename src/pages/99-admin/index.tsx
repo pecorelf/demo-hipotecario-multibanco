@@ -86,10 +86,23 @@ export default function Admin() {
     const r = await guardarOverride(slug, draft, token);
     setGuardando(false);
     setMensaje(
-      !r.ok ? 'No se pudo guardar. La demostración seguirá usando el preset.'
-      : r.destino === 'servidor' ? 'Identidad guardada. Disponible desde cualquier dispositivo.'
-      : 'Identidad guardada en este navegador. Configurar el almacenamiento para compartirla.',
+      r.aviso
+        ? r.aviso
+        : !r.ok
+          ? 'No se pudo guardar. La demostración seguirá usando el preset.'
+          : r.destino === 'servidor'
+            ? 'Identidad y logotipo guardados. Disponibles desde cualquier dispositivo.'
+            : 'Identidad y logotipo guardados en este navegador. Para verlos en otro equipo hay que configurar el almacenamiento del servidor.',
     );
+  }
+
+  /** Borra el recorrido del usuario, conservando la identidad de la marca. */
+  function reiniciarDemostracion() {
+    ['operacion-cliente', 'estado-demostracion', 'operacion-post-aprobacion', 'hipotecia-docs-store']
+      .forEach((k) => {
+        try { localStorage.removeItem(k); } catch { /* sin accion */ }
+      });
+    setMensaje('Demostración reiniciada. Recarga cualquier vista para verla desde cero.');
   }
 
   async function restablecer() {
@@ -366,6 +379,22 @@ export default function Admin() {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="mt-8 rounded-xl border border-border-hairline bg-bg-card p-5">
+        <h2 className="text-h3 font-semibold text-text-primary">Reiniciar la demostración</h2>
+        <p className="text-body-sm text-text-secondary mt-2 max-w-measure">
+          Los datos que se ingresan durante el recorrido —propiedad, escenario elegido,
+          documentos subidos, reparos resueltos— ahora quedan guardados en el navegador
+          para que no se pierdan al recargar. Usa esto para dejar la demostración como
+          nueva antes de una presentación. No afecta la identidad ni el logotipo.
+        </p>
+        <button
+          onClick={reiniciarDemostracion}
+          className="mt-4 inline-flex items-center px-4 py-2 border border-border-hairline text-body-sm rounded-md hover:bg-bg-page transition-colors"
+        >
+          Dejar la demostración como nueva
+        </button>
       </div>
 
       <div className="mt-6 flex items-center gap-3 flex-wrap">

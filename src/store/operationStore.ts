@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { BRAND } from '@/lib/brand';
 
 /**
@@ -89,7 +90,16 @@ const INITIAL_OPERATION: Omit<OperationState,
   selectedPlazo: null,
 };
 
-export const useOperationStore = create<OperationState>((set, get) => ({
+/**
+ * Lo que el cliente decidió durante su viaje se guarda en el navegador.
+ *
+ * Sin esto, cualquier recarga borraba la dirección, el valor de la propiedad
+ * y el escenario elegido, y la demostración volvía a los datos de ejemplo en
+ * medio de una presentación.
+ */
+export const useOperationStore = create<OperationState>()(
+  persist(
+    (set, get) => ({
   ...INITIAL_OPERATION,
 
   setStage: (stage) => set({ stage }),
@@ -127,7 +137,14 @@ export const useOperationStore = create<OperationState>((set, get) => ({
   },
 
   resetOperation: () => set({ ...INITIAL_OPERATION }),
-}));
+    }),
+    {
+      name: 'operacion-cliente',
+      version: 1,
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
 
 // ─── Helpers ──────────────────────────────────────────────────
 

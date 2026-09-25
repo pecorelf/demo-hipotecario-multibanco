@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import type { Case, Customer, OnboardingCase, Role } from '@/types';
 import { BRAND } from '@/lib/brand';
 
@@ -74,7 +75,15 @@ const INITIAL_STATE = {
   chosenScenario: null,
 };
 
-export const useAppStore = create<AppStore>((set) => ({
+/**
+ * Estado transversal de la demostración, guardado en el navegador.
+ *
+ * Solo se persiste lo que el usuario decidió —rol activo, datos de la
+ * propiedad, derivaciones—; el resto se recalcula al cargar.
+ */
+export const useAppStore = create<AppStore>()(
+  persist(
+    (set) => ({
   ...INITIAL_STATE,
   setRole: (role) => set({ currentRole: role }),
   setCase: (caseId) => set({ currentCaseId: caseId }),
@@ -107,7 +116,14 @@ export const useAppStore = create<AppStore>((set) => ({
       onboardingMode: 'unchosen',
     }),
   resetAll: () => set({ ...INITIAL_STATE }),
-}));
+    }),
+    {
+      name: 'estado-demostracion',
+      version: 1,
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
 
 export const ROLE_LABEL: Record<Role, string> = {
   cliente: 'Cliente',
