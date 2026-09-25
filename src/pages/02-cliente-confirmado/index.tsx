@@ -194,7 +194,7 @@ function DoneView({
           onClick={onBackHome}
           className={cn(
             'inline-flex items-center gap-2 px-5 py-2.5 text-body-sm font-medium',
-            'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
+            'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-primary',
             'hover:border-text-primary',
             'transition-all duration-base ease-out-soft',
           )}

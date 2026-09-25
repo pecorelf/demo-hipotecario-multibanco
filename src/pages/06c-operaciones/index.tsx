@@ -430,7 +430,7 @@ function StatusPill({ status }: { status: ClaimRow['status'] }) {
     return (
       <Pill variant="success" size="sm">
         <span className="inline-flex items-center gap-1">
-          <CheckCircle2 size={10} aria-hidden />
+          <CheckCircle2 size={12} aria-hidden />
           Cerrado
         </span>
       </Pill>
@@ -439,7 +439,7 @@ function StatusPill({ status }: { status: ClaimRow['status'] }) {
     return (
       <Pill variant="warning" size="sm">
         <span className="inline-flex items-center gap-1">
-          <Clock size={10} aria-hidden />
+          <Clock size={12} aria-hidden />
           En revisión
         </span>
       </Pill>
@@ -448,7 +448,7 @@ function StatusPill({ status }: { status: ClaimRow['status'] }) {
     return (
       <Pill variant="neutral" size="sm">
         <span className="inline-flex items-center gap-1">
-          <FileWarning size={10} aria-hidden />
+          <FileWarning size={12} aria-hidden />
           Esperando cliente
         </span>
       </Pill>
@@ -456,7 +456,7 @@ function StatusPill({ status }: { status: ClaimRow['status'] }) {
   return (
     <Pill variant="warning" size="sm">
       <span className="inline-flex items-center gap-1">
-        <AlertTriangle size={10} aria-hidden />
+        <AlertTriangle size={12} aria-hidden />
         Abierto
       </span>
     </Pill>

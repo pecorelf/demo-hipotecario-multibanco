@@ -267,7 +267,7 @@ function CopilotInsightCard({ snapshot }: { snapshot: DashboardSnapshot }) {
           )}
           aria-label="Regenerar sugerencia"
         >
-          <RefreshCw size={11} className={stream.isStreaming ? 'animate-spin' : ''} />
+          <RefreshCw size={12} className={stream.isStreaming ? 'animate-spin' : ''} />
           Regenerar
         </button>
       </header>
@@ -781,7 +781,7 @@ function ActionButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'text-left w-full p-5 rounded-xl border border-border-hairline bg-bg-card',
+        'text-left w-full p-5 rounded-xl border border-border-hairline bg-bg-card shadow-soft',
         'hover:border-text-primary hover:bg-bg-sunken transition-all duration-base ease-out-soft',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card',
         'disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border-hairline disabled:hover:bg-bg-card',

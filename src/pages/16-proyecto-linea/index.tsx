@@ -14,7 +14,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertTriangle, Check, ChevronLeft, FileWarning, Layers } from 'lucide-react';
-import { Kicker, PageTitle, Pill } from '@/components/ui';
+import { IconChip, Kicker, PageTitle, Pill } from '@/components/ui';
 import { Reveal, Contador } from '@/components/motion';
 import { BRAND } from '@/lib/brand';
 import { cn } from '@/lib/cn';
@@ -202,9 +202,9 @@ export default function LineaProduccionProyecto() {
 
       {/* ── Base del proyecto ─────────────────────────────── */}
       <Reveal>
-        <section className="rounded-xl border border-border-hairline bg-bg-card">
+        <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft">
           <header className="px-6 py-4 border-b border-border-hairline flex items-center gap-2">
-            <Layers size={15} className="text-text-muted" />
+            <IconChip tamano="sm"><Layers size={14} /></IconChip>
             <span className="text-body-sm font-medium text-text-primary">
               Base originaria de escrituración
             </span>
@@ -242,7 +242,7 @@ export default function LineaProduccionProyecto() {
 
       {/* ── Mapa de unidades ──────────────────────────────── */}
       <Reveal>
-        <section className="rounded-xl border border-border-hairline bg-bg-card px-6 py-6">
+        <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft px-6 py-6">
           <div className="flex flex-wrap items-baseline justify-between gap-4 mb-5">
             <div>
               <Kicker tone="muted">Unidades del proyecto</Kicker>
@@ -287,7 +287,7 @@ export default function LineaProduccionProyecto() {
               <span className="text-body-sm text-text-secondary">{seleccion.etapa}</span>
               {seleccion.estado === 'detenida' && (
                 <span className="inline-flex items-center gap-1.5 text-body-sm text-status-error">
-                  <AlertTriangle size={13} />
+                  <AlertTriangle size={14} />
                   Detenida por la base, no por su propio expediente
                 </span>
               )}

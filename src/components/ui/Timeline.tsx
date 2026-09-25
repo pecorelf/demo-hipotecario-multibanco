@@ -20,7 +20,7 @@ interface TimelineProps {
 const dotClass: Record<TimelineState, string> = {
   done: 'bg-text-primary',
   current: 'bg-accent ring-4 ring-accent/15',
-  pending: 'rounded-xl bg-bg-card border border-border-hairline',
+  pending: 'rounded-xl bg-bg-card border border-border-hairline shadow-soft',
 };
 
 export function Timeline({ items, className }: TimelineProps) {

@@ -694,7 +694,7 @@ function ExplainabilityOnDemand() {
               }}
               placeholder="ID del caso (ej. HIP-2026-0042)"
               className={cn(
-                'w-full rounded-xl bg-bg-card border border-border-hairline',
+                'w-full rounded-xl bg-bg-card border border-border-hairline shadow-soft',
                 'pl-9 pr-3 py-2.5 text-body-sm text-text-primary',
                 'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15',
               )}
@@ -771,7 +771,7 @@ function ExplanationReport({ explanation }: { explanation: RegulatoryExplanation
         </div>
         <Pill variant="neutral" size="sm">
           <span className="inline-flex items-center gap-1">
-            <ShieldCheck size={10} aria-hidden />
+            <ShieldCheck size={12} aria-hidden />
             Apto para CMF
           </span>
         </Pill>

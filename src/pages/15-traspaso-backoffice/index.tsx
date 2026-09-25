@@ -24,7 +24,7 @@ import {
   Loader2,
   ShieldCheck,
 } from 'lucide-react';
-import { Kicker, PageTitle, Pill } from '@/components/ui';
+import { IconChip, Kicker, PageTitle, Pill } from '@/components/ui';
 import { Reveal } from '@/components/motion';
 import { BRAND } from '@/lib/brand';
 import { cn } from '@/lib/cn';
@@ -161,7 +161,7 @@ export default function TraspasoBackOffice() {
 
       {/* ── Estado del traspaso ───────────────────────────── */}
       <Reveal>
-        <div className="rounded-xl border border-border-hairline bg-bg-card px-6 py-5 flex flex-wrap items-center justify-between gap-5">
+        <div className="rounded-xl border border-border-hairline bg-bg-card shadow-soft px-6 py-5 flex flex-wrap items-center justify-between gap-5">
           <div className="flex items-center gap-4">
             <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
               Caso
@@ -187,9 +187,9 @@ export default function TraspasoBackOffice() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Izquierda · el compilado */}
         <Reveal>
-          <section className="rounded-xl border border-border-hairline bg-bg-card h-full flex flex-col">
+          <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft h-full flex flex-col">
             <header className="px-6 py-4 border-b border-border-hairline flex items-center gap-2">
-              <FileText size={15} className="text-text-muted" />
+              <IconChip tamano="sm" tono="neutro"><FileText size={14} /></IconChip>
               <span className="text-body-sm font-medium text-text-primary">
                 Compilado generado
               </span>
@@ -218,9 +218,9 @@ export default function TraspasoBackOffice() {
 
         {/* Derecha · lo que se inyecta */}
         <Reveal delay={90}>
-          <section className="rounded-xl border border-border-hairline bg-bg-card h-full flex flex-col">
+          <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft h-full flex flex-col">
             <header className="px-6 py-4 border-b border-border-hairline flex items-center gap-2">
-              <ShieldCheck size={15} className="text-text-muted" />
+              <IconChip tamano="sm"><ShieldCheck size={14} /></IconChip>
               <span className="text-body-sm font-medium text-text-primary">
                 Datos que se escribirán en el sistema
               </span>
@@ -281,7 +281,7 @@ export default function TraspasoBackOffice() {
       {/* ── Autorización y bitácora ───────────────────────── */}
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-6">
         <Reveal>
-          <section className="rounded-xl border border-border-hairline bg-bg-card px-6 py-6">
+          <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft px-6 py-6">
             {fase === 'revision' ? (
               <>
                 <h2 className="text-h3 font-semibold text-text-primary">
@@ -348,7 +348,7 @@ export default function TraspasoBackOffice() {
         </Reveal>
 
         <Reveal delay={90}>
-          <section className="rounded-xl border border-border-hairline bg-bg-card px-5 py-5 h-full">
+          <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft px-5 py-5 h-full">
             <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
               Bitácora de auditoría
             </span>

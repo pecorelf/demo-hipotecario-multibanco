@@ -42,14 +42,14 @@ export function CustomerCheck() {
         <ChoiceCard
           title={`Soy cliente ${BRAND.shortName}`}
           description="Tengo cuenta corriente, tarjeta, o algún producto activo con el banco. Ingreso con mi RUT y clave."
-          icon={<BadgeCheck size={22} aria-hidden />}
+          icon={<BadgeCheck size={20} aria-hidden />}
           isPrimary
           onClick={goClient}
         />
         <ChoiceCard
           title="No soy cliente"
           description={`Todavía no tengo productos con ${BRAND.shortName} pero quiero conocer la propuesta de crédito hipotecario.`}
-          icon={<UserPlus size={22} aria-hidden />}
+          icon={<UserPlus size={20} aria-hidden />}
           onClick={goNotAClient}
         />
       </div>

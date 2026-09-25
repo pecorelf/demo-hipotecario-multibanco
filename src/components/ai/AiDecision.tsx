@@ -24,7 +24,7 @@ export function AiDecision({
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className={cn('rounded-xl border border-border-hairline bg-bg-card', className)}>
+    <div className={cn('rounded-xl border border-border-hairline bg-bg-card shadow-soft', className)}>
       <div className="p-6">
         <Kicker className="block mb-2">Decisión del asistente</Kicker>
         <div className="text-h3 text-text-primary mb-3">{verdict}</div>

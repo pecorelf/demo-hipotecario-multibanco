@@ -100,7 +100,7 @@ export default function VendedorPortal() {
         {/* Campana */}
         <button
           onClick={() => setNotifOpen(true)}
-          className="relative flex-shrink-0 w-11 h-11 inline-flex items-center justify-center rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
+          className="relative flex-shrink-0 w-11 h-11 inline-flex items-center justify-center rounded-xl border border-border-hairline bg-bg-card shadow-soft hover:border-text-primary transition-colors"
         >
           <Bell size={18} className="text-text-primary" />
           {myUnread > 0 && (
@@ -191,7 +191,7 @@ function DocRow({
   const actionable = doc.status === 'pendiente' || doc.status === 'con_reparo';
 
   return (
-    <li className="rounded-xl border border-border-hairline bg-bg-card p-4">
+    <li className="rounded-xl border border-border-hairline bg-bg-card shadow-soft p-4">
       <div className="flex items-start gap-3">
         <div className="flex-shrink-0 mt-0.5">
           <StatusIcon status={doc.status} />

@@ -512,7 +512,7 @@ function PodcastCard() {
                   onClick={stop}
                   className={cn(
                     'px-3 py-2.5 text-caption',
-                    'rounded-xl border border-border-hairline bg-bg-card text-text-secondary',
+                    'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-secondary',
                     'hover:border-text-primary',
                     'transition-all duration-base',
                   )}
@@ -625,7 +625,7 @@ function IntelCard({ item }: { item: MarketIntelItem }) {
             onClick={() => setActionsOpen(true)}
             className={cn(
               'inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium',
-              'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
+              'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-primary',
               'hover:border-accent hover:text-accent',
               'transition-all duration-base',
             )}
@@ -741,15 +741,15 @@ function ActionsBlock({ item }: { item: MarketIntelItem }) {
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
                 <span className="inline-flex items-center gap-1.5 text-caption text-text-muted">
-                  <Target size={11} aria-hidden />
+                  <Target size={12} aria-hidden />
                   <span className="text-text-primary">{action.owner}</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-caption text-text-muted">
-                  <Calendar size={11} aria-hidden />
+                  <Calendar size={12} aria-hidden />
                   {action.horizon}
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-caption text-text-muted">
-                  <TrendingUp size={11} aria-hidden />
+                  <TrendingUp size={12} aria-hidden />
                   {action.expectedImpact}
                 </span>
               </div>

@@ -56,7 +56,7 @@ export function RelojCompromiso({
   }
 
   return (
-    <div className={cn('rounded-xl border border-border-hairline bg-bg-card px-5 py-4', className)}>
+    <div className={cn('rounded-xl border border-border-hairline bg-bg-card shadow-soft px-5 py-4', className)}>
       <div className="flex items-baseline justify-between gap-3">
         <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
           Compromiso con el cliente

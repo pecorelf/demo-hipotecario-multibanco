@@ -15,3 +15,4 @@ export { ProgressStepper } from './ProgressStepper';
 export type { Step } from './ProgressStepper';
 export { EmptyState } from './EmptyState';
 export { Skeleton } from './Skeleton';
+export { IconChip } from './IconChip';

@@ -157,16 +157,16 @@ function HubCardComponent({ card, onClick }: { card: HubCard; onClick: () => voi
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',
         card.featured
           ? 'bg-bg-card border-2 border-accent hover:shadow-lifted'
-          : 'rounded-xl bg-bg-card border border-border-hairline hover:border-text-primary hover:shadow-soft',
+          : 'rounded-xl bg-bg-card border border-border-hairline shadow-soft hover:border-text-primary hover:shadow-soft',
       )}
     >
       <div className="flex items-start gap-4">
         <div
           className={cn(
-            'flex-shrink-0 w-11 h-11 inline-flex items-center justify-center transition-colors',
+            'flex-shrink-0 w-11 h-11 rounded-xl inline-flex items-center justify-center transition-colors',
             card.featured
               ? 'bg-accent text-text-inverse'
-              : 'bg-text-primary text-text-inverse group-hover:bg-accent',
+              : 'bg-accent-soft text-accent group-hover:bg-accent group-hover:text-text-inverse',
           )}
         >
           {card.icon}

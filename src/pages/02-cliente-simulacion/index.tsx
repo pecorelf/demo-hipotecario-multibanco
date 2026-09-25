@@ -267,7 +267,7 @@ export default function ClienteSimulacion() {
           onClick={() => navigate('/cliente/confirmado?custom=1')}
           className={cn(
             'mt-6 inline-flex items-center gap-2 px-5 py-2.5 text-body-sm font-medium',
-            'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
+            'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-primary',
             'hover:border-text-primary',
             'transition-all duration-base ease-out-soft',
           )}
@@ -327,7 +327,7 @@ function ScenarioCard({
             {scenario.isCustom && (
               <Pill variant="error" size="sm">
                 <span className="inline-flex items-center gap-1">
-                  <Star size={10} aria-hidden />
+                  <Star size={12} aria-hidden />
                   Tu plazo elegido
                 </span>
               </Pill>
@@ -335,7 +335,7 @@ function ScenarioCard({
             {scenario.recommended && !scenario.isCustom && (
               <Pill variant="error" size="sm">
                 <span className="inline-flex items-center gap-1">
-                  <Star size={10} aria-hidden />
+                  <Star size={12} aria-hidden />
                   Recomendado
                 </span>
               </Pill>
@@ -415,7 +415,7 @@ function ScenarioCard({
             'mt-8 inline-flex items-center justify-center gap-2 px-5 py-3 text-body font-medium w-full',
             (scenario.recommended || scenario.isCustom)
               ? 'bg-accent text-text-inverse hover:bg-accent-muted'
-              : 'rounded-xl border border-border-hairline bg-bg-card text-text-primary hover:border-text-primary',
+              : 'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-primary hover:border-text-primary',
             'transition-all duration-base ease-out-soft',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',
           )}

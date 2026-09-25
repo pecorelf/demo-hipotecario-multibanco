@@ -615,7 +615,7 @@ function SliderArrow({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'p-2 rounded-xl border border-border-hairline bg-bg-card',
+        'p-2 rounded-xl border border-border-hairline bg-bg-card shadow-soft',
         'transition-colors duration-base ease-out-soft',
         'hover:border-text-primary',
         'disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border-hairline',

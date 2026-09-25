@@ -31,11 +31,13 @@ export function Card({
   return (
     <Tag
       className={cn(
-        'rounded-xl bg-bg-card border border-border-hairline',
+        // Toda tarjeta se despega del fondo. `elevated` sube un escalón más,
+        // para lo que debe destacar por sobre el resto de la página.
+        'rounded-xl bg-bg-card border border-border-hairline shadow-soft',
         paddingClass[padding],
-        elevated && 'shadow-soft',
+        elevated && 'shadow-[var(--shadow-alto)]',
         interactive &&
-          'transition-all duration-base ease-out-soft hover:-translate-y-px hover:shadow-soft-hover cursor-pointer',
+          'transition-all duration-base ease-out-soft hover:-translate-y-0.5 hover:shadow-soft-hover cursor-pointer',
         className,
       )}
       {...rest}

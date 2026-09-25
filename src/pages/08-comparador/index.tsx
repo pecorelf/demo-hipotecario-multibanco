@@ -513,7 +513,7 @@ function ResultView({
           onClick={onReset}
           className={cn(
             'inline-flex items-center justify-center gap-2 px-5 py-2.5 text-body-sm',
-            'rounded-xl border border-border-hairline bg-bg-card text-text-secondary',
+            'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-secondary',
             'hover:border-text-primary hover:text-text-primary',
             'transition-all duration-base ease-out-soft',
           )}
@@ -759,7 +759,7 @@ function WinnerCard({ analysis }: { analysis: ComparisonAnalysis }) {
             type="button"
             className={cn(
               'inline-flex items-center gap-2 px-5 py-2.5 text-body font-medium',
-              'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
+              'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-primary',
               'hover:border-text-primary hover:bg-bg-page',
               'transition-all duration-base ease-out-soft',
             )}
@@ -819,7 +819,7 @@ function WinnerCard({ analysis }: { analysis: ComparisonAnalysis }) {
             type="button"
             className={cn(
               'inline-flex items-center justify-center gap-2 px-5 py-2.5 text-body-sm',
-              'rounded-xl border border-border-hairline bg-bg-card text-text-secondary',
+              'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-secondary',
               'hover:border-text-primary hover:text-text-primary',
               'transition-all duration-base ease-out-soft',
             )}

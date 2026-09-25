@@ -58,7 +58,7 @@ export default function CoTitularPortal() {
       <div className="max-w-xl mx-auto px-6 py-20 lg:py-28 text-center">
         <Reveal>
           <span className="inline-flex w-14 h-14 rounded-full bg-accent-soft items-center justify-center">
-            <Lock size={22} className="text-accent" />
+            <Lock size={20} className="text-accent" />
           </span>
           <Kicker className="mt-6">Acceso de co-titular</Kicker>
           <PageTitle className="mt-3">Hola {CO_TITULAR.split(' ')[0]}</PageTitle>
@@ -102,7 +102,7 @@ export default function CoTitularPortal() {
       </Reveal>
 
       <Reveal>
-        <div className="rounded-xl border border-border-hairline bg-bg-card px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+        <div className="rounded-xl border border-border-hairline bg-bg-card shadow-soft px-6 py-5 flex flex-wrap items-center justify-between gap-4">
           <div>
             <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
               Operación
@@ -121,7 +121,7 @@ export default function CoTitularPortal() {
       </Reveal>
 
       <Reveal>
-        <section className="rounded-xl border border-border-hairline bg-bg-card divide-y divide-border-hairline overflow-hidden">
+        <section className="rounded-xl border border-border-hairline bg-bg-card shadow-soft divide-y divide-border-hairline overflow-hidden">
           {docs.map((d) => (
             <div key={d.id} className="px-6 py-4 flex flex-wrap items-center justify-between gap-3">
               <div className="min-w-0">
@@ -137,7 +137,7 @@ export default function CoTitularPortal() {
                     onClick={() => subir(d.id)}
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 border border-accent text-accent text-body-sm font-medium rounded-md hover:bg-accent hover:text-white transition-colors"
                   >
-                    <Upload size={13} />
+                    <Upload size={14} />
                     Subir
                   </button>
                 )}

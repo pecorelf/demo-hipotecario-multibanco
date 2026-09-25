@@ -1,3 +1,4 @@
+import { ArrowUpRight, LayoutGrid } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@/components/ui/Avatar';
 import { RoleSwitcher } from './RoleSwitcher';
@@ -57,14 +58,16 @@ export function AppHeader() {
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-caption font-medium text-accent border border-accent/40 hover:bg-accent hover:text-text-inverse transition-colors duration-base shrink-0"
             title="Todas las vistas de la POC"
           >
-            ☷ Vistas demo
+            <LayoutGrid size={14} />
+            Vistas demo
           </Link>
           <Link
             to="/demo"
-            className="text-caption text-text-muted hover:text-text-primary transition-colors duration-base hidden lg:inline"
+            className="text-caption text-text-muted hover:text-text-primary transition-colors duration-base hidden lg:inline-flex items-center gap-1"
             title="Recorrido guiado paso a paso"
           >
-            Recorrido guiado ↗
+            Recorrido guiado
+            <ArrowUpRight size={12} />
           </Link>
           {showBell && <NotificationBell />}
           {/* Recorrido troncal siempre visible. El desplegable conserva el resto. */}

@@ -435,7 +435,7 @@ export function PropertyInputScreen() {
 }
 
 const inputClass = cn(
-  'w-full rounded-xl bg-bg-card border border-border-hairline',
+  'w-full rounded-xl bg-bg-card border border-border-hairline shadow-soft',
   'px-4 py-3 text-body text-text-primary',
   'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15',
   'placeholder:text-text-muted tabular-nums',
@@ -497,9 +497,9 @@ function ValidationItem({ ok, label }: { ok: boolean; label: string }) {
   return (
     <li className="flex items-center gap-2">
       {ok ? (
-        <Check size={11} className="text-status-success shrink-0" aria-hidden />
+        <Check size={12} className="text-status-success shrink-0" aria-hidden />
       ) : (
-        <Circle size={11} className="text-text-muted shrink-0" aria-hidden />
+        <Circle size={12} className="text-text-muted shrink-0" aria-hidden />
       )}
       <span className={ok ? 'text-text-secondary' : 'text-text-muted'}>{label}</span>
     </li>

@@ -276,7 +276,7 @@ export default function SimuladorImpacto() {
 
         {/* ROI banner */}
         <div className="mt-5 border border-accent/30 bg-bg-card p-5 flex items-center gap-4 flex-wrap">
-          <TrendingUp size={22} className="text-accent flex-shrink-0" />
+          <TrendingUp size={20} className="text-accent flex-shrink-0" />
           <div className="flex-1 min-w-0">
             <div className="text-caption uppercase tracking-[0.1em] text-text-muted">
               Retorno sobre inversión
@@ -380,7 +380,7 @@ function FunnelStage({
   const improvement = projectedVol - baselineVol;
 
   return (
-    <div className="rounded-xl border border-border-hairline bg-bg-card p-4">
+    <div className="rounded-xl border border-border-hairline bg-bg-card shadow-soft p-4">
       <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
         <div className="text-body-sm font-medium text-text-primary">{stage}</div>
         {!isFirst && improvement > 0 && (
@@ -500,7 +500,7 @@ function KpiCard({
 
 function BeforeAfter({ label, before, after }: { label: string; before: string; after: string }) {
   return (
-    <div className="rounded-xl border border-border-hairline bg-bg-card p-4">
+    <div className="rounded-xl border border-border-hairline bg-bg-card shadow-soft p-4">
       <div className="text-caption uppercase tracking-[0.1em] text-text-muted">{label}</div>
       <div className="mt-3 space-y-2">
         <div>

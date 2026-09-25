@@ -198,7 +198,7 @@ function DropZone({ onStart }: { onStart: (name: string) => void }) {
           'px-10 py-16 text-center flex flex-col items-center gap-6',
         )}
       >
-        <AudioWaveform size={36} className="text-text-muted" aria-hidden />
+        <AudioWaveform size={28} className="text-text-muted" aria-hidden />
         <div className="space-y-2">
           <p className="text-body-lg text-text-primary">
             Arrastra la grabación o haz click para subirla

@@ -93,9 +93,9 @@ export function RiesgoDocumental({
   const criticos = items.filter((i) => i.riesgo >= 60);
 
   return (
-    <section className={cn('rounded-xl border border-border-hairline bg-bg-card px-6 py-6', className)}>
+    <section className={cn('rounded-xl border border-border-hairline bg-bg-card shadow-soft px-6 py-6', className)}>
       <div className="flex items-start gap-3">
-        <ShieldAlert size={17} className="text-accent shrink-0 mt-0.5" />
+        <ShieldAlert size={18} className="text-accent shrink-0 mt-0.5" />
         <div className="min-w-0 flex-1">
           <Kicker tone="muted">Antes de que subas nada</Kicker>
           <h2 className="text-h3 font-semibold text-text-primary mt-1.5">

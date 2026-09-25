@@ -221,7 +221,7 @@ function Hero({ input, setInput, onSubmit }: HeroProps) {
         <label htmlFor="onboarding-input" className="sr-only">
           Cuéntame qué estás buscando hacer
         </label>
-        <div className="rounded-xl bg-bg-card border border-border-hairline focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/15 transition-all duration-base ease-out-soft">
+        <div className="rounded-xl bg-bg-card border border-border-hairline shadow-soft focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/15 transition-all duration-base ease-out-soft">
           <textarea
             id="onboarding-input"
             value={input}
@@ -262,7 +262,7 @@ function Hero({ input, setInput, onSubmit }: HeroProps) {
                 onClick={() => onSubmit(s)}
                 className={cn(
                   'inline-flex items-center px-3.5 py-2 text-body-sm text-text-secondary',
-                  'rounded-xl border border-border-hairline bg-bg-card rounded-sm',
+                  'rounded-xl border border-border-hairline bg-bg-card shadow-soft rounded-sm',
                   'hover:border-text-primary hover:text-text-primary',
                   'transition-all duration-base ease-out-soft',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-page',

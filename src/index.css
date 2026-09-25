@@ -44,3 +44,105 @@ body {
     border-radius: 10px;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Pasada de estilo
+   ─────────────────────────────────────────────────────────────
+
+   La aplicación se veía plana: las utilidades shadow-soft existían en la
+   configuración de Tailwind pero las variables que las alimentan nunca se
+   habían definido, de modo que ninguna superficie tenía elevación. Aquí se
+   definen, junto con el resto de decisiones visuales que actúan de forma
+   global: profundidad, trazo de los iconos y equilibrio de los títulos.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Sombras de dos capas: un contacto muy corto y una difusión larga y
+     suave. Es lo que separa una tarjeta del fondo sin que se note la sombra. */
+  --shadow-soft:
+    0 1px 2px rgba(17, 24, 39, 0.04),
+    0 12px 28px -18px rgba(17, 24, 39, 0.22);
+  --shadow-soft-hover:
+    0 2px 4px rgba(17, 24, 39, 0.06),
+    0 22px 44px -22px rgba(17, 24, 39, 0.28);
+  --shadow-alto:
+    0 4px 10px rgba(17, 24, 39, 0.06),
+    0 32px 64px -28px rgba(17, 24, 39, 0.32);
+}
+
+@layer base {
+  /* El fondo deja de ser un plano liso: una veladura cálida apenas perceptible
+     hace que las superficies blancas se lean como tarjetas sobre una mesa. */
+  body {
+    background-image:
+      radial-gradient(60rem 40rem at 12% -10%, color-mix(in srgb, var(--color-accent-primary) 5%, transparent), transparent 60%),
+      radial-gradient(48rem 32rem at 100% 0%, color-mix(in srgb, var(--color-accent-primary) 3%, transparent), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Trazo uniforme en todos los iconos. Venían con el grosor por defecto de
+     la librería, más pesado de lo que pide una interfaz con esta tipografía. */
+  svg.lucide {
+    stroke-width: 1.75;
+  }
+
+  /* Los títulos reparten mejor las líneas y no dejan una palabra huérfana. */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Jerarquía de elevación
+   ─────────────────────────────────────────────────────────────
+
+   Toda la aplicación usaba la misma sombra en 97 lugares, de modo que
+   ninguna superficie parecía estar por encima de otra y la pantalla se leía
+   plana. Aquí se establece una escalera de tres peldaños: las tarjetas
+   reposan casi al ras, se levantan al pasar el cursor, y solo los elementos
+   que flotan de verdad —menús, paneles laterales— usan la sombra alta.
+   ───────────────────────────────────────────────────────────── */
+
+@layer components {
+  /* Superficie en reposo: apenas separada del fondo. */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+    transition:
+      box-shadow 240ms cubic-bezier(0.2, 0.7, 0.3, 1),
+      transform 240ms cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  /* Solo las superficies que llevan a alguna parte reaccionan al cursor:
+     una tarjeta informativa que se levanta al pasar por encima promete una
+     interacción que no existe. */
+  a .shadow-soft,
+  button .shadow-soft,
+  a.shadow-soft,
+  button.shadow-soft {
+    cursor: pointer;
+  }
+
+  a:hover > .shadow-soft,
+  button:hover > .shadow-soft,
+  a.shadow-soft:hover,
+  button.shadow-soft:hover {
+    box-shadow: var(--shadow-soft-hover);
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadow-soft {
+    transition: none;
+  }
+  a:hover > .shadow-soft,
+  button:hover > .shadow-soft,
+  a.shadow-soft:hover,
+  button.shadow-soft:hover {
+    transform: none;
+  }
+}

@@ -64,7 +64,7 @@ export function ContextSwitcher() {
   return (
     <nav
       aria-label="Cambiar de actor"
-      className="inline-flex items-center rounded-xl border border-border-hairline bg-bg-card"
+      className="inline-flex items-center rounded-xl border border-border-hairline bg-bg-card shadow-soft"
     >
       {CONTEXTOS.map((c, i) => {
         const esActivo = activo?.role === c.role;

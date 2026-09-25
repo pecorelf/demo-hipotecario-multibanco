@@ -52,7 +52,7 @@ export function PostLoginChoice({
           onClick={onChooseConversational}
           className={cn(
             'group relative text-left p-8',
-            'rounded-xl border border-border-hairline bg-bg-card',
+            'rounded-xl border border-border-hairline bg-bg-card shadow-soft',
             'hover:border-accent hover:shadow-soft',
             'transition-all duration-base ease-out-soft',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',
@@ -60,7 +60,7 @@ export function PostLoginChoice({
         >
           {/* Recommended badge */}
           <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-accent/10 mb-6">
-            <Sparkles size={11} className="text-accent" />
+            <Sparkles size={12} className="text-accent" />
             <span className="text-caption uppercase tracking-[0.14em] font-medium text-accent">
               Recomendado
             </span>
@@ -115,7 +115,7 @@ export function PostLoginChoice({
           onClick={onChooseForm}
           className={cn(
             'group relative text-left p-8',
-            'rounded-xl border border-border-hairline bg-bg-card',
+            'rounded-xl border border-border-hairline bg-bg-card shadow-soft',
             'hover:border-text-primary hover:shadow-soft',
             'transition-all duration-base ease-out-soft',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',

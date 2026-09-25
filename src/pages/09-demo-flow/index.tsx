@@ -491,7 +491,7 @@ function Timer({
             onClick={clearAll}
             className={cn(
               'inline-flex items-center gap-2 px-4 py-2.5 text-body-sm',
-              'rounded-xl border border-border-hairline bg-bg-card text-text-secondary',
+              'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-secondary',
               'hover:border-text-primary hover:text-text-primary transition-all duration-base',
             )}
           >
@@ -718,7 +718,7 @@ function ControlPanel({
           </div>
           {demoMode && (
             <div className="inline-flex items-center gap-2 text-caption text-accent">
-              <Zap size={11} />
+              <Zap size={12} />
               Cache fallback activado
             </div>
           )}
@@ -737,7 +737,7 @@ function ControlPanel({
             onClick={onReset}
             className={cn(
               'w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 text-body-sm font-medium',
-              'rounded-xl border border-border-hairline bg-bg-card text-text-primary',
+              'rounded-xl border border-border-hairline bg-bg-card shadow-soft text-text-primary',
               'hover:border-accent hover:text-accent',
               'transition-all duration-base ease-out-soft',
             )}
@@ -1027,7 +1027,7 @@ function AllViewsCatalog() {
                   type="button"
                   onClick={() => goTo(view)}
                   className={cn(
-                    'group text-left p-4 rounded-xl border border-border-hairline bg-bg-card',
+                    'group text-left p-4 rounded-xl border border-border-hairline bg-bg-card shadow-soft',
                     'hover:border-text-primary hover:shadow-soft',
                     'transition-all duration-base ease-out-soft',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2',
