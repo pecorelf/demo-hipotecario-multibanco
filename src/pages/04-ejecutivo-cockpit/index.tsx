@@ -1,5 +1,6 @@
 import { Reveal, Contador } from '@/components/motion';
 import { Anillo } from '@/components/charts';
+import { AutenticidadDocumento, RelojCompromiso } from '@/components/hipotecario';
 import { useEffect, useMemo, useState } from 'react';
 import {
   AlertCircle,
@@ -231,6 +232,15 @@ export default function EjecutivoCockpit() {
 
         <LiveClientCaptureBanner />
 
+        <Reveal className="mb-8">
+          <RelojCompromiso
+            diasRestantes={esOperacionDestacada ? 2 : 6}
+            diasTotales={14}
+            responsable={esOperacionDestacada ? 'Estudio de títulos' : 'Cliente'}
+            hito="el borrador de escritura"
+          />
+        </Reveal>
+
         <StagePipeline
           cases={myCases}
           selectedId={selectedCase.id}
@@ -241,7 +251,12 @@ export default function EjecutivoCockpit() {
         />
 
         {esOperacionDestacada ? (
-          <RepairControlPanel caseId={selectedCase.id} />
+          <>
+            <RepairControlPanel caseId={selectedCase.id} />
+            <Reveal className="mb-8">
+              <AutenticidadDocumento documento="Liquidación de sueldo · agosto 2026" />
+            </Reveal>
+          </>
         ) : (
           <DocumentosDelCaso
             c={selectedCase}

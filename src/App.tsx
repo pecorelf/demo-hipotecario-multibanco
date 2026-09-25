@@ -13,6 +13,9 @@ import ClienteConfirmado from '@/pages/02-cliente-confirmado';
 import ClienteDocumentos from '@/pages/03-cliente-documentos';
 import EjecutivoCockpit from '@/pages/04-ejecutivo-cockpit';
 import NotFound from '@/pages/_notfound';
+import TraspasoBackOffice from '@/pages/15-traspaso-backoffice';
+import LineaProduccionProyecto from '@/pages/16-proyecto-linea';
+import CoTitularPortal from '@/pages/17-cotitular';
 import EjecutivoAudio from '@/pages/05-ejecutivo-audio';
 import BackofficeDashboard from '@/pages/06-backoffice-dashboard';
 import JefaturaDashboard from '@/pages/06b-jefatura-dashboard';
@@ -74,6 +77,9 @@ export default function App() {
         <Route path="test" element={<TestPage />} />
         <Route path="admin" element={<Admin />} />
 
+        <Route path="ejecutivo/traspaso" element={<TraspasoBackOffice />} />
+        <Route path="inmobiliaria/proyecto" element={<LineaProduccionProyecto />} />
+        <Route path="co-titular" element={<CoTitularPortal />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       </Routes>

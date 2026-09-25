@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import {
+  ArrowRightLeft,
   Building2,
   ChevronRight,
   Compass,
@@ -7,6 +8,7 @@ import {
   Sparkles,
   TrendingUp,
   User,
+  UserPlus,
 } from 'lucide-react';
 import { Kicker, PageTitle } from '@/components/ui';
 import { cn } from '@/lib/cn';
@@ -64,11 +66,36 @@ const CARDS: HubCard[] = [
     icon: <Building2 size={20} />,
   },
   {
+    route: '/ejecutivo/traspaso',
+    kicker: 'Front y back, juntos',
+    title: 'Traspaso al back office',
+    description:
+      'El momento en que la carpeta validada se convierte en registro del banco: compilado, revisión del abogado, inyección campo por campo y bitácora.',
+    icon: <ArrowRightLeft size={20} />,
+    featured: true,
+  },
+  {
+    route: '/inmobiliaria/proyecto',
+    kicker: 'Negocio encadenado',
+    title: 'Línea de producción del proyecto',
+    description:
+      'Cuarenta unidades sobre una misma base de escrituración. La base se valida una vez y se hereda: una causa raíz, no cuarenta problemas.',
+    icon: <Layers size={20} />,
+  },
+  {
+    route: '/co-titular',
+    kicker: 'Actor nuevo',
+    title: 'Portal del co-titular',
+    description:
+      'El cónyuge entra por su propio enlace, se autentica y aporta sus documentos sin pasar por el titular.',
+    icon: <UserPlus size={20} />,
+  },
+  {
     route: '/portal',
-    kicker: 'Las 17 vistas',
+    kicker: 'Las 20 vistas',
     title: 'Catálogo completo',
     description:
-      'Todas las vistas del POC organizadas por rol: cliente, ejecutivo, back office, jefatura, vendedor, inmobiliaria, gobierno tecnológico.',
+      'Todas las vistas de la POC organizadas por rol: cliente, ejecutivo, back office, jefatura, vendedor, inmobiliaria, gobierno tecnológico.',
     icon: <Layers size={20} />,
   },
 ];

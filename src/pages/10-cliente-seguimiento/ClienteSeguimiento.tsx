@@ -1,3 +1,4 @@
+import { RelojCompromiso } from '@/components/hipotecario';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
@@ -135,6 +136,14 @@ export default function ClienteSeguimiento() {
         />
         <ContextField label="Tu ejecutiva" value={ejecutivoName} />
       </section>
+
+      <RelojCompromiso
+        diasRestantes={9}
+        diasTotales={21}
+        responsable="El banco"
+        hito="la firma en notaría"
+        className="mb-8"
+      />
 
       {/* REPAROS ACTIVOS — banner protagonista si los hay */}
       {myActiveRepairs.length > 0 && (

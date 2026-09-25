@@ -1,3 +1,4 @@
+import { RiesgoDocumental } from '@/components/hipotecario';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -189,6 +190,17 @@ export default function ClienteDocumentos() {
           </p>
           <span aria-hidden className="block w-12 h-px bg-border-hairline mt-8" />
         </header>
+
+        {/* Reparo predictivo: qué documentos suelen rebotar en un perfil como este */}
+        <RiesgoDocumental
+          perfil={{
+            independiente: false,
+            sociedadConyugal: true,
+            propiedadEnSucesion: false,
+            segundaVivienda: false,
+          }}
+          className="mt-10"
+        />
 
         <div className="mt-12 space-y-16">
           <BlockRetrieved items={RETRIEVED} />

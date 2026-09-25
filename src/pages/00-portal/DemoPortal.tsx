@@ -124,6 +124,13 @@ const BLOCKS: ViewBlock[] = [
         isNew: true,
       },
       {
+        route: '/ejecutivo/traspaso',
+        title: 'Traspaso al back office',
+        description:
+          'Compilado, revisión del abogado, inyección campo por campo en los sistemas del banco y bitácora de auditoría.',
+        isNew: true,
+      },
+      {
         route: '/ejecutivo/audio',
         title: 'Sesión con cliente · Audio',
         description: 'Sesión en vivo con transcripción y copilot del ejecutivo durante la llamada.',
@@ -152,6 +159,20 @@ const BLOCKS: ViewBlock[] = [
         route: '/inmobiliaria',
         title: 'Corredora inmobiliaria',
         description: 'Portal de la corredora con casos asociados a sus propiedades en venta.',
+      },
+      {
+        route: '/inmobiliaria/proyecto',
+        title: 'Línea de producción del proyecto',
+        description:
+          'Cuarenta unidades sobre una misma base de escrituración: validación heredada y causa raíz de las unidades detenidas.',
+        isNew: true,
+      },
+      {
+        route: '/co-titular',
+        title: 'Portal del co-titular',
+        description:
+          'El cónyuge entra con su propio acceso y aporta sus documentos sin pasar por el titular.',
+        isNew: true,
       },
     ],
   },
