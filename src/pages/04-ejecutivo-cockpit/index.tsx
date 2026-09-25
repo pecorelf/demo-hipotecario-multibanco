@@ -800,10 +800,15 @@ function CaseDetail({
 function SlaStrip({ c }: { c: Case }) {
   // Datos sintéticos coherentes para la demo
   const sla = {
-    daysLeft: c.stage === 'documentos' ? 3 : 7,
+    daysLeft: c.stage === 'recopilacion' ? 3 : 7,
     responsible: 'tú',
-    nextMilestone: c.stage === 'documentos' ? 'tasación independiente' : 'evaluación de comité',
-    etaDays: c.stage === 'documentos' ? 2 : 4,
+    nextMilestone:
+      c.stage === 'recopilacion'
+        ? 'tasación independiente'
+        : c.stage === 'tasacion'
+          ? 'borrador de escritura'
+          : 'siguiente hito del proceso',
+    etaDays: c.stage === 'recopilacion' ? 2 : 4,
   };
 
   return (
@@ -1155,7 +1160,7 @@ function CopilotPanel({
     <aside>
       <Card padding="lg" className="space-y-6 sticky top-6">
         <header>
-          <Kicker>Copiloto IA · al oído</Kicker>
+          <Kicker>Copiloto IA</Kicker>
           <h3 className="text-h3 text-text-primary mt-2">Lo que veo en este caso</h3>
         </header>
 

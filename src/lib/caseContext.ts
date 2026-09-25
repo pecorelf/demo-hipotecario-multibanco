@@ -3,11 +3,21 @@ import type { Case, Communication } from '@/types';
 import type { DerivationRecord } from '@/store/appStore';
 import { formatCLP, formatPct, formatUF, formatDateCL, formatDateTimeCL } from './format';
 
+/**
+ * Descripción de cada etapa para el contexto que recibe el modelo.
+ *
+ * Las claves tienen que ser exactamente las de CaseStage: cuando no lo eran,
+ * el copiloto recibía la etapa como "undefined" y respondía que el caso
+ * estaba mal cargado, en vez de analizarlo.
+ */
 const STAGE_DESC: Record<Case['stage'], string> = {
-  solicitud: 'Evaluación (en revisión inicial)',
-  documentos: 'Documentación (rescate y validación de datos)',
-  evaluacion: 'Estudio de títulos (comité y análisis de riesgo)',
-  resolucion: 'Escritura y firma (cierre y entrega)',
+  solicitud: 'Solicitud (ingreso y evaluación inicial)',
+  cotizacion_inicial: 'Cotización inicial (propuesta de condiciones al cliente)',
+  recopilacion: 'Recopilación de antecedentes (rescate y validación de documentos)',
+  cotizacion_final: 'Cotización final (condiciones definitivas y validación CMF)',
+  tasacion: 'Tasación (informe del tasador y revisión del valor)',
+  escrituracion: 'Escrituración (borrador, notaría y conservador)',
+  activacion: 'Activación (desembolso y entrega de llaves)',
 };
 
 export interface CaseContextInput {
