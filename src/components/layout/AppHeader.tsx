@@ -55,7 +55,7 @@ export function AppHeader() {
           <Link
             to="/portal"
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-caption font-medium text-accent border border-accent/40 hover:bg-accent hover:text-text-inverse transition-colors duration-base shrink-0"
-            title="Todas las vistas del POC"
+            title="Todas las vistas de la POC"
           >
             ☷ Vistas demo
           </Link>

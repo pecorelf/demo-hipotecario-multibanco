@@ -17,9 +17,9 @@ import { cn } from '@/lib/cn';
 import { BRAND } from '@/lib/brand';
 
 /**
- * DemoPortal — catálogo completo del POC.
+ * DemoPortal — catálogo completo de la POC.
  *
- * No es el entry point principal del POC (eso es /cliente/seguimiento).
+ * No es el entry point principal de la POC (eso es /cliente/seguimiento).
  * Esta página se accede desde el botón "Vistas demo" del header, para
  * cuando el visitante quiere navegar libremente entre las 17 vistas.
  *
@@ -47,7 +47,7 @@ const BLOCKS: ViewBlock[] = [
   {
     id: 'principal',
     title: 'Foco principal',
-    subtitle: 'Lo que pidió Carolina: post-aprobación.',
+    subtitle: 'El viaje del comprador desde la aprobación en adelante.',
     icon: <Star size={16} />,
     accent: true,
     views: [
@@ -233,7 +233,7 @@ export default function DemoPortal() {
             {totalViews} vistas en {BLOCKS.length} bloques.
           </PageTitle>
           <p className="text-body text-text-secondary mt-3 leading-relaxed max-w-measure">
-            Estás en el catálogo completo del POC. Para volver a la vista
+            Estás en el catálogo completo de la POC. Para volver a la vista
             principal, usa el botón "Volver" abajo o cierra esta página.
           </p>
         </div>

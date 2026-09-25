@@ -5,7 +5,7 @@ import { create } from 'zustand';
  * Post-approval operation store.
  *
  * Modela el estado del proceso hipotecario UNA VEZ que la hipoteca
- * está aprobada y el cliente entra al portal. El POC, a partir de
+ * está aprobada y el cliente entra al portal. La POC, a partir de
  * aquí, gira en torno a este store.
  *
  * Conceptos clave:

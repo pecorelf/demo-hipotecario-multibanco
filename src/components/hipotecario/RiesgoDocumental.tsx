@@ -104,8 +104,13 @@ export function RiesgoDocumental({
               : 'Tu perfil tiene bajo riesgo de reparos'}
           </h2>
           <p className="text-body-sm text-text-secondary mt-1.5 max-w-measure">
-            Estimamos el riesgo a partir de tu situación, antes de pedirte los papeles.
-            Empieza por los de arriba: son los que más retrasan una operación como la tuya.
+            Antes de pedirte un solo papel, revisamos operaciones parecidas a la tuya y
+            calculamos cuáles suelen ser devueltos. Así te pedimos primero esos, y con la
+            instrucción exacta para que lleguen bien a la primera.
+          </p>
+          <p className="text-caption text-text-muted mt-2 max-w-measure">
+            Hoy el banco descubre un documento mal presentado cuando ya lo revisó alguien,
+            y eso son días. Esto se adelanta a ese momento.
           </p>
         </div>
       </div>
@@ -120,7 +125,7 @@ export function RiesgoDocumental({
                   {it.documento}
                 </span>
                 <span className={cn('text-caption font-medium shrink-0', n.color)}>
-                  Probabilidad {n.etiqueta} · {it.riesgo}%
+                  {it.riesgo}% de ser devuelto
                 </span>
               </div>
 
@@ -137,7 +142,10 @@ export function RiesgoDocumental({
 
               <p className="text-caption text-text-muted mt-1.5">{it.motivo}</p>
               {it.riesgo >= 30 && (
-                <p className="text-body-sm text-text-primary mt-1">{it.instruccion}</p>
+                <p className="text-body-sm text-text-primary mt-1">
+                  <span className="text-text-muted">Qué hacer: </span>
+                  {it.instruccion}
+                </p>
               )}
             </div>
           );

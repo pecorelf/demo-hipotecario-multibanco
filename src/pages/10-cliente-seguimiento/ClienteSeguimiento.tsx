@@ -39,14 +39,14 @@ import {
 import { BRAND } from '@/lib/brand';
 
 /**
- * ClienteSeguimiento — la nueva pantalla principal del POC.
+ * ClienteSeguimiento — la nueva pantalla principal de la POC.
  *
  * Modela el momento POST-APROBACIÓN de la hipoteca: el cliente entra
  * al portal y ve su operación en marcha, con dos tracks paralelos
  * (Estudio de Títulos + Carpeta Comercial), gate de pago de gastos
  * operacionales, y notificaciones con acción.
  *
- * Es lo que Carolina pidió: el foco "desde que la solicitud está
+ * El foco está puesto "desde que la solicitud está
  * aprobada en adelante".
  */
 export default function ClienteSeguimiento() {
@@ -135,6 +135,24 @@ export default function ClienteSeguimiento() {
           icon={propertyType === 'usada' ? <FileText size={14} /> : <Building2 size={14} />}
         />
         <ContextField label="Tu ejecutiva" value={ejecutivoName} />
+      </section>
+
+      {/* El co-titular aporta lo suyo por su propio acceso, sin pasar por el titular */}
+      <section className="rounded-xl border border-border-hairline bg-bg-card px-5 py-4 mb-8 flex flex-wrap items-center justify-between gap-3">
+        <div className="min-w-0">
+          <span className="text-body-sm text-text-primary font-medium">
+            María José, tu co-titular, tiene su propio acceso
+          </span>
+          <p className="text-caption text-text-muted mt-0.5">
+            Ya entregó 3 de sus 5 documentos. No necesitas pedírselos tú.
+          </p>
+        </div>
+        <Link
+          to="/co-titular"
+          className="text-body-sm text-accent hover:underline shrink-0"
+        >
+          Ver su portal →
+        </Link>
       </section>
 
       <RelojCompromiso
@@ -285,14 +303,14 @@ export default function ClienteSeguimiento() {
 
       {/* ACCIONES ADICIONALES — al final de la vista */}
       <section className="mt-16 pt-10 border-t border-border-hairline max-w-4xl">
-        <Kicker tone="muted">El POC incluye más vistas</Kicker>
+        <Kicker tone="muted">La POC incluye más vistas</Kicker>
         <h3 className="text-h3 font-semibold text-text-primary mt-2">
           ¿Quieres explorar otra parte del proceso?
         </h3>
         <p className="text-body text-text-secondary mt-2 leading-relaxed max-w-measure">
           Esta es la vista principal del cliente. Hay vistas complementarias
           del lado del cliente, del banco y un catálogo completo con las 17
-          vistas del POC.
+          vistas de la POC.
         </p>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">

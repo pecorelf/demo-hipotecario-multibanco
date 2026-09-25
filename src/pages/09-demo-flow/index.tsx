@@ -70,7 +70,7 @@ const SCENES: Scene[] = [
       },
     ],
     whatToSay:
-      'Esta es la vista principal del POC, alineada con lo que Carolina pidió: foco desde la aprobación en adelante. El cliente entra al portal y ve su operación en marcha con dos tracks paralelos —Estudio de Títulos y Carpeta Comercial—, un gate de pago de gastos operacionales que bloquea el avance, y notificaciones con acción. El selector arriba cambia entre propiedad Usada (vendedor particular) y Nueva (inmobiliaria), y eso reorganiza los documentos requeridos. Es el corazón del POC.',
+      'Esta es la vista principal de la POC: el foco está desde la aprobación en adelante. El cliente entra al portal y ve su operación en marcha con dos tracks paralelos —Estudio de Títulos y Carpeta Comercial—, un gate de pago de gastos operacionales que bloquea el avance, y notificaciones con acción. El selector arriba cambia entre propiedad Usada (vendedor particular) y Nueva (inmobiliaria), y eso reorganiza los documentos requeridos. Es el corazón de la POC.',
     whatToClick: [
       'Mostrar el selector arriba: cambiar entre Usada y Nueva, ver cómo cambian los docs del estudio de títulos',
       'Click en "Pagar UF 8 ahora" — el track de Estudio de Títulos se desbloquea',
@@ -816,7 +816,7 @@ const VIEW_CATALOG: ViewGroup[] = [
         route: '/cliente/seguimiento',
         title: 'Mi hipoteca · Vista principal',
         description:
-          'Punto de entrada del POC. Hipoteca ya aprobada. Selector Nueva/Usada, gate de pago de gastos operacionales, dos tracks paralelos (Estudio de Títulos + Carpeta Comercial), notificaciones con acción.',
+          'Punto de entrada de la POC. Hipoteca ya aprobada. Selector Nueva/Usada, gate de pago de gastos operacionales, dos tracks paralelos (Estudio de Títulos + Carpeta Comercial), notificaciones con acción.',
         role: 'cliente',
         isNew: true,
       },
@@ -1004,7 +1004,7 @@ function AllViewsCatalog() {
     <section>
       <SectionTitle>Catálogo completo de vistas</SectionTitle>
       <p className="text-body text-text-secondary mt-2 max-w-measure">
-        Acceso directo a cada vista del POC. Útil para revisar una sección específica
+        Acceso directo a cada vista de la POC. Útil para revisar una sección específica
         sin pasar por el guión completo.
       </p>
 

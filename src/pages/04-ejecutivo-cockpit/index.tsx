@@ -222,7 +222,7 @@ export default function EjecutivoCockpit() {
     <>
       <div className="max-w-shell mx-auto px-6 md:px-10 lg:px-16 py-10">
         <header className="mb-8 max-w-3xl">
-          <Kicker>Ejecutivo · Cockpit</Kicker>
+          <Kicker>Ejecutivo · Panel de control</Kicker>
           <PageTitle className="mt-3">Tu pipeline de hoy</PageTitle>
           <p className="text-body-lg text-text-secondary mt-3 max-w-measure">
             {myCases.length} casos en curso. {myCases.filter(caseHasAlert).length}{' '}

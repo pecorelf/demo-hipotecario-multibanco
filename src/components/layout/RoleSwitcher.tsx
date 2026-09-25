@@ -17,8 +17,11 @@ type QuickLink = {
 const QUICK_LINKS: QuickLink[] = [
   { path: '/cliente/seguimiento', label: 'Cliente · Mi solicitud', role: 'cliente' },
   { path: '/cliente/mis-documentos', label: 'Cliente · Mis documentos', role: 'cliente' },
+  { path: '/co-titular', label: 'Co-titular · Portal', role: 'cliente' },
   { path: '/vendedor', label: 'Vendedor · Portal', role: 'cliente' },
   { path: '/inmobiliaria/proyectos', label: 'Inmobiliaria · Proyectos', role: 'inmobiliaria' },
+  { path: '/inmobiliaria/proyecto', label: 'Inmobiliaria · Línea de producción', role: 'inmobiliaria' },
+  { path: '/ejecutivo/traspaso', label: 'Ejecutivo · Traspaso al back office', role: 'ejecutivo' },
 ];
 
 // Map from a path to a custom header label.
