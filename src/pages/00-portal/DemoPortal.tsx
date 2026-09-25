@@ -218,7 +218,7 @@ export default function DemoPortal() {
         </div>
         <button
           onClick={() => navigate('/cliente/seguimiento')}
-          className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium text-text-primary rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
+          className="inline-flex items-center gap-2 px-4 py-2 text-body-sm font-medium text-text-primary rounded-xl border border-border-hairline bg-bg-card hover:border-text-primary transition-colors"
         >
           <X size={14} />
           Volver a vista principal
@@ -250,7 +250,7 @@ export default function DemoPortal() {
       <div className="mt-16 pt-8 border-t border-border-hairline max-w-4xl">
         <p className="text-body-sm text-text-secondary leading-relaxed">
           Esta demostración es exclusivamente ilustrativa. No procesa datos
-          reales ni genera operaciones. Preparada por Nuestra consultora.
+          reales ni genera operaciones. Preparada por Deloitte Digital.
         </p>
       </div>
     </div>

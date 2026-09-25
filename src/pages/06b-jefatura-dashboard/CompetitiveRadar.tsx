@@ -53,7 +53,7 @@ export function CompetitiveRadarSection() {
         del mercado y acciones sugeridas por Aurora.
       </p>
 
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
+      <div className="mt-10 grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_340px] gap-8">
         <RadarChart />
         <PodcastCard />
       </div>
@@ -419,7 +419,7 @@ function PodcastCard() {
   }
 
   return (
-    <Card padding="lg" className="space-y-5 h-full">
+    <Card padding="lg" className="space-y-5 h-full min-w-0 !p-6 xl:!p-10">
       <div className="flex items-start gap-3">
         <span
           aria-hidden

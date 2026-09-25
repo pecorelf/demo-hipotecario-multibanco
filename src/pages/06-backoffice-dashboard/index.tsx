@@ -219,16 +219,16 @@ export default function BackOfficeDashboard() {
 
 function DashboardHeader({ snapshot }: { snapshot: DashboardSnapshot }) {
   return (
-    <header className="grid grid-cols-12 gap-10">
-      <div className="col-span-12 lg:col-span-7">
+    <header className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <div className="lg:col-span-7 min-w-0">
         <Kicker>Back office · Operaciones</Kicker>
-        <PageTitle className="mt-3">Estado del proceso hipotecario, hoy</PageTitle>
+        <PageTitle className="mt-3 break-words">Estado del proceso hipotecario, hoy</PageTitle>
         <p className="text-body-lg text-text-secondary mt-3 max-w-measure">
           Vista operativa consolidada: cuellos de botella por fase, razones de rechazo
           del mes, casos derivados por ejecutivos y productividad del equipo.
         </p>
       </div>
-      <div className="col-span-12 lg:col-span-5">
+      <div className="lg:col-span-5 min-w-0">
         <CopilotInsightCard snapshot={snapshot} />
       </div>
     </header>
@@ -572,8 +572,8 @@ function TeamProductivityCard() {
                   {m.name}
                 </span>
               </div>
-              <div className="mt-3 grid grid-cols-12 gap-3 items-center">
-                <div className="col-span-7">
+              <div className="mt-3 grid grid-cols-12 gap-3 items-center min-w-0">
+                <div className="col-span-7 min-w-0">
                   <div className="flex items-baseline gap-3">
                     <span className="text-caption text-text-muted shrink-0 w-20">
                       Cerrados

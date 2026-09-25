@@ -77,7 +77,7 @@ export default {
         'slow': '300ms',
       },
       maxWidth: {
-        'measure': '68ch',
+        'measure': 'min(68ch, 100%)',
         'shell': '1280px',
       },
       keyframes: {

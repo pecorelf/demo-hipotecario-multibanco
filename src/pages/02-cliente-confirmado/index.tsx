@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
@@ -63,11 +64,11 @@ function SendingView({ isCustom }: { isCustom: boolean }) {
       </span>
       <div className="space-y-3">
         <Kicker tone="muted">Procesando</Kicker>
-        <h2 className="text-h1 text-text-primary leading-tight">
+        <h1 className="text-h1 text-text-primary leading-tight">
           {isCustom
             ? 'Enviando tu solicitud de simulación personalizada…'
             : 'Registrando tu selección y abriendo el caso…'}
-        </h2>
+        </h1>
       </div>
     </div>
   );
@@ -103,13 +104,13 @@ function DoneView({
           </Kicker>
           <PageTitle className="mt-3">
             {isCustom
-              ? 'Listo, Francisco. Tu solicitud llegó al equipo.'
-              : 'Listo, Francisco. Tu caso ya está en evaluación.'}
+              ? `Listo, ${BRAND.buyerName.split(' ')[0]}. Tu solicitud llegó al equipo.`
+              : `Listo, ${BRAND.buyerName.split(' ')[0]}. Tu caso ya está en evaluación.`}
           </PageTitle>
           <p className="text-body-lg text-text-secondary mt-3 max-w-measure">
             {isCustom
-              ? 'Camila Reinoso, tu ejecutiva, te contactará en las próximas 24 horas para coordinar una llamada de 15 minutos y armar tu simulación a medida.'
-              : 'Camila Reinoso, tu ejecutiva, te contactará en las próximas 24 horas para confirmar firmas y coordinar la tasación.'}
+              ? `${BRAND.ejecutivoName}, tu ejecutiva, te contactará en las próximas 24 horas para coordinar una llamada de 15 minutos y armar tu simulación a medida.`
+              : `${BRAND.ejecutivoName}, tu ejecutiva, te contactará en las próximas 24 horas para confirmar firmas y coordinar la tasación.`}
           </p>
         </div>
       </header>

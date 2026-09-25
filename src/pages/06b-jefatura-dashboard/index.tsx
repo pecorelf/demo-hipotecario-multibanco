@@ -221,7 +221,7 @@ function Header({
         <PageTitle className="mt-3">Salud del proceso hipotecario</PageTitle>
         <p className="text-body-lg text-text-secondary mt-3 max-w-measure">
           Vista consolidada del trimestre. KPIs ejecutivos arriba, equipo en el
-          medio, salud del proceso abajo. Tenés a Aurora a la derecha para
+          medio, salud del proceso abajo. Tienes a Aurora a la derecha para
           consultas sobre los datos.
         </p>
       </div>
@@ -550,7 +550,7 @@ function ProcessHealthSection() {
   return (
     <section>
       <SectionTitle rule={false}>Salud del proceso</SectionTitle>
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="mt-8 grid grid-cols-1 xl:grid-cols-2 gap-8">
         <Card padding="lg">
           <div className="flex items-baseline justify-between mb-5">
             <Kicker tone="muted">Cuellos de botella</Kicker>

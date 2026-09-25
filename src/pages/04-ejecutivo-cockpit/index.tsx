@@ -369,7 +369,7 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
               return (
                 <div
                   key={stage}
-                  className={`grid grid-cols-[150px_minmax(0,1fr)_auto] gap-4 items-center px-3 py-3 transition-colors ${
+                  className={`grid grid-cols-1 sm:grid-cols-[150px_minmax(0,1fr)_auto] gap-2 sm:gap-4 items-start sm:items-center px-3 py-3 transition-colors ${
                     activa ? 'bg-accent-soft' : 'hover:bg-bg-page'
                   } ${vacia ? 'opacity-40' : ''}`}
                 >
@@ -377,7 +377,7 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
                     {STAGE_LABEL_SHORT[stage]}
                   </span>
 
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex flex-wrap items-center gap-3 min-w-0">
                     <div className="h-2.5 bg-bg-sunken relative overflow-hidden flex-1 min-w-[80px]">
                       <div
                         className="h-full bg-accent"
@@ -399,7 +399,7 @@ function StagePipeline({ cases, selectedId, onSelect }: StagePipelineProps) {
                       )}
                     </div>
 
-                    <div className="flex items-center gap-1.5 flex-none">
+                    <div className="flex flex-wrap items-center gap-1.5 min-w-0">
                       {casos.slice(0, 5).map((c) => {
                         const alerta = caseHasAlert(c);
                         const activo = c.id === selectedId;

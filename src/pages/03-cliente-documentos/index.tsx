@@ -67,9 +67,9 @@ const RETRIEVED: RetrievedItem[] = [
     id: 'r2',
     label: '3 últimas liquidaciones de sueldo (renta fija)',
     value: '$2.450.000 líquidos en promedio',
-    source: 'Empleador · Nuestra consultora Consultoría Limitada',
+    source: 'Empleador · Servicios Andinos Limitada',
     detail:
-      `Promedio últimos 3 meses: $2.450.000 líquidos. Depósito en Cuenta Corriente ${BRAND.shortName} #4567892. Empleador Nuestra consultora Consultoría Limitada desde nov 2021 (55 meses de antigüedad). Sueldo estable, sin variabilidad significativa.`,
+      `Promedio últimos 3 meses: $2.450.000 líquidos. Depósito en Cuenta Corriente ${BRAND.shortName} #4567892. Empleador Servicios Andinos Limitada desde nov 2021 (55 meses de antigüedad). Sueldo estable, sin variabilidad significativa.`,
   },
   {
     id: 'r3',

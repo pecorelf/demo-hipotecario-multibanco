@@ -32,7 +32,7 @@ export function applyTheme(t: BankTheme) {
   r.style.setProperty('--color-border-focus', t.accent);
   r.style.setProperty('--color-text-accent', t.accent);
   r.style.setProperty('--font-brand', t.fontFamily);
-  document.title = `Tus Nuevas Llaves - ${t.shortName}`;
+  document.title = `${t.programName} · ${t.shortName}`;
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

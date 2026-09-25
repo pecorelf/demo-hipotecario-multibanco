@@ -12,6 +12,7 @@ import ClienteSimulacion from '@/pages/02-cliente-simulacion';
 import ClienteConfirmado from '@/pages/02-cliente-confirmado';
 import ClienteDocumentos from '@/pages/03-cliente-documentos';
 import EjecutivoCockpit from '@/pages/04-ejecutivo-cockpit';
+import NotFound from '@/pages/_notfound';
 import EjecutivoAudio from '@/pages/05-ejecutivo-audio';
 import BackofficeDashboard from '@/pages/06-backoffice-dashboard';
 import JefaturaDashboard from '@/pages/06b-jefatura-dashboard';
@@ -73,7 +74,7 @@ export default function App() {
         <Route path="test" element={<TestPage />} />
         <Route path="admin" element={<Admin />} />
 
-        <Route path="*" element={<Navigate to="/cliente/seguimiento" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
       </Routes>
     </PasswordGate>

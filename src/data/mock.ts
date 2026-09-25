@@ -544,7 +544,7 @@ export const communications: Communication[] = [
     caseId: 'HIP-2026-0042',
     kind: 'email',
     date: '2026-08-18T09:25:00-04:00',
-    from: `${BRAND.shortName} · Sistema Tus nuevas Llaves`,
+    from: `${BRAND.shortName} · ${BRAND.programName}`,
     subject: 'Recibimos tu solicitud hipotecaria',
     summary:
       'Caso #HIP-2026-0042 creado correctamente. Verificación de identidad completada. Te contactaremos en 24-48 horas hábiles.',
@@ -573,7 +573,7 @@ export const communications: Communication[] = [
     caseId: 'HIP-2026-0042',
     kind: 'email',
     date: '2026-09-14T16:48:00-04:00',
-    from: 'Tus nuevas Llaves · Sistema',
+    from: `${BRAND.programName} · Sistema`,
     subject: 'Observación sobre ingresos de tu co-titular',
     summary:
       'Detectamos variabilidad en los ingresos declarados por María José. Camila te contactará para conversar opciones.',

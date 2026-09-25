@@ -108,7 +108,7 @@ function LoginScreen({ onSuccess }: { onSuccess: () => void }) {
           </h1>
           <p className="text-base text-[#666] mt-3 leading-relaxed">
             Demostración del rediseño del proceso hipotecario {BRAND.name},
-            preparado por Nuestra consultora.
+            preparado por Deloitte Digital.
           </p>
         </div>
 
@@ -164,7 +164,7 @@ function LoginScreen({ onSuccess }: { onSuccess: () => void }) {
 
         <p className="mt-10 text-xs text-[#888] leading-relaxed">
           Si no recuerdas la contraseña, contacta al equipo de la demostración
-          en Nuestra consultora.
+          en Deloitte Digital.
         </p>
       </div>
     </div>

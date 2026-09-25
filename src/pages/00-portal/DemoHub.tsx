@@ -114,7 +114,7 @@ export default function DemoHub() {
       <div className="mt-20 pt-8 border-t border-border-hairline max-w-3xl">
         <p className="text-body-sm text-text-secondary leading-relaxed">
           Esta demostración es exclusivamente ilustrativa. No procesa datos
-          reales ni genera operaciones. Preparada por Nuestra consultora.
+          reales ni genera operaciones. Preparada por Deloitte Digital.
         </p>
       </div>
     </div>

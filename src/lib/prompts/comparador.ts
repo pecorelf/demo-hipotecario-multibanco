@@ -24,7 +24,7 @@ DETERMINACIÓN DEL GANADOR POR CATEGORÍA:
 - nominalRate: el banco con menor tasa nominal.
 - effectiveRate: el banco con menor CAE.
 - flexibility: el banco con mejores condiciones combinadas de prepago + portabilidad + ajuste.
-- overall: tu juicio honesto, basado en CAE + flexibilidad + costos accesorios. Si dos están muy cerca, podés marcar 'tie' y explicar en la conclusión.
+- overall: tu juicio honesto, basado en CAE + flexibilidad + costos accesorios. Si dos están muy cerca, puedes marcar 'tie' y explicar en la conclusión.
 
 FORMATO DE RESPUESTA (estricto):
 Devuelve EXCLUSIVAMENTE un objeto JSON válido. Sin texto antes ni después, sin markdown, sin comillas triples. La estructura debe ser:

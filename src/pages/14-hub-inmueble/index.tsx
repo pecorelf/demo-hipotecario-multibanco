@@ -534,7 +534,7 @@ export default function HubInmueble() {
                 </div>
                 <div className="text-caption text-text-secondary mt-0.5 leading-relaxed">
                   {isEjecutivo
-                    ? 'El cliente tiene certificados vencidos. Podés gestionar la reemisión por él.'
+                    ? 'El cliente tiene certificados vencidos. Puedes gestionar la reemisión por él.'
                     : 'Si los necesitás para una nueva operación o un trámite, podemos solicitarlos por ti directamente en el organismo emisor.'}
                 </div>
               </div>

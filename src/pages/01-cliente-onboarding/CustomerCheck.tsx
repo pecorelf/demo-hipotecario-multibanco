@@ -27,7 +27,7 @@ export function CustomerCheck() {
   return (
     <div className="max-w-shell mx-auto px-6 md:px-10 lg:px-16 py-16 lg:py-24">
       <header className="max-w-3xl">
-        <Kicker tone="accent">Tus nuevas Llaves · {BRAND.shortName}</Kicker>
+        <Kicker tone="accent">{BRAND.programName} · {BRAND.shortName}</Kicker>
         <PageTitle size="display-md" className="mt-3">
           Comencemos con una pregunta simple.
         </PageTitle>

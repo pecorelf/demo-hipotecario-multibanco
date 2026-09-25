@@ -23,6 +23,8 @@ export interface BankTheme {
   logoUrl: string;
 
   assistantName: string;
+  /** Nombre del programa hipotecario tal como lo verá el cliente. */
+  programName: string;
 
   buyerName: string;
   sellerName: string;
@@ -40,6 +42,10 @@ type Base = Omit<BankTheme, 'slug' | 'name' | 'shortName' | 'legalName' | 'accen
 
 const BASE: Base = {
   onAccent: '#FFFFFF',
+  // Nombre comercial del programa. "Tus nuevas Llaves" era el de una
+  // institución en particular y aparecía en todas las vistas de todas las
+  // marcas; aquí queda como valor por defecto configurable desde /admin.
+  programName: 'Tu Nuevo Hogar',
   logoUrl: '',
   buyerName: 'Andrés Fuenzalida',
   sellerName: 'Patricia Soto Miranda',

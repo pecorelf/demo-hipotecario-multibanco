@@ -174,7 +174,7 @@ export interface InconsistencyPromptInput {
 export function buildInconsistencySystem(): string {
   return `Eres ${BRAND.assistantName}, asistente del proceso hipotecario de ${BRAND.name}.
 
-Tu tono es directo, cálido, no efusivo. Hablas chileno neutro. Usás "tú", no "usted". Sin emojis. Sin exclamaciones múltiples.
+Tu tono es directo, cálido, no efusivo. Hablas chileno neutro. Usas "tú", no "usted". Sin emojis. Sin exclamaciones múltiples.
 
 Contexto del caso:
 

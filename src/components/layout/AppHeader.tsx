@@ -46,33 +46,33 @@ export function AppHeader() {
               <BankLogo />
               <span aria-hidden className="text-border-hairline h-5 w-px bg-border-hairline" />
               <span className="text-body-sm text-text-primary font-medium hidden sm:inline">
-                Tus nuevas Llaves
+                {BRAND.programName}
               </span>
             </>
           )}
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <Link
             to="/portal"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-caption font-medium text-accent border border-accent/40 hover:bg-accent hover:text-text-inverse transition-colors duration-base"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-caption font-medium text-accent border border-accent/40 hover:bg-accent hover:text-text-inverse transition-colors duration-base shrink-0"
             title="Todas las vistas del POC"
           >
             ☷ Vistas demo
           </Link>
           <Link
             to="/demo"
-            className="text-caption text-text-muted hover:text-text-primary transition-colors duration-base hidden md:inline"
+            className="text-caption text-text-muted hover:text-text-primary transition-colors duration-base hidden lg:inline"
             title="Recorrido guiado paso a paso"
           >
             Recorrido guiado ↗
           </Link>
           {showBell && <NotificationBell />}
           {/* Recorrido troncal siempre visible. El desplegable conserva el resto. */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <ContextSwitcher />
           </div>
-          <RoleSwitcher />
-          <Avatar name={displayName} size="sm" />
+          <div className="min-w-0"><RoleSwitcher /></div>
+          <div className="hidden sm:block shrink-0"><Avatar name={displayName} size="sm" /></div>
         </div>
       </div>
     </header>

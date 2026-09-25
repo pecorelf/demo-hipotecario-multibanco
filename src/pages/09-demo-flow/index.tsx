@@ -103,7 +103,7 @@ const SCENES: Scene[] = [
       },
     ],
     whatToSay:
-      `Hoy un cliente abre la app del banco y se encuentra con un formulario de 60 campos. La promesa de Tus nuevas Llaves es otra: el cliente conversa con ${BRAND.assistantName}, una agente IA, en lenguaje natural. ${BRAND.assistantName} ya sabe quién es —porque el banco tiene esos datos— y sólo pide lo que falta. La sensación es de tener una asesora real, no un formulario disfrazado.`,
+      `Hoy un cliente abre la app del banco y se encuentra con un formulario de 60 campos. La promesa de ${BRAND.programName} es otra: el cliente conversa con ${BRAND.assistantName}, una agente IA, en lenguaje natural. ${BRAND.assistantName} ya sabe quién es —porque el banco tiene esos datos— y sólo pide lo que falta. La sensación es de tener una asesora real, no un formulario disfrazado.`,
     whatToClick: [
       'Click en el chip "Pareja casa" o escribe: "Estamos buscando comprar nuestra primera casa con mi pareja"',
       `Espera el streaming de ${BRAND.assistantName} (~6s — o cache si demo mode)`,
@@ -267,7 +267,7 @@ const SCENES: Scene[] = [
       },
     ],
     whatToSay:
-      'Hasta ahora vimos al cliente, al ejecutivo, al back office. Pero el ecosistema hipotecario incluye a las corredoras inmobiliarias —que son nuestra puerta de entrada al cliente nuevo. Tus nuevas Llaves se abre a ellas como API. La corredora ingresa los datos del comprador interesado, en segundos tiene una pre-aprobación. Y para cerrar, Claude le redacta el email que la corredora envía al cliente.',
+      `Hasta ahora vimos al cliente, al ejecutivo, al back office. Pero el ecosistema hipotecario incluye a las corredoras inmobiliarias —que son nuestra puerta de entrada al cliente nuevo. ${BRAND.programName} se abre a ellas como API. La corredora ingresa los datos del comprador interesado, en segundos tiene una pre-aprobación. Y para cerrar, Claude le redacta el email que la corredora envía al cliente.`,
     whatToClick: [
       'Form pre-llenado con datos de Antonia',
       'Click "Solicitar pre-aprobación"',

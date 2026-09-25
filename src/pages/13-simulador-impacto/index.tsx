@@ -37,7 +37,7 @@ import { BRAND } from '@/lib/brand';
 // Fuente de los volúmenes: Valentina Ossa ({BRAND.shortName}), reunión
 // del 09/06/2026.
 // Fuente de ticket promedio y spread: estimaciones validadas con
-// Andrés Fuenzalida (Nuestra consultora) para hipotecas {BRAND.name}.
+// Andrés Fuenzalida (Deloitte Digital) para hipotecas {BRAND.name}.
 
 const APPROVALS_PER_MONTH = 8_000;
 const BASELINE_CURSED_PER_MONTH = 1_000;
@@ -101,7 +101,7 @@ export default function SimuladorImpacto() {
     const spreadAnnualCLP = spreadYear1MonthlyCLP * 12;
     const npvTotalCLP = spreadAnnualCLP * NPV_FACTOR;
 
-    // ROI vs inversión estimada Nuestra consultora (CLP 500MM)
+    // ROI vs inversión estimada del programa (CLP 500MM)
     const deloitteInvestmentCLP = 500_000_000;
     const roi = npvTotalCLP / deloitteInvestmentCLP;
 
@@ -163,7 +163,8 @@ export default function SimuladorImpacto() {
       {/* BLOQUE 1 — Hero Statement */}
       <section className="border-y border-border-hairline py-10 lg:py-14">
         <Kicker>Caso de Negocio · Rediseño Hipotecario {BRAND.shortName}</Kicker>
-        <div className="mt-4 flex items-baseline gap-4 lg:gap-8 flex-wrap">
+        <PageTitle className="mt-3">Simulador de impacto</PageTitle>
+        <div className="mt-6 flex items-baseline gap-4 lg:gap-8 flex-wrap">
           <NumberHero value="8.000" label="aprobaciones / mes" />
           <ArrowDown size={28} className="text-text-muted hidden md:block" />
           <span className="text-text-muted text-h2 hidden lg:inline">→</span>
@@ -175,8 +176,8 @@ export default function SimuladorImpacto() {
             El 87,5% de las aprobaciones no termina en hipoteca cursada.
           </div>
           <div className="text-body text-text-secondary mt-2 leading-relaxed">
-            El rediseño ataca esa brecha. Mové las palancas para ver el
-            impacto económico proyectado de Nuestra consultora sobre el funnel.
+            El rediseño ataca esa brecha. Mueve las palancas para ver el
+            impacto económico proyectado del rediseño sobre el funnel.
           </div>
         </div>
       </section>
@@ -211,7 +212,7 @@ export default function SimuladorImpacto() {
             Palancas de mejora
           </h2>
           <p className="text-body-sm text-text-secondary mb-6">
-            Cada palanca representa una capacidad del rediseño Nuestra consultora.
+            Cada palanca representa una capacidad del rediseño.
           </p>
           <div className="space-y-7">
             <LeverSlider
@@ -282,7 +283,7 @@ export default function SimuladorImpacto() {
             </div>
             <div className="text-h3 font-semibold text-text-primary mt-1">
               ROI de {model.roi.toFixed(1)}x sobre la inversión estimada de
-              Nuestra consultora (CLP 500 MM)
+              Inversión del programa (CLP 500 MM)
             </div>
           </div>
         </div>
@@ -509,7 +510,7 @@ function BeforeAfter({ label, before, after }: { label: string; before: string; 
           </div>
         </div>
         <div>
-          <div className="text-caption text-accent font-medium">Con Nuestra consultora</div>
+          <div className="text-caption text-accent font-medium">Con el rediseño</div>
           <div className="text-body text-text-primary font-semibold">{after}</div>
         </div>
       </div>

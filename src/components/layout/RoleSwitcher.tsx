@@ -83,8 +83,8 @@ export function RoleSwitcher() {
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className="text-kicker uppercase text-text-muted">Rol</span>
-        <span className="font-medium">{headerLabel}</span>
+        <span className="text-kicker uppercase text-text-muted hidden sm:inline">Rol</span>
+        <span className="font-medium truncate max-w-[130px] md:max-w-[200px] xl:max-w-none">{headerLabel}</span>
         <ChevronDown
           size={14}
           className={cn(
