@@ -25,6 +25,15 @@ interface HubCard {
 
 const CARDS: HubCard[] = [
   {
+    route: '/entendimiento',
+    kicker: 'Antes de la demostración',
+    title: 'Nuestro entendimiento del desafío',
+    description:
+      'Cómo repensamos el flujo hipotecario de punta a punta: el punto de partida, dónde está el cuello de botella y qué proponemos en el front y en el back office.',
+    icon: <Compass size={20} />,
+    featured: true,
+  },
+  {
     route: '/cliente/seguimiento',
     kicker: 'Vista principal',
     title: 'Cliente · Mi hipoteca',

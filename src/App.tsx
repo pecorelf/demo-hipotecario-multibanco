@@ -16,6 +16,7 @@ import NotFound from '@/pages/_notfound';
 import TraspasoBackOffice from '@/pages/15-traspaso-backoffice';
 import LineaProduccionProyecto from '@/pages/16-proyecto-linea';
 import CoTitularPortal from '@/pages/17-cotitular';
+import EntendimientoDesafio from '@/pages/18-entendimiento';
 import EjecutivoAudio from '@/pages/05-ejecutivo-audio';
 import BackofficeDashboard from '@/pages/06-backoffice-dashboard';
 import JefaturaDashboard from '@/pages/06b-jefatura-dashboard';
@@ -80,6 +81,7 @@ export default function App() {
         <Route path="ejecutivo/traspaso" element={<TraspasoBackOffice />} />
         <Route path="inmobiliaria/proyecto" element={<LineaProduccionProyecto />} />
         <Route path="co-titular" element={<CoTitularPortal />} />
+        <Route path="entendimiento" element={<EntendimientoDesafio />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       </Routes>
