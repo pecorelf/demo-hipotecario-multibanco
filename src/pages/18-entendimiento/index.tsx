@@ -13,6 +13,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
+  Check,
   Cpu,
   Workflow,
   Building2,
@@ -37,10 +38,12 @@ import {
   ETAPAS_VISIBLES,
   FRICCIONES,
   FRONT,
+  FUENTE,
   PALANCAS,
   PASOS_OCULTOS,
   PRINCIPIOS,
   TAREAS_EJECUTIVO,
+  STACK,
   TECNOLOGIA,
   TIPOLOGIAS,
   TRANSVERSAL,
@@ -171,9 +174,9 @@ export default function EntendimientoDesafio() {
         <div className="h-full flex flex-col justify-center">
           <Encabezado
             kicker="Lo que rodea a una hipoteca"
-            titulo="Ocho fricciones que el cliente vive y el banco no siempre ve"
+            titulo="Nueve fricciones que el cliente vive y el banco no siempre ve"
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-7 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-7 mt-10">
             {FRICCIONES.map((d) => (
               <div key={d.titulo} className="border-t-2 border-accent pt-4">
                 <IconChip tamano="sm">{d.icono}</IconChip>
@@ -182,6 +185,7 @@ export default function EntendimientoDesafio() {
               </div>
             ))}
           </div>
+          <p className="text-caption text-text-muted mt-8 max-w-measure">{FUENTE}</p>
         </div>
       ),
     },
@@ -273,7 +277,7 @@ export default function EntendimientoDesafio() {
           </div>
           <p className="text-caption text-white/55 mt-5 max-w-measure">
             Distribución referencial del tiempo de un ejecutivo hipotecario. Vender aparece
-            último en la lista.
+            último en la lista. {FUENTE}
           </p>
         </div>
       ),
@@ -289,15 +293,42 @@ export default function EntendimientoDesafio() {
             bajada="El proceso está diseñado como si todas las operaciones fueran iguales. Cada tipología exige documentos distintos, involucra actores distintos y tiene puntos de falla distintos. Cuando el camino es el mismo para todas, el caso raro se resuelve por correo y criterio personal."
             icono={<Layers size={20} />}
           />
-          <div className="mt-10 flex flex-wrap gap-2">
-            {TIPOLOGIAS.map((t) => (
-              <span key={t} className="inline-flex items-center px-3.5 py-2 rounded-full border border-border-hairline bg-bg-card text-body-sm text-text-secondary">
-                {t}
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10">
+            <div className="flex flex-wrap gap-2 content-start">
+              {TIPOLOGIAS.map((t) => (
+                <span key={t} className="inline-flex items-center px-3.5 py-2 rounded-full border border-border-hairline bg-bg-card text-body-sm text-text-secondary">
+                  {t}
+                </span>
+              ))}
+              <span className="inline-flex items-center px-3.5 py-2 rounded-full bg-accent-soft text-accent text-body-sm font-medium">
+                y las combinaciones entre ellas
               </span>
-            ))}
-            <span className="inline-flex items-center px-3.5 py-2 rounded-full bg-accent-soft text-accent text-body-sm font-medium">
-              y las combinaciones entre ellas
-            </span>
+            </div>
+
+            <div className="rounded-xl border border-border-hairline bg-bg-card p-6">
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Qué cambia de una tipología a otra
+              </span>
+              <div className="mt-4 space-y-3.5">
+                {[
+                  { q: 'Los documentos exigidos', e: 'Una sucesión pide posesión efectiva; un independiente, dos años de renta.' },
+                  { q: 'Los actores que intervienen', e: 'En vivienda nueva entra la inmobiliaria; en usada, el vendedor particular.' },
+                  { q: 'El orden de las validaciones', e: 'Con proyecto financiado, el título del proyecto ya está estudiado.' },
+                  { q: 'Los puntos de falla', e: 'La subrogación falla en el alzamiento; la sucesión, en la inscripción.' },
+                ].map((x) => (
+                  <div key={x.q} className="flex gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <div className="min-w-0">
+                      <span className="text-body-sm font-medium text-text-primary">{x.q}</span>
+                      <p className="text-caption text-text-muted mt-0.5">{x.e}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-caption text-text-secondary mt-5 pt-4 border-t border-border-hairline">
+                Con un solo recorrido, la diferencia la absorbe una persona con su criterio.
+              </p>
+            </div>
           </div>
         </div>
       ),
@@ -314,13 +345,37 @@ export default function EntendimientoDesafio() {
               bajada="Los documentos, los reparos, las aclaraciones y las coordinaciones viajan por correo. Funciona, y por eso no se cuestiona. El costo aparece después."
               icono={<Mail size={20} />}
             />
-            <div className="space-y-4">
-              {COSTOS_CORREO.map((t) => (
-                <div key={t} className="flex gap-3 items-start">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-status-warning shrink-0" />
-                  <p className="text-body text-text-secondary">{t}</p>
+            <div>
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                El costo que no se ve
+              </span>
+              <div className="mt-4 space-y-3.5">
+                {COSTOS_CORREO.map((t) => (
+                  <div key={t} className="flex gap-3 items-start">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-status-warning shrink-0" />
+                    <p className="text-body-sm text-text-secondary">{t}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-7 rounded-xl bg-accent-soft p-5">
+                <span className="text-caption uppercase tracking-[0.14em] text-accent">
+                  Lo que reemplaza al correo
+                </span>
+                <div className="mt-3 space-y-2.5">
+                  {[
+                    'Una operación con estado propio, que cualquiera consulta sin preguntar.',
+                    'Cada documento asociado a la operación, no a un mensaje.',
+                    'Cada reparo con fecha de emisión, responsable y reloj corriendo.',
+                    'El mismo hecho contado distinto a cada actor, en su lenguaje.',
+                  ].map((t) => (
+                    <div key={t} className="flex gap-3 items-start">
+                      <Check size={14} className="text-accent mt-0.5 shrink-0" />
+                      <p className="text-body-sm text-text-primary">{t}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -367,7 +422,7 @@ export default function EntendimientoDesafio() {
           </div>
           <p className="text-body-sm text-text-secondary mt-8 pl-4 border-l-2 border-accent max-w-measure">
             Hoy el proceso está diseñado desde la perspectiva del banco, y el co-titular
-            ni siquiera existe como usuario: entrega lo suyo a través del titular. La
+            ni siquiera existe como usuario: participa en el proceso a través del titular. La
             primera etapa del programa se dedica a rediseñar el viaje de cada uno de estos
             actores.
           </p>
@@ -395,9 +450,14 @@ export default function EntendimientoDesafio() {
               </div>
             ))}
           </div>
-          <div className="mt-8 rounded-lg bg-accent px-6 py-4 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <span className="text-kicker uppercase text-text-inverse">Adaptabilidad tecnológica</span>
-            <span className="text-body-sm text-text-inverse/90">
+          {/* Sobre negro, una franja del color de marca puede dejar su texto
+              ilegible si ese color es oscuro. Se usa una superficie clara con
+              texto oscuro, que funciona con cualquier institución. */}
+          <div className="mt-8 rounded-lg bg-white px-6 py-4 flex flex-wrap items-center gap-x-6 gap-y-2 border-l-4 border-accent">
+            <span className="text-kicker uppercase text-text-primary shrink-0">
+              Adaptabilidad tecnológica
+            </span>
+            <span className="text-body-sm text-text-secondary">
               Integración flexible con los sistemas actuales y futuros del banco, sin
               rediseñar los procesos cada vez que cambia la tecnología.
             </span>
@@ -553,15 +613,57 @@ export default function EntendimientoDesafio() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-xl bg-bg-card border border-border-hairline px-6 py-5 flex flex-wrap items-center gap-x-8 gap-y-3">
-            <span className="text-caption uppercase tracking-[0.14em] text-text-muted shrink-0">
-              Lo que esto evita
-            </span>
-            <span className="text-body-sm text-text-secondary">
-              Quedar atado al modelo de un proveedor · Migrar de nube para poder empezar ·
-              Rehacer los procesos cada vez que cambia la tecnología · Sacar datos del
-              perímetro del banco
-            </span>
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6">
+            <div className="rounded-xl bg-bg-card border border-border-hairline px-6 py-5">
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Sobre lo que ya operamos
+              </span>
+              <div className="mt-4 space-y-3">
+                {[
+                  { grupo: 'Nube', items: STACK.nube },
+                  { grupo: 'Plataformas', items: STACK.plataformas },
+                  { grupo: 'Desarrollo', items: STACK.desarrollo },
+                  { grupo: 'Modelos', items: STACK.modelos },
+                ].map((g) => (
+                  <div key={g.grupo} className="grid grid-cols-[100px_1fr] gap-3 items-center">
+                    <span className="text-caption text-text-muted">{g.grupo}</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {g.items.map((i) => (
+                        <span
+                          key={i}
+                          className="inline-flex items-center px-2.5 py-1 rounded-md border border-border-hairline text-caption text-text-secondary"
+                        >
+                          {i}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-caption text-text-muted mt-4 pt-3 border-t border-border-hairline">
+                La lista es ilustrativa. El punto es que la elección la hace el banco, y
+                cambiarla después no obliga a rehacer el proceso.
+              </p>
+            </div>
+
+            <div className="rounded-xl bg-bg-sunken px-6 py-5">
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Lo que esto evita
+              </span>
+              <div className="mt-3 space-y-2.5">
+                {[
+                  'Quedar atado al modelo de un proveedor',
+                  'Migrar de nube para poder empezar',
+                  'Rehacer los procesos cuando cambia la tecnología',
+                  'Sacar datos del perímetro del banco',
+                ].map((t) => (
+                  <div key={t} className="flex gap-2.5 items-start">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-text-muted shrink-0" />
+                    <p className="text-body-sm text-text-secondary">{t}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       ),
@@ -573,8 +675,8 @@ export default function EntendimientoDesafio() {
         <div className="h-full flex flex-col justify-center">
           <Encabezado
             kicker="Lo que visionamos"
-            titulo="Cuatro capacidades que hoy no existen en el proceso"
-            bajada="Piezas nuevas, que atacan directamente las fricciones del comienzo."
+            titulo="Procesos que parecen obvios cuando se cuentan, y que hoy nadie resuelve"
+            bajada="Sin ser exhaustivos, incorporamos al rediseño un conjunto de procesos que, contados en voz alta, parecen triviales. Ninguno está abordado hoy, y cada uno explica días de demora."
             icono={<Inbox size={20} />}
           />
           <div className="mt-8 space-y-px bg-border-hairline rounded-xl overflow-hidden border border-border-hairline">

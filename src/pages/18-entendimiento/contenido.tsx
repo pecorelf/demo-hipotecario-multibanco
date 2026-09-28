@@ -112,6 +112,9 @@ export const FRICCIONES: Friccion[] = [
   },
 ];
 
+/** Procedencia de las cifras. Se muestra al pie de las láminas que las usan. */
+export const FUENTE = 'Análisis experto de Deloitte Digital sobre más de seis bancos de la plaza, con entrevistas a equipos de operaciones y comerciales, y levantamiento del proceso de punta a punta.';
+
 export const TAREAS_EJECUTIVO = [
   { tarea: 'Perseguir documentos al cliente', carga: 26 },
   { tarea: 'Explicar reparos por teléfono y correo', carga: 22 },
@@ -143,7 +146,7 @@ export const ACTORES = [
   { nombre: 'Co-titular', necesidad: 'Aportar sus propios antecedentes sin depender del titular, y con la misma visibilidad que él.', prioritario: true, nuevo: true },
   { nombre: 'Inmobiliaria', necesidad: 'Seguir sus operaciones en curso y compartir la documentación del proyecto una sola vez.', prioritario: false },
   { nombre: 'Corredor', necesidad: 'Acompañar la operación con visibilidad, sin depender de llamadas al ejecutivo.', prioritario: false },
-  { nombre: 'Vendedor', necesidad: 'Compartir sus antecedentes de forma simple y saber cuándo recibe el pago.', prioritario: false },
+  { nombre: 'Vendedor', necesidad: 'Compartir sus antecedentes de forma simple y saber cuándo recibe el pago, sin depender del ejecutivo del comprador.', prioritario: false, nuevo: true },
 ];
 
 /**
@@ -152,6 +155,13 @@ export const ACTORES = [
  * Es la pregunta que aparece en toda conversación técnica: qué tecnología hay
  * debajo y a qué queda amarrado el banco si avanza.
  */
+export const STACK = {
+  nube: ['AWS', 'Microsoft Azure', 'Google Cloud'],
+  plataformas: ['ServiceNow', 'Salesforce', 'Modyo'],
+  desarrollo: ['Angular', 'React', 'Java / Spring'],
+  modelos: ['Modelos de frontera', 'Modelos propios', 'Modelos abiertos'],
+};
+
 export const TECNOLOGIA = [
   {
     titulo: 'Flujos agénticos, no un formulario con IA encima',
@@ -195,7 +205,7 @@ export const FRONT = [
   { titulo: 'El viaje deja de ser una fila', detalle: 'La necesidad del cliente se descompone en tareas que avanzan en paralelo, cada una resuelta por un agente especializado.' },
   { titulo: 'La validación ocurre al cargar', detalle: 'El documento se revisa cuando el cliente lo sube. Si hay una observación, se explica en lenguaje corriente y con la instrucción precisa.' },
   { titulo: 'Todos los actores en el mismo flujo', detalle: 'Cliente, ejecutivo, operaciones, vendedor, inmobiliaria y co-titular sobre la misma operación, cada uno con su vista y sus permisos.' },
-  { titulo: 'El cliente sabe qué le toca', detalle: 'Una sola próxima acción visible en todo momento, con el plazo comprometido y quién tiene la responsabilidad.' },
+  { titulo: 'El cliente conoce y entiende su próxima acción en todo momento', detalle: 'Una sola acción visible, explicada en lenguaje corriente, con el plazo comprometido y quién tiene la responsabilidad en ese tramo.' },
 ];
 
 export const TRANSVERSAL = [
