@@ -1,6 +1,8 @@
+import { reiniciarYRecargar } from '@/lib/demoReset';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRightLeft,
+  RotateCcw,
   Building2,
   ChevronRight,
   Compass,
@@ -147,7 +149,30 @@ export default function DemoHub() {
         </button>
       </div>
 
-      <div className="mt-20 pt-8 border-t border-border-hairline max-w-3xl">
+      <div className="mt-16 pt-8 border-t border-border-hairline flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span className="text-body-sm font-medium text-text-primary">
+            ¿Vas a presentar de nuevo?
+          </span>
+          <p className="text-caption text-text-muted mt-0.5">
+            Borra el recorrido de la demostración anterior —documentos, reparos y pagos— y
+            deja todo como recién instalado. La marca y el logotipo no se tocan.
+          </p>
+        </div>
+        <button
+          onClick={() => {
+            if (confirm('Se borrará el recorrido de la demostración anterior. ¿Continuar?')) {
+              reiniciarYRecargar('/');
+            }
+          }}
+          className="inline-flex items-center gap-2 px-4 py-2.5 border border-border-hairline text-body-sm rounded-md hover:bg-bg-card transition-colors shrink-0"
+        >
+          <RotateCcw size={14} />
+          Empezar una demostración nueva
+        </button>
+      </div>
+
+      <div className="mt-10 pt-8 border-t border-border-hairline max-w-3xl">
         <p className="text-body-sm text-text-secondary leading-relaxed">
           Esta demostración es exclusivamente ilustrativa. No procesa datos
           reales ni genera operaciones. Preparada por Deloitte Digital.

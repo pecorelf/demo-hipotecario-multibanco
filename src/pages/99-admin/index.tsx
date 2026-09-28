@@ -8,6 +8,7 @@
  * ajuste cromático se hace mirando el resultado.
  */
 
+import { reiniciarDemostracion } from '@/lib/demoReset';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePostApprovalStore } from '@/store/postApprovalStore';
@@ -97,11 +98,8 @@ export default function Admin() {
   }
 
   /** Borra el recorrido del usuario, conservando la identidad de la marca. */
-  function reiniciarDemostracion() {
-    ['operacion-cliente', 'estado-demostracion', 'operacion-post-aprobacion', 'hipotecia-docs-store']
-      .forEach((k) => {
-        try { localStorage.removeItem(k); } catch { /* sin accion */ }
-      });
+  function reiniciar() {
+    reiniciarDemostracion();
     setMensaje('Demostración reiniciada. Recarga cualquier vista para verla desde cero.');
   }
 
@@ -390,7 +388,7 @@ export default function Admin() {
           nueva antes de una presentación. No afecta la identidad ni el logotipo.
         </p>
         <button
-          onClick={reiniciarDemostracion}
+          onClick={reiniciar}
           className="mt-4 inline-flex items-center px-4 py-2 border border-border-hairline text-body-sm rounded-md hover:bg-bg-page transition-colors"
         >
           Dejar la demostración como nueva
