@@ -577,7 +577,7 @@ export default function EntendimientoDesafio() {
           </div>
         </div>
       ),
-    },,
+    },
     {
       id: 'tipologias',
       titulo: 'Las tipologías',
@@ -1035,6 +1035,14 @@ export default function EntendimientoDesafio() {
   const [actual, setActual] = useState(0);
   const total = LAMINAS.length;
   const tactil = useRef<number | null>(null);
+  const pistas = useRef<(HTMLElement | null)[]>([]);
+
+  // Al cambiar de lámina, la nueva se muestra desde arriba: si la anterior
+  // venía desplazada, la siguiente aparecía cortada por la mitad.
+  useEffect(() => {
+    pistas.current[actual]?.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0 });
+  }, [actual]);
 
   const ir = useCallback((n: number) => setActual(Math.max(0, Math.min(total - 1, n))), [total]);
 
@@ -1067,17 +1075,28 @@ export default function EntendimientoDesafio() {
         tactil.current = null;
       }}
     >
-      <div className="overflow-hidden">
+      {/* La pista tiene altura fija y cada lámina se desplaza dentro de sí
+          misma. Cuando todas eran hermanas de una fila sin altura propia, la
+          más larga imponía la altura del conjunto y las cortas mostraban un
+          vacío debajo del contenido. */}
+      <div className="h-[calc(100vh-13.5rem)] overflow-hidden">
         <div
-          className="flex"
+          className="flex h-full"
           style={{
             transform: `translateX(-${actual * 100}%)`,
             transition: 'transform 520ms cubic-bezier(.2,.7,.3,1)',
           }}
         >
           {LAMINAS.map((l, i) => (
-            <section key={l.id} aria-hidden={i !== actual} className="w-full shrink-0 overflow-y-auto">
-              <div className="max-w-shell mx-auto px-6 md:px-10 lg:px-16 py-10 min-h-[calc(100vh-14rem)]">
+            <section
+              key={l.id}
+              aria-hidden={i !== actual}
+              ref={(el) => {
+                pistas.current[i] = el;
+              }}
+              className="w-full shrink-0 h-full overflow-y-auto"
+            >
+              <div className="max-w-shell mx-auto px-6 md:px-10 lg:px-16 py-10 min-h-full flex flex-col justify-center">
                 {l.contenido}
               </div>
             </section>
