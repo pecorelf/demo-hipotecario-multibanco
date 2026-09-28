@@ -410,6 +410,49 @@ export default function EntendimientoDesafio() {
       ),
     },
     {
+      id: 'cuello',
+      titulo: 'El cuello de botella',
+      fondo: 'oscuro',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="El cuello de botella"
+            titulo="Todo pasa por el ejecutivo de cuentas"
+            bajada="Es el único punto por donde circula la información entre el cliente, el vendedor, la inmobiliaria, operaciones y la notaría. No hay otro lugar donde dejarla. El resultado es que la persona contratada para vender dedica la mayor parte de su tiempo a coordinar."
+            icono={<Users size={20} />}
+            oscuro
+          />
+          <div className="mt-10 max-w-3xl space-y-3.5">
+            {TAREAS_EJECUTIVO.map((t) => (
+              <div key={t.tarea} className="grid grid-cols-[1fr_auto] gap-4 items-center">
+                <div>
+                  {/* Sobre fondo negro el color de marca puede ser ilegible
+                      —un azul institucional oscuro desaparece—, así que el
+                      resalte se hace con blanco y peso tipográfico. */}
+                  <span className={cn('text-body-sm block mb-1.5', t.tarea === 'Vender' ? 'text-white font-semibold' : 'text-white/75')}>
+                    {t.tarea}
+                  </span>
+                  <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className={cn('h-full rounded-full', t.tarea === 'Vender' ? 'bg-white' : 'bg-white/35')}
+                      style={{ width: `${(t.carga / maxCarga) * 100}%` }}
+                    />
+                  </div>
+                </div>
+                <span className={cn('text-body-sm tabular-nums w-12 text-right', t.tarea === 'Vender' ? 'text-white font-semibold' : 'text-white/60')}>
+                  {t.carga}%
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="text-caption text-white/55 mt-5 max-w-measure">
+            Distribución referencial del tiempo de un ejecutivo hipotecario. Vender aparece
+            último en la lista. {FUENTE}
+          </p>
+        </div>
+      ),
+    },
+    {
       id: 'fricciones',
       titulo: 'Las fricciones',
       contenido: (
@@ -480,50 +523,7 @@ export default function EntendimientoDesafio() {
           </div>
         </div>
       ),
-    },
-    {
-      id: 'cuello',
-      titulo: 'El cuello de botella',
-      fondo: 'oscuro',
-      contenido: (
-        <div className="h-full flex flex-col justify-center">
-          <Encabezado
-            kicker="El cuello de botella"
-            titulo="Todo pasa por el ejecutivo de cuentas"
-            bajada="Es el único punto por donde circula la información entre el cliente, el vendedor, la inmobiliaria, operaciones y la notaría. No hay otro lugar donde dejarla. El resultado es que la persona contratada para vender dedica la mayor parte de su tiempo a coordinar."
-            icono={<Users size={20} />}
-            oscuro
-          />
-          <div className="mt-10 max-w-3xl space-y-3.5">
-            {TAREAS_EJECUTIVO.map((t) => (
-              <div key={t.tarea} className="grid grid-cols-[1fr_auto] gap-4 items-center">
-                <div>
-                  {/* Sobre fondo negro el color de marca puede ser ilegible
-                      —un azul institucional oscuro desaparece—, así que el
-                      resalte se hace con blanco y peso tipográfico. */}
-                  <span className={cn('text-body-sm block mb-1.5', t.tarea === 'Vender' ? 'text-white font-semibold' : 'text-white/75')}>
-                    {t.tarea}
-                  </span>
-                  <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
-                    <div
-                      className={cn('h-full rounded-full', t.tarea === 'Vender' ? 'bg-white' : 'bg-white/35')}
-                      style={{ width: `${(t.carga / maxCarga) * 100}%` }}
-                    />
-                  </div>
-                </div>
-                <span className={cn('text-body-sm tabular-nums w-12 text-right', t.tarea === 'Vender' ? 'text-white font-semibold' : 'text-white/60')}>
-                  {t.carga}%
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="text-caption text-white/55 mt-5 max-w-measure">
-            Distribución referencial del tiempo de un ejecutivo hipotecario. Vender aparece
-            último en la lista. {FUENTE}
-          </p>
-        </div>
-      ),
-    },
+    },,
     {
       id: 'tipologias',
       titulo: 'Las tipologías',
