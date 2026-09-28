@@ -50,7 +50,7 @@ import {
   TRANSVERSAL,
   VISION,
 } from './contenido';
-import { FUENTE_MERCADO, MERCADO, lugarDe, posicionDe } from './mercado';
+import { FUENTE_MERCADO, MERCADO, NOTAS_MERCADO, lugarDe, posicionDe } from './mercado';
 
 interface Lamina {
   id: string;
@@ -180,12 +180,12 @@ export default function EntendimientoDesafio() {
             kicker="El mercado hipotecario hoy"
             titulo={
               posicion
-                ? `${posicion.corto} tiene el ${posicion.share.toFixed(1)}% del stock hipotecario del sistema`
+                ? `${posicion.corto} tiene el ${posicion.share.toFixed(1)}% de la cartera hipotecaria del sistema`
                 : 'El stock hipotecario del sistema se reparte entre seis actores'
             }
             bajada={
               posicion
-                ? `Ocupa el lugar ${lugar} entre los bancos del país, con una cartera de vivienda de ${(posicion.stock / 1_000_000).toFixed(1)} billones de pesos. En los últimos doce meses su cartera ${posicion.variacion >= 0 ? 'creció' : 'se contrajo'} ${Math.abs(posicion.variacion).toFixed(1)}%.`
+                ? `Ocupa el lugar ${lugar} entre los bancos del país, con un stock de colocaciones para vivienda de ${(posicion.stock / 1_000_000).toFixed(1)} billones de pesos. En doce meses su cartera ${posicion.variacion >= 0 ? 'creció' : 'se contrajo'} ${Math.abs(posicion.variacion).toFixed(2)}%.`
                 : 'Los cinco primeros concentran cerca del 84% del stock de colocaciones para vivienda.'
             }
             icono={<TrendingUp size={20} />}
@@ -246,15 +246,20 @@ export default function EntendimientoDesafio() {
                           <span className={cn('text-body-sm truncate', propio ? 'text-text-primary font-semibold' : 'text-text-secondary')}>
                             {m.corto}
                           </span>
-                          <span
-                            className={cn(
-                              'text-body-sm tabular-nums shrink-0',
-                              m.variacion >= 0 ? 'text-status-success' : 'text-status-error',
-                              propio && 'font-semibold',
+                          <span className="flex items-baseline gap-1.5 shrink-0">
+                            {m.porFusion && (
+                              <span className="text-caption text-text-muted">por fusión</span>
                             )}
-                          >
-                            {m.variacion >= 0 ? '+' : ''}
-                            {m.variacion.toFixed(1)}%
+                            <span
+                              className={cn(
+                                'text-body-sm tabular-nums',
+                                m.variacion >= 0 ? 'text-status-success' : 'text-status-error',
+                                propio && 'font-semibold',
+                              )}
+                            >
+                              {m.variacion >= 0 ? '+' : ''}
+                              {m.variacion.toFixed(1)}%
+                            </span>
                           </span>
                         </div>
                       );
@@ -269,8 +274,8 @@ export default function EntendimientoDesafio() {
                   </span>
                   <p className="text-body-sm text-text-primary mt-2">
                     {posicion.variacion < 0
-                      ? 'La cartera se está contrayendo mientras competidores más chicos crecen a dos dígitos. En un mercado que se mueve, la velocidad de curse deja de ser un tema operativo y pasa a ser comercial.'
-                      : 'La cartera crece por sobre el sistema. Sostener ese ritmo depende de cuántas operaciones puede cursar la operación sin sumar dotación en la misma proporción.'}
+                      ? 'El stock se contrae mientras Itaú crece cerca de 10% y el sistema en conjunto se mantiene plano. El stock se mueve despacio: refleja lo que se cursó en años anteriores, no lo que se está cursando hoy.'
+                      : 'El stock crece por sobre el promedio del sistema. Sostener ese ritmo depende de cuántas operaciones puede cursar la operación sin sumar dotación en la misma proporción.'}
                   </p>
                   <p className="text-caption text-text-muted mt-3">
                     Morosidad de la cartera de vivienda: {posicion.mora.toFixed(2)}%.
@@ -280,7 +285,14 @@ export default function EntendimientoDesafio() {
             </div>
           </div>
 
-          <p className="text-caption text-text-muted mt-8 max-w-measure">{FUENTE_MERCADO}</p>
+          <div className="mt-8 space-y-1.5">
+            {NOTAS_MERCADO.map((n) => (
+              <p key={n} className="text-caption text-text-muted max-w-measure">
+                · {n}
+              </p>
+            ))}
+            <p className="text-caption text-text-muted max-w-measure pt-1.5">{FUENTE_MERCADO}</p>
+          </div>
         </div>
       ),
     },

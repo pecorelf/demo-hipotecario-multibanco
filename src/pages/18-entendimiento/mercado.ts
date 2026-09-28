@@ -24,25 +24,33 @@ export interface PosicionBanco {
   mora: number;
   /** Identificadores de marca que corresponden a esta institución. */
   slugs: string[];
+  /** La variación se explica por una fusión, no por crecimiento propio. */
+  porFusion?: boolean;
 }
 
 export const CORTE_MERCADO = 'julio de 2026';
 export const FUENTE_MERCADO =
-  'Comisión para el Mercado Financiero · Reporte de Información Financiera Mensual del Sistema Bancario, julio de 2026. Colocaciones para vivienda a costo amortizado.';
+  'Comisión para el Mercado Financiero · Reporte de Información Financiera Mensual del Sistema Bancario, julio de 2026. Stock de colocaciones para vivienda a costo amortizado, sin deducir provisiones. No incluye cooperativas ni mutuarias.';
+
+/** Advertencias que cambian la lectura de las cifras y deben decirse. */
+export const NOTAS_MERCADO = [
+  'Bice creció por la fusión con Banco Security, materializada en noviembre de 2025, no por captación propia.',
+  'Internacional y Consorcio crecen sobre bases pequeñas: juntos suman menos del 3% del sistema.',
+];
 
 export const SISTEMA_VIVIENDA_MM = 97_846_647;
 
 export const MERCADO: PosicionBanco[] = [
-  { nombre: 'Banco del Estado de Chile', corto: 'BancoEstado', stock: 18_811_204, share: 19.2, variacion: 5.6, mora: 4.46, slugs: ['bancoestado'] },
-  { nombre: 'Banco Santander-Chile', corto: 'Santander', stock: 17_686_095, share: 18.1, variacion: -2.5, mora: 3.34, slugs: ['santander'] },
-  { nombre: 'Banco de Crédito e Inversiones', corto: 'Bci', stock: 16_470_052, share: 16.8, variacion: 1.4, mora: 1.80, slugs: ['bci'] },
-  { nombre: 'Scotiabank Chile', corto: 'Scotiabank', stock: 14_778_169, share: 15.1, variacion: -1.6, mora: 2.05, slugs: ['scotiabank'] },
-  { nombre: 'Banco de Chile', corto: 'Banco de Chile', stock: 14_161_939, share: 14.5, variacion: -1.0, mora: 1.59, slugs: ['banco-de-chile'] },
-  { nombre: 'Banco Itaú Chile', corto: 'Itaú', stock: 9_368_985, share: 9.6, variacion: 9.7, mora: 1.85, slugs: ['itau'] },
-  { nombre: 'Banco Bice', corto: 'Bice', stock: 3_612_167, share: 3.7, variacion: 72.1, mora: 0.97, slugs: ['bice'] },
-  { nombre: 'Banco Consorcio', corto: 'Consorcio', stock: 1_932_406, share: 2.0, variacion: 10.1, mora: 1.24, slugs: ['consorcio'] },
-  { nombre: 'Banco Falabella', corto: 'Falabella', stock: 802_577, share: 0.8, variacion: 12.9, mora: 4.07, slugs: ['falabella'] },
-  { nombre: 'Banco Internacional', corto: 'Internacional', stock: 214_506, share: 0.2, variacion: 50.6, mora: 0.63, slugs: ['internacional'] },
+  { nombre: 'Banco del Estado de Chile', corto: 'BancoEstado', stock: 18_811_204, share: 19.23, variacion: 5.63, mora: 4.46, slugs: ['bancoestado'] },
+  { nombre: 'Banco Santander-Chile', corto: 'Santander', stock: 17_686_095, share: 18.08, variacion: -2.50, mora: 3.34, slugs: ['santander'] },
+  { nombre: 'Banco de Crédito e Inversiones', corto: 'Bci', stock: 16_470_052, share: 16.83, variacion: 1.37, mora: 1.80, slugs: ['bci'] },
+  { nombre: 'Scotiabank Chile', corto: 'Scotiabank', stock: 14_778_169, share: 15.10, variacion: -1.56, mora: 2.05, slugs: ['scotiabank'] },
+  { nombre: 'Banco de Chile', corto: 'Banco de Chile', stock: 14_161_939, share: 14.47, variacion: -0.96, mora: 1.59, slugs: ['banco-de-chile'] },
+  { nombre: 'Banco Itaú Chile', corto: 'Itaú', stock: 9_368_985, share: 9.58, variacion: 9.74, mora: 1.85, slugs: ['itau'] },
+  { nombre: 'Banco Bice', corto: 'Bice', stock: 3_612_167, share: 3.69, variacion: 72.12, mora: 0.97, slugs: ['bice'], porFusion: true },
+  { nombre: 'Banco Consorcio', corto: 'Consorcio', stock: 1_932_406, share: 1.97, variacion: 10.06, mora: 1.24, slugs: ['consorcio'] },
+  { nombre: 'Banco Falabella', corto: 'Falabella', stock: 802_577, share: 0.82, variacion: 12.89, mora: 4.07, slugs: ['falabella'] },
+  { nombre: 'Banco Internacional', corto: 'Internacional', stock: 214_506, share: 0.22, variacion: 50.64, mora: 0.63, slugs: ['internacional'] },
 ];
 
 /** Devuelve la posición de la institución activa, si está en el reporte. */
