@@ -140,9 +140,39 @@ export const ACTORES = [
   { nombre: 'Cliente', necesidad: 'Saber en qué va su operación sin tener que preguntar, y entender qué le falta en lenguaje corriente.', prioritario: true },
   { nombre: 'Ejecutivo', necesidad: 'Ver el estado real de su cartera y dedicar el tiempo a vender, no a perseguir documentos.', prioritario: true },
   { nombre: 'Operaciones', necesidad: 'Trabajar sobre datos validados en lugar de revisar documentos uno por uno.', prioritario: true },
+  { nombre: 'Co-titular', necesidad: 'Aportar sus propios antecedentes sin depender del titular, y con la misma visibilidad que él.', prioritario: true, nuevo: true },
   { nombre: 'Inmobiliaria', necesidad: 'Seguir sus operaciones en curso y compartir la documentación del proyecto una sola vez.', prioritario: false },
   { nombre: 'Corredor', necesidad: 'Acompañar la operación con visibilidad, sin depender de llamadas al ejecutivo.', prioritario: false },
   { nombre: 'Vendedor', necesidad: 'Compartir sus antecedentes de forma simple y saber cuándo recibe el pago.', prioritario: false },
+];
+
+/**
+ * Cómo se diseña y sobre qué se construye.
+ *
+ * Es la pregunta que aparece en toda conversación técnica: qué tecnología hay
+ * debajo y a qué queda amarrado el banco si avanza.
+ */
+export const TECNOLOGIA = [
+  {
+    titulo: 'Flujos agénticos, no un formulario con IA encima',
+    detalle:
+      'La operación se descompone en tareas, y cada una la resuelve un agente con un objetivo acotado: leer un documento, verificar una consistencia, redactar una instrucción. El flujo se arma según el caso, en vez de recorrer siempre la misma secuencia.',
+  },
+  {
+    titulo: 'Desacoplado del modelo',
+    detalle:
+      'Los agentes no dependen de un proveedor de IA en particular. Se usan modelos de frontera donde aportan, y modelos propios o abiertos donde el dato no puede salir del perímetro. Cambiar de modelo no obliga a rehacer el proceso.',
+  },
+  {
+    titulo: 'Multinube y sobre la infraestructura del banco',
+    detalle:
+      'El diseño no asume una nube determinada. Se despliega donde el banco ya opera, dentro de su arquitectura, sus ambientes y sus repositorios, respetando sus políticas de seguridad y de datos.',
+  },
+  {
+    titulo: 'Integración con el workflow actual',
+    detalle:
+      'No reemplaza el motor de procesos que el banco ya tiene ni obliga a migrar antes de empezar. Se integra por interfaces con lo que existe, y deja la puerta abierta a evolucionarlo cuando el banco lo decida.',
+  },
 ];
 
 export const PRINCIPIOS = [

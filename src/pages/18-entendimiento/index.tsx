@@ -13,6 +13,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
+  Cpu,
   Workflow,
   Building2,
   ChevronLeft,
@@ -40,6 +41,7 @@ import {
   PASOS_OCULTOS,
   PRINCIPIOS,
   TAREAS_EJECUTIVO,
+  TECNOLOGIA,
   TIPOLOGIAS,
   TRANSVERSAL,
   VISION,
@@ -331,7 +333,7 @@ export default function EntendimientoDesafio() {
         <div className="h-full flex flex-col justify-center">
           <Encabezado
             kicker="Cómo lo haremos"
-            titulo="Rediseñamos el proceso para los seis actores que intervienen"
+            titulo="Rediseñamos el proceso para los siete actores que intervienen"
             icono={<Users size={20} />}
           />
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 items-center">
@@ -340,7 +342,7 @@ export default function EntendimientoDesafio() {
                 <span className="text-body font-medium leading-snug">
                   Una operación,
                   <br />
-                  seis recorridos
+                  siete recorridos
                 </span>
               </div>
             </div>
@@ -352,6 +354,11 @@ export default function EntendimientoDesafio() {
                     <span className={cn('text-body font-semibold', a.prioritario ? 'text-text-primary' : 'text-text-secondary')}>
                       {a.nombre}
                     </span>
+                    {'nuevo' in a && a.nuevo && (
+                      <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full bg-accent-soft text-accent text-caption font-medium align-middle">
+                        Actor nuevo
+                      </span>
+                    )}
                     <p className="text-body-sm text-text-secondary mt-0.5">{a.necesidad}</p>
                   </div>
                 </div>
@@ -359,8 +366,10 @@ export default function EntendimientoDesafio() {
             </div>
           </div>
           <p className="text-body-sm text-text-secondary mt-8 pl-4 border-l-2 border-accent max-w-measure">
-            Hoy el proceso está diseñado desde la perspectiva del banco. La primera etapa
-            del programa se dedica a rediseñar el viaje de cada uno de estos actores.
+            Hoy el proceso está diseñado desde la perspectiva del banco, y el co-titular
+            ni siquiera existe como usuario: entrega lo suyo a través del titular. La
+            primera etapa del programa se dedica a rediseñar el viaje de cada uno de estos
+            actores.
           </p>
         </div>
       ),
@@ -519,6 +528,40 @@ export default function EntendimientoDesafio() {
                 cuáles faltan y cuáles están observados, sin abrir un correo.
               </p>
             </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'tecnologia',
+      titulo: 'Sobre qué se construye',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="La pregunta técnica"
+            titulo="Flujos agénticos, desacoplados de una tecnología en particular"
+            bajada="Lo que se construye no queda amarrado a un proveedor de IA ni a una nube. Es la diferencia entre comprar una herramienta y quedarse con una capacidad."
+            icono={<Cpu size={20} />}
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7 mt-10">
+            {TECNOLOGIA.map((t) => (
+              <div key={t.titulo} className="border-t-2 border-accent pt-4">
+                <h3 className="text-body font-semibold text-text-primary">{t.titulo}</h3>
+                <p className="text-body-sm text-text-secondary mt-1.5">{t.detalle}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-xl bg-bg-card border border-border-hairline px-6 py-5 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <span className="text-caption uppercase tracking-[0.14em] text-text-muted shrink-0">
+              Lo que esto evita
+            </span>
+            <span className="text-body-sm text-text-secondary">
+              Quedar atado al modelo de un proveedor · Migrar de nube para poder empezar ·
+              Rehacer los procesos cada vez que cambia la tecnología · Sacar datos del
+              perímetro del banco
+            </span>
           </div>
         </div>
       ),

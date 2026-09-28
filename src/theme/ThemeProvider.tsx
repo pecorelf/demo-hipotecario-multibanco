@@ -37,36 +37,32 @@ export function applyTheme(t: BankTheme) {
 }
 
 /**
- * Pone el logotipo de la institución como icono de la pestaña.
+ * Icono de la pestaña.
  *
- * Si no hay logotipo cargado, se dibuja uno con la inicial de la marca sobre
- * su color de acento. Así la pestaña nunca queda con el icono por defecto de
- * la plantilla, que es lo que delata una demostración sin terminar.
+ * Se usa siempre la marca de la firma, no el logotipo de la institución: un
+ * logotipo bancario reducido a dieciséis píxeles se vuelve una mancha
+ * ilegible, y además la demostración la presenta Deloitte.
  */
-function aplicarFavicon(t: BankTheme) {
+function aplicarFavicon(_t: BankTheme) {
   if (typeof document === 'undefined') return;
 
-  const href = t.logoUrl || faviconDeRespaldo(t);
   let link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
   if (!link) {
     link = document.createElement('link');
     link.rel = 'icon';
     document.head.appendChild(link);
   }
-  link.type = t.logoUrl?.startsWith('data:image/svg') ? 'image/svg+xml' : 'image/png';
-  link.href = href;
+  link.type = 'image/svg+xml';
+  link.href = FAVICON_FIRMA;
 }
 
-/** Cuadrado con el color de la marca y la inicial, como SVG embebido. */
-function faviconDeRespaldo(t: BankTheme): string {
-  const inicial = (t.shortName || 'D').trim().charAt(0).toUpperCase();
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-    <rect width="64" height="64" rx="14" fill="${t.accent}"/>
-    <text x="32" y="43" font-family="Inter,system-ui,sans-serif" font-size="34"
-          font-weight="700" fill="${t.onAccent}" text-anchor="middle">${inicial}</text>
-  </svg>`;
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-}
+/** Punto verde de la firma sobre fondo oscuro: legible a 16 píxeles. */
+const FAVICON_FIRMA = `data:image/svg+xml,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+     <rect width="64" height="64" rx="12" fill="#0F0F0F"/>
+     <circle cx="32" cy="32" r="13" fill="#86BC25"/>
+   </svg>`,
+)}`;
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const slug = readSlugFromUrl();
