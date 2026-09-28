@@ -63,3 +63,42 @@ export function lugarDe(slug: string): number | undefined {
   const i = MERCADO.findIndex((m) => m.slugs.includes(slug));
   return i >= 0 ? i + 1 : undefined;
 }
+
+/**
+ * Decisiones de política pública que pueden acelerar el flujo hipotecario en
+ * los próximos meses. Datos de fuentes públicas, con su fecha, para que la
+ * lámina no dependa de la memoria de nadie.
+ */
+export const CATALIZADORES = [
+  {
+    titulo: 'FOGAES ampliado',
+    dato: '80 mil cupos',
+    detalle:
+      'La garantía estatal pasó de 50 mil a 80 mil cupos, subió el tope de la vivienda de 4.000 a 6.000 UF y extendió su vigencia hasta mayo de 2028. El 88% del stock de viviendas nuevas del país queda dentro del nuevo tope.',
+    fecha: 'Promulgado en agosto de 2026',
+  },
+  {
+    titulo: 'Subsidio a la tasa',
+    dato: 'hasta 60 pb menos',
+    detalle:
+      'El subsidio a la tasa de interés hipotecaria rebaja hasta 60 puntos base el costo del crédito, y se puede combinar con FOGAES. Es el que más mueve el dividendo mensual que ve el cliente.',
+    fecha: 'Vigente hasta mayo de 2028',
+  },
+  {
+    titulo: 'Exención de IVA a la vivienda nueva',
+    dato: 'hasta 4.000 UF',
+    detalle:
+      'Exención transitoria del IVA a la venta de viviendas nuevas, por doce meses, para reducir el precio final y activar el stock sin vender. Aprobada en el Senado, en tramitación.',
+    fecha: 'En tramitación · 2026',
+  },
+  {
+    titulo: 'Subsidio Tramo 4.000',
+    dato: '5 mil cupos nuevos',
+    detalle:
+      'Primer llamado especial en noviembre de 2026, para viviendas nuevas o usadas de hasta 4.000 UF, combinable con FOGAES y con el subsidio a la tasa.',
+    fecha: 'Primer llamado en noviembre de 2026',
+  },
+];
+
+export const CATALIZADORES_FUENTE =
+  'Ministerio de Hacienda y MINVU · Cámara de Diputados y Senado de Chile · prensa económica, 2026. La exención de IVA se encuentra en tramitación legislativa a la fecha de esta presentación.';

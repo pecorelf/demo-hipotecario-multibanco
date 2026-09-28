@@ -25,6 +25,7 @@ import {
   Layers,
   Mail,
   ShieldCheck,
+  Sparkles,
   Users,
 } from 'lucide-react';
 import { IconChip, Kicker, Pill } from '@/components/ui';
@@ -50,7 +51,15 @@ import {
   TRANSVERSAL,
   VISION,
 } from './contenido';
-import { FUENTE_MERCADO, MERCADO, NOTAS_MERCADO, lugarDe, posicionDe } from './mercado';
+import {
+  CATALIZADORES,
+  CATALIZADORES_FUENTE,
+  FUENTE_MERCADO,
+  MERCADO,
+  NOTAS_MERCADO,
+  lugarDe,
+  posicionDe,
+} from './mercado';
 
 interface Lamina {
   id: string;
@@ -293,6 +302,110 @@ export default function EntendimientoDesafio() {
             ))}
             <p className="text-caption text-text-muted max-w-measure pt-1.5">{FUENTE_MERCADO}</p>
           </div>
+        </div>
+      ),
+    },
+    {
+      id: 'cartera',
+      titulo: 'Crecimiento y calidad',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="La cartera en movimiento"
+            titulo="Quién crece, quién se contrae y con qué calidad"
+            bajada="La foto de participación no basta: importa hacia dónde se mueve cada cartera y con qué morosidad. Es lo que separa crecer sano de crecer tomando más riesgo."
+            icono={<TrendingUp size={20} />}
+          />
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div>
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Variación de la cartera en 12 meses
+              </span>
+              <div className="mt-4 space-y-2.5">
+                {[...MERCADO].sort((a, b) => b.variacion - a.variacion).map((m) => {
+                  const propio = m.slugs.includes(BRAND.slug);
+                  const w = Math.min(100, Math.abs(m.variacion) / 15 * 100);
+                  return (
+                    <div key={m.nombre} className="grid grid-cols-[110px_1fr_86px] gap-3 items-center">
+                      <span className={cn('text-body-sm truncate', propio ? 'text-text-primary font-semibold' : 'text-text-secondary')}>
+                        {m.corto}
+                      </span>
+                      <div className="h-4 bg-bg-sunken rounded-md relative overflow-hidden">
+                        <div
+                          className={cn('h-full rounded-md', m.variacion >= 0 ? 'bg-status-success' : 'bg-status-error', propio && 'opacity-100')}
+                          style={{ width: `${w}%`, opacity: propio ? 1 : 0.55 }}
+                        />
+                      </div>
+                      <span className="text-caption tabular-nums text-right text-text-secondary">
+                        {m.variacion >= 0 ? '+' : ''}{m.variacion.toFixed(1)}%
+                        {m.porFusion ? ' *' : ''}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="text-caption text-text-muted mt-3">* crecimiento por fusión, no por captación propia.</p>
+            </div>
+
+            <div>
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Morosidad de la cartera de vivienda
+              </span>
+              <div className="mt-4 space-y-2.5">
+                {[...MERCADO].sort((a, b) => a.mora - b.mora).map((m) => {
+                  const propio = m.slugs.includes(BRAND.slug);
+                  return (
+                    <div key={m.nombre} className="grid grid-cols-[110px_1fr_54px] gap-3 items-center">
+                      <span className={cn('text-body-sm truncate', propio ? 'text-text-primary font-semibold' : 'text-text-secondary')}>
+                        {m.corto}
+                      </span>
+                      <div className="h-4 bg-bg-sunken rounded-md overflow-hidden">
+                        <div
+                          className={cn('h-full rounded-md', propio ? 'bg-accent' : 'bg-border-strong')}
+                          style={{ width: `${Math.min(100, m.mora / 4.5 * 100)}%` }}
+                        />
+                      </div>
+                      <span className={cn('text-body-sm tabular-nums text-right', propio ? 'text-accent font-semibold' : 'text-text-secondary')}>
+                        {m.mora.toFixed(2)}%
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <p className="text-caption text-text-muted mt-8 max-w-measure">{FUENTE_MERCADO}</p>
+        </div>
+      ),
+    },
+    {
+      id: 'catalizadores',
+      titulo: 'Lo que viene',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="El momento es ahora"
+            titulo="Decisiones de política pública que van a mover el mercado"
+            bajada="No es un mercado quieto: hay medidas recién promulgadas y en tramitación que van a empujar la demanda de crédito en los próximos meses. El banco que llegue con un proceso más rápido captura esa ola; el que llegue con el proceso de hoy la deja pasar."
+            icono={<Sparkles size={20} />}
+          />
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+            {CATALIZADORES.map((c) => (
+              <div key={c.titulo} className="rounded-xl border border-border-hairline bg-bg-card p-6">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="text-body font-semibold text-text-primary">{c.titulo}</h3>
+                  <span className="text-body-sm font-semibold text-accent shrink-0">{c.dato}</span>
+                </div>
+                <p className="text-body-sm text-text-secondary mt-2">{c.detalle}</p>
+                <p className="text-caption text-text-muted mt-3">{c.fecha}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-caption text-text-muted mt-8 max-w-measure">{CATALIZADORES_FUENTE}</p>
         </div>
       ),
     },
