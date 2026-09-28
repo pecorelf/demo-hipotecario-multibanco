@@ -12,9 +12,12 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
+  Anchor,
   ArrowRight,
   Check,
   Cpu,
+  Heart,
+  Home,
   TrendingUp,
   Workflow,
   Building2,
@@ -177,6 +180,57 @@ export default function EntendimientoDesafio() {
               chileno sobre propiedad nueva con subsidio.
             </p>
           </div>
+        </div>
+      ),
+    },
+    {
+      id: 'porque',
+      titulo: 'Por qué importa',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="Más que un producto"
+            titulo="La hipoteca importa más de lo que su tasa sugiere"
+            bajada="Es el producto más comoditizado de la banca en el papel, y a la vez el que más define la relación con el cliente y la salud de la cartera. Ahí está la oportunidad que un proceso mejor deja sobre la mesa."
+            icono={<Home size={20} />}
+          />
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-xl border border-border-hairline bg-bg-card p-6">
+              <IconChip><Heart size={16} /></IconChip>
+              <h3 className="text-h3 text-text-primary mt-4">La decisión de una vida</h3>
+              <p className="text-body-sm text-text-secondary mt-2">
+                Para la persona no es un producto financiero: es el sueño de la casa propia
+                y la decisión de mayor monto de su vida. La emoción es alta; la experiencia
+                del proceso, hoy, no está a esa altura.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border-hairline bg-bg-card p-6">
+              <IconChip><Anchor size={16} /></IconChip>
+              <h3 className="text-h3 text-text-primary mt-4">El ancla de la principalidad</h3>
+              <p className="text-body-sm text-text-secondary mt-2">
+                Quien gana la hipoteca ancla al cliente por veinte o treinta años, y con ella
+                llegan la cuenta, el sueldo, los seguros y el resto de la relación. Se compite
+                una vez y se retiene por décadas.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border-hairline bg-bg-card p-6">
+              <IconChip tono="exito"><ShieldCheck size={16} /></IconChip>
+              <h3 className="text-h3 text-text-primary mt-4">La deuda que se paga hasta el final</h3>
+              <p className="text-body-sm text-text-secondary mt-2">
+                Es lo último que una persona deja de pagar: antes cae la tarjeta, el consumo,
+                el auto. Por eso la cartera hipotecaria es la de mejor comportamiento del
+                banco, y protegerla es proteger la calidad de todo el balance.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-body text-text-secondary mt-8 pl-4 border-l-2 border-accent max-w-measure">
+            El desafío no es prestar más barato, es prestar mejor: capturar la relación y
+            sostener la calidad. Un proceso más rápido y más limpio mueve las dos cosas a la vez.
+          </p>
         </div>
       ),
     },
