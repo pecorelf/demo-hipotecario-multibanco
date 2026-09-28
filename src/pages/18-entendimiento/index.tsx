@@ -15,6 +15,7 @@ import {
   ArrowRight,
   Check,
   Cpu,
+  TrendingUp,
   Workflow,
   Building2,
   ChevronLeft,
@@ -49,6 +50,7 @@ import {
   TRANSVERSAL,
   VISION,
 } from './contenido';
+import { FUENTE_MERCADO, MERCADO, lugarDe, posicionDe } from './mercado';
 
 interface Lamina {
   id: string;
@@ -91,6 +93,8 @@ function Encabezado({
 export default function EntendimientoDesafio() {
   const navigate = useNavigate();
   const maxCarga = Math.max(...TAREAS_EJECUTIVO.map((t) => t.carga));
+  const posicion = posicionDe(BRAND.slug);
+  const lugar = lugarDe(BRAND.slug);
 
   const LAMINAS: Lamina[] = [
     {
@@ -164,6 +168,119 @@ export default function EntendimientoDesafio() {
               chileno sobre propiedad nueva con subsidio.
             </p>
           </div>
+        </div>
+      ),
+    },
+    {
+      id: 'mercado',
+      titulo: 'Su posición en el mercado',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="El mercado hipotecario hoy"
+            titulo={
+              posicion
+                ? `${posicion.corto} tiene el ${posicion.share.toFixed(1)}% del stock hipotecario del sistema`
+                : 'El stock hipotecario del sistema se reparte entre seis actores'
+            }
+            bajada={
+              posicion
+                ? `Ocupa el lugar ${lugar} entre los bancos del país, con una cartera de vivienda de ${(posicion.stock / 1_000_000).toFixed(1)} billones de pesos. En los últimos doce meses su cartera ${posicion.variacion >= 0 ? 'creció' : 'se contrajo'} ${Math.abs(posicion.variacion).toFixed(1)}%.`
+                : 'Los cinco primeros concentran cerca del 84% del stock de colocaciones para vivienda.'
+            }
+            icono={<TrendingUp size={20} />}
+          />
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10">
+            {/* Participación */}
+            <div>
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Participación en el stock de vivienda
+              </span>
+              <div className="mt-4 space-y-2.5">
+                {MERCADO.slice(0, 8).map((m) => {
+                  const propio = m.slugs.includes(BRAND.slug);
+                  return (
+                    <div key={m.nombre} className="grid grid-cols-[124px_1fr_54px] gap-3 items-center">
+                      <span
+                        className={cn(
+                          'text-body-sm truncate',
+                          propio ? 'text-text-primary font-semibold' : 'text-text-secondary',
+                        )}
+                      >
+                        {m.corto}
+                      </span>
+                      <div className="h-5 bg-bg-sunken rounded-md overflow-hidden">
+                        <div
+                          className={cn('h-full rounded-md', propio ? 'bg-accent' : 'bg-border-strong')}
+                          style={{ width: `${(m.share / MERCADO[0].share) * 100}%` }}
+                        />
+                      </div>
+                      <span
+                        className={cn(
+                          'text-body-sm tabular-nums text-right',
+                          propio ? 'text-accent font-semibold' : 'text-text-secondary',
+                        )}
+                      >
+                        {m.share.toFixed(1)}%
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Crecimiento y calidad */}
+            <div className="space-y-4">
+              <div className="rounded-xl border border-border-hairline bg-bg-card p-5">
+                <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                  Variación de la cartera en doce meses
+                </span>
+                <div className="mt-3 space-y-2">
+                  {[...MERCADO].slice(0, 8)
+                    .sort((a, b) => b.variacion - a.variacion)
+                    .map((m) => {
+                      const propio = m.slugs.includes(BRAND.slug);
+                      return (
+                        <div key={m.nombre} className="flex items-baseline justify-between gap-3">
+                          <span className={cn('text-body-sm truncate', propio ? 'text-text-primary font-semibold' : 'text-text-secondary')}>
+                            {m.corto}
+                          </span>
+                          <span
+                            className={cn(
+                              'text-body-sm tabular-nums shrink-0',
+                              m.variacion >= 0 ? 'text-status-success' : 'text-status-error',
+                              propio && 'font-semibold',
+                            )}
+                          >
+                            {m.variacion >= 0 ? '+' : ''}
+                            {m.variacion.toFixed(1)}%
+                          </span>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+
+              {posicion && (
+                <div className="rounded-xl bg-accent-soft p-5">
+                  <span className="text-caption uppercase tracking-[0.14em] text-accent">
+                    Lo que dicen estas cifras
+                  </span>
+                  <p className="text-body-sm text-text-primary mt-2">
+                    {posicion.variacion < 0
+                      ? 'La cartera se está contrayendo mientras competidores más chicos crecen a dos dígitos. En un mercado que se mueve, la velocidad de curse deja de ser un tema operativo y pasa a ser comercial.'
+                      : 'La cartera crece por sobre el sistema. Sostener ese ritmo depende de cuántas operaciones puede cursar la operación sin sumar dotación en la misma proporción.'}
+                  </p>
+                  <p className="text-caption text-text-muted mt-3">
+                    Morosidad de la cartera de vivienda: {posicion.mora.toFixed(2)}%.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <p className="text-caption text-text-muted mt-8 max-w-measure">{FUENTE_MERCADO}</p>
         </div>
       ),
     },
