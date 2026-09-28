@@ -13,6 +13,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
+  Workflow,
   Building2,
   ChevronLeft,
   ChevronRight,
@@ -40,6 +41,7 @@ import {
   PRINCIPIOS,
   TAREAS_EJECUTIVO,
   TIPOLOGIAS,
+  TRANSVERSAL,
   VISION,
 } from './contenido';
 
@@ -248,17 +250,22 @@ export default function EntendimientoDesafio() {
             {TAREAS_EJECUTIVO.map((t) => (
               <div key={t.tarea} className="grid grid-cols-[1fr_auto] gap-4 items-center">
                 <div>
-                  <span className={cn('text-body-sm block mb-1.5', t.tarea === 'Vender' ? 'text-accent font-medium' : 'text-white/85')}>
+                  {/* Sobre fondo negro el color de marca puede ser ilegible
+                      —un azul institucional oscuro desaparece—, así que el
+                      resalte se hace con blanco y peso tipográfico. */}
+                  <span className={cn('text-body-sm block mb-1.5', t.tarea === 'Vender' ? 'text-white font-semibold' : 'text-white/75')}>
                     {t.tarea}
                   </span>
                   <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
                     <div
-                      className={cn('h-full rounded-full', t.tarea === 'Vender' ? 'bg-accent' : 'bg-white/45')}
+                      className={cn('h-full rounded-full', t.tarea === 'Vender' ? 'bg-white' : 'bg-white/35')}
                       style={{ width: `${(t.carga / maxCarga) * 100}%` }}
                     />
                   </div>
                 </div>
-                <span className="text-body-sm tabular-nums text-white/70 w-12 text-right">{t.carga}%</span>
+                <span className={cn('text-body-sm tabular-nums w-12 text-right', t.tarea === 'Vender' ? 'text-white font-semibold' : 'text-white/60')}>
+                  {t.carga}%
+                </span>
               </div>
             ))}
           </div>
@@ -372,8 +379,8 @@ export default function EntendimientoDesafio() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-7 mt-10">
             {PRINCIPIOS.map((p) => (
-              <div key={p.n} className="border-t border-accent pt-4">
-                <span className="text-body-sm font-semibold text-accent">{p.n}</span>
+              <div key={p.n} className="border-t border-white/35 pt-4">
+                <span className="text-body-sm font-semibold text-white/60">{p.n}</span>
                 <h3 className="text-body font-semibold text-text-inverse mt-1.5">{p.titulo}</h3>
                 <p className="text-body-sm text-white/70 mt-1.5">{p.detalle}</p>
               </div>
@@ -396,7 +403,7 @@ export default function EntendimientoDesafio() {
         <div className="h-full flex flex-col justify-center">
           <Kicker>La ambición</Kicker>
           <h2 className="text-h1 text-text-primary mt-3 max-w-4xl">
-            Del tiempo que hoy está en manos del banco, visionamos reducir entre 60% y 75%
+            Del tiempo que hoy está en manos del banco, visionamos reducir entre 40% y 60%
           </h2>
           <div className="mt-10 max-w-4xl">
             <div className="grid grid-cols-[130px_1fr] gap-5 items-center mb-3">
@@ -406,8 +413,8 @@ export default function EntendimientoDesafio() {
             <div className="grid grid-cols-[130px_1fr] gap-5 items-center">
               <span className="text-kicker uppercase text-accent">Nuestra ambición</span>
               <div className="flex items-center gap-5">
-                <div className="h-14 bg-accent rounded-lg" style={{ width: '31%' }} />
-                <span className="text-h2 text-accent font-semibold">60% a 75% menos</span>
+                <div className="h-14 bg-accent rounded-lg" style={{ width: '50%' }} />
+                <span className="text-h2 text-accent font-semibold">40% a 60% menos</span>
               </div>
             </div>
           </div>
@@ -459,6 +466,59 @@ export default function EntendimientoDesafio() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'transversal',
+      titulo: 'Lo que ya está construido',
+      contenido: (
+        <div className="h-full flex flex-col justify-center">
+          <Encabezado
+            kicker="Tecnología en operación"
+            titulo="Cobertura de todas las etapas, no de un tramo"
+            bajada="No partimos de cero. Hay tecnología desarrollada y funcionando en las cuatro etapas del proceso, y opera sobre el workflow que el banco ya tiene, sin pedirle que lo reemplace."
+            icono={<Workflow size={20} />}
+          />
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+              {TRANSVERSAL.map((t) => (
+                <div key={t.titulo} className="border-t-2 border-accent pt-4">
+                  <h3 className="text-body font-semibold text-text-primary">{t.titulo}</h3>
+                  <p className="text-body-sm text-text-secondary mt-1.5">{t.detalle}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl border border-border-hairline bg-bg-card p-6">
+              <span className="text-caption uppercase tracking-[0.14em] text-text-muted">
+                Las cuatro etapas cubiertas
+              </span>
+              <div className="mt-4 space-y-3">
+                {[
+                  { etapa: 'Pre firma', detalle: 'Orden de escrituración, rescate de certificados, validación de antecedentes.' },
+                  { etapa: 'Legal', detalle: 'Estudio de títulos, compilado y borrador de escritura.' },
+                  { etapa: 'Firma', detalle: 'Coordinación con la red de notarías y despacho.' },
+                  { etapa: 'Post firma', detalle: 'Seguimiento del conservador, instrucción de pago y activación.' },
+                ].map((e, i) => (
+                  <div key={e.etapa} className="flex gap-3 items-start">
+                    <span className="mt-0.5 w-6 h-6 rounded-md bg-accent-soft text-accent text-caption font-semibold inline-flex items-center justify-center shrink-0">
+                      {i + 1}
+                    </span>
+                    <div className="min-w-0">
+                      <span className="text-body-sm font-medium text-text-primary">{e.etapa}</span>
+                      <p className="text-caption text-text-muted mt-0.5">{e.detalle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-caption text-text-secondary mt-5 pt-4 border-t border-border-hairline">
+                En cualquier momento del proceso se puede responder qué documentos están,
+                cuáles faltan y cuáles están observados, sin abrir un correo.
+              </p>
+            </div>
           </div>
         </div>
       ),

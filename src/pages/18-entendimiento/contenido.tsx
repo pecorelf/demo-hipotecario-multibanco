@@ -9,6 +9,7 @@
 import type { ReactNode } from 'react';
 import {
   AlertTriangle,
+  RefreshCw,
   Building2,
   Clock,
   Copy,
@@ -98,6 +99,12 @@ export const FRICCIONES: Friccion[] = [
       'El cónyuge entrega lo suyo a través de su pareja, que termina haciendo de mensajero entre dos personas y el banco.',
   },
   {
+    icono: <RefreshCw size={16} />,
+    titulo: 'El reproceso es parte del método',
+    detalle:
+      'El checklist se arma a mano, los documentos llegan por correo y de forma presencial, y la carpeta vuelve por falta de un antecedente o por inconsistencia entre dos.',
+  },
+  {
     icono: <AlertTriangle size={16} />,
     titulo: 'El error se descubre tarde',
     detalle:
@@ -149,7 +156,7 @@ export const PRINCIPIOS = [
 
 export const PALANCAS = [
   { titulo: 'Prevenir el reparo', detalle: 'La IA validará el documento al momento de cargarlo, y no después.' },
-  { titulo: 'Digital Workers', detalle: 'Las tareas repetitivas se ejecutarán solas, sin esperar en una bandeja de entrada.' },
+  { titulo: 'Trabajadores Digitales', detalle: 'Software que ejecuta el trabajo de oficina de punta a punta: entra a los sistemas, busca en fuentes públicas, completa formularios y deja registro. Usa IA donde hace falta criterio, y reglas donde el paso es determinístico.' },
   { titulo: 'Consolidación documental', detalle: 'Un solo repositorio, y no pediremos dos veces lo mismo.' },
   { titulo: 'Tareas en paralelo', detalle: 'Lo que no tenga dependencia real dejará de esperar su turno.' },
 ];
@@ -161,8 +168,31 @@ export const FRONT = [
   { titulo: 'El cliente sabe qué le toca', detalle: 'Una sola próxima acción visible en todo momento, con el plazo comprometido y quién tiene la responsabilidad.' },
 ];
 
+export const TRANSVERSAL = [
+  {
+    titulo: 'Cobertura de todas las etapas',
+    detalle:
+      'Hay tecnología desarrollada y en operación para cada etapa del proceso: pre firma, legal, firma y post firma. No es un piloto sobre un tramo, es la cadena completa.',
+  },
+  {
+    titulo: 'Automatización de tareas',
+    detalle:
+      'Lo repetitivo se ejecuta solo y con verificación de resultado: si un paso falla, se reintenta y, si no se resuelve, se avisa a una persona con el caso identificado.',
+  },
+  {
+    titulo: 'Identificación documental',
+    detalle:
+      'El sistema reconoce qué documento es cada archivo que llega, lo asocia a la operación y lo contrasta con lo que esa tipología exige. En cualquier momento se sabe qué está, qué falta y qué está observado.',
+  },
+  {
+    titulo: 'Trazabilidad de punta a punta',
+    detalle:
+      'Cada lectura, cada escritura y cada decisión queda registrada con su hora y su responsable, de modo que reconstruir una operación no dependa de leer un hilo de correo.',
+  },
+];
+
 export const BACK = [
-  { titulo: 'Digital Workers en lugar de manos', detalle: 'Rescatar certificados de fuentes públicas, cuadrar montos y consultar el conservador se ejecuta solo, y queda registrado.' },
+  { titulo: 'Trabajadores Digitales en lugar de manos', detalle: 'No son un chat ni un modelo suelto: son procesos que operan los sistemas como lo haría una persona. Rescatan certificados de fuentes públicas, cuadran montos, consultan el conservador y dejan bitácora de cada paso.' },
   { titulo: 'La persona autoriza, la máquina escribe', detalle: 'Un abogado revisa el compilado contra los datos que se van a escribir. Después la escritura es automática, campo por campo, con reintentos.' },
   { titulo: 'Monitoreo permanente', detalle: 'Robots que verifican la disponibilidad de los sistemas y que cada tarea terminó como debía. Si algo falla, se detecta antes de que alguien lo reclame.' },
   { titulo: 'La base del proyecto se valida una vez', detalle: 'En el negocio encadenado, la base de escrituración se revisa al incorporar el proyecto y el resultado se hereda a todas las unidades.' },
